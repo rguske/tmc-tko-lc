@@ -1,9 +1,13 @@
 modules:
   workshop-overview:
     name: Workshop Overview
-    exit_sign: Getting Started
-  setup-environment:
-    name: Workshop overview
     exit_sign: TMC Foundation
   exercises/tmc-foundation:
     name: TMC Foundation
+    exit_sign: Access Policies
+  exercises/access-policies:
+    name: Access Policies
+    exit_sign: Conclusion
+  workshop-summary:
+    name: Workshop Summary
+    exit_sign: Finish Workshop

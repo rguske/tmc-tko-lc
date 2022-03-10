@@ -3,5 +3,6 @@ name: TKO Day 1
 modules:
   activate:
     - workshop-overview
-    - tmc-fundation
+    - exercises/01-tmc-fundation
+    - exercises/02-access-policies
     - workshop-summary

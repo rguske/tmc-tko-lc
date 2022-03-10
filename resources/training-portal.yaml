@@ -10,16 +10,12 @@ spec:
     registration:
       type: anonymous
     #      enabled: true
-    credentials:
-      admin:
-        username: admin
-        password: Welcome11!
+    # credentials:
+    #   admin:
+    #     username: admin
+    #     password: Welcome11!
   workshops:
-    - name: tmc-day1
-      capacity: 25
-      expires: 300m
-      orphaned: 45m
-    - name: lab-markdown-sample
+    - name: tko-day1
       capacity: 25
       expires: 300m
       orphaned: 45m
