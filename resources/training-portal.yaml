@@ -2,6 +2,8 @@ apiVersion: learningcenter.tanzu.vmware.com/v1beta1
 kind: TrainingPortal
 metadata:
   name: tko-tmc-day1
+  annotations:
+    kapp.k14s.io/update-strategy: always-replace
 spec:
   portal:
     ingress:

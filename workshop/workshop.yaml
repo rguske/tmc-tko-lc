@@ -4,5 +4,6 @@ modules:
   activate:
     - workshop-overview
     - exercises/01-tmc-foundation
-    - exercises/02-access-policies
+    - exercises/02-launch-tmc
+    - exercises/03-access-policies
     - workshop-summary

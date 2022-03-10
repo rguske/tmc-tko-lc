@@ -11,7 +11,7 @@ spec:
   url: https://github.com/Tanzu-Partner-SE/tmc-tko-lc
   content:
     files: github.com/Tanzu-Partner-SE/tmc-tko-lc?ref=main
-    image: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:681ef8d2e6fc8414b3783e4de424adbfabf2aa0126e34fa7dcd07dab61e55a89
+    image: harbor.mytanzusandbox.com/learningcenter/tko-day1:0.0.1
   session:
     namespaces:
       budget: small
