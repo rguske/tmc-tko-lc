@@ -1,5 +1,3 @@
-# **Module 1: TMC Fundation**
-
 ## **VMware Tanzu Mission Control Concepts**
 
 VMware Tanzu Mission Control is a platform for modern application management that provides a single control point for teams to more easily manage Kubernetes and operate modern containerized applications across multiple clouds and clusters. As an API-driven service, Tanzu Mission Control enables you to declaratively manage all your clusters through its API, the CLI, or the web-based console
