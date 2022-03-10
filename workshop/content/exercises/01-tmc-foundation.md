@@ -65,7 +65,7 @@ Tanzu Mission Control is offered in multiple versions, tailoring the set of feat
 
 Many of the features and capabilities are available in all versions. Some features, like certain policy types and inspection types, are available only with some versions. For more information about the features available in Tanzu Mission Control for each version, see the 
 
-```dashboard: 
+```dashboard:create-dashboard
 name: VMware Tanzu Mission Control Feature Comparison Chart
 url: https://tanzu.vmware.com/content/tanzu-mission-control/tmc-comparison-chart
 ```
