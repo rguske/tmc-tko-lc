@@ -1,0 +1,25 @@
+apiVersion: learningcenter.tanzu.vmware.com/v1beta1
+kind: Workshop
+metadata:
+  name: tmc-day1
+spec:
+  title: Partner Demo Workshop - Module 2
+  description: Workshop created to demo the TMC Day 1 operations.
+  vendor: eduk8s.io
+  difficulty: beginner
+  duration: 15m
+  url: https://github.com/Eknathreddy09/lab-lc-helloworld
+  content:
+    files: github.com/Eknathreddy09/lab-lc-helloworld?ref=main
+    image: registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:681ef8d2e6fc8414b3783e4de424adbfabf2aa0126e34fa7dcd07dab61e55a89
+  session:
+    namespaces:
+      budget: small
+    applications:
+      terminal:
+        enabled: true
+        layout: split
+      console:
+        enabled: true
+      editor:
+        enabled: true

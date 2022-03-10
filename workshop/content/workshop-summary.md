@@ -1,0 +1,1 @@
+That concludes our high overview of Tanzu Kubernetes Operations for **Day 1** Activities.

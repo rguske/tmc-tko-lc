@@ -1,0 +1,7 @@
+name: TKO Day 1
+
+modules:
+  activate:
+    - workshop-overview
+    - tmc-fundation
+    - workshop-summary

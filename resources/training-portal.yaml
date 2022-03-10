@@ -1,0 +1,25 @@
+apiVersion: learningcenter.tanzu.vmware.com/v1beta1
+kind: TrainingPortal
+metadata:
+  name: tko-tmc-day1
+spec:
+  portal:
+    ingress:
+      hostname: workshop.tko.mytanzusandbox.com
+    #     secret: secret-workshop
+    registration:
+      type: anonymous
+    #      enabled: true
+    credentials:
+      admin:
+        username: admin
+        password: Welcome11!
+  workshops:
+    - name: tmc-day1
+      capacity: 25
+      expires: 300m
+      orphaned: 45m
+    - name: lab-markdown-sample
+      capacity: 25
+      expires: 300m
+      orphaned: 45m
