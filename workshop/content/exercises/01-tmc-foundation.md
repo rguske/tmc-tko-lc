@@ -63,13 +63,15 @@ Custom policies allow you to implement additional business rules, using template
 
 Tanzu Mission Control is offered in multiple versions, tailoring the set of features to your cluster management needs.
 
-Many of the features and capabilities are available in all versions. Some features, like certain policy types and inspection types, are available only with some versions. For more information about the features available in Tanzu Mission Control for each version, see the [VMware Tanzu Mission Control Feature Comparison Chart](https://tanzu.vmware.com/content/tanzu-mission-control/tmc-comparison-chart).
+Many of the features and capabilities are available in all versions. Some features, like certain policy types and inspection types, are available only with some versions. For more information about the features available in Tanzu Mission Control for each version, see the 
 
-```dashboard:create-dashboard
+```dashboard: 
 name: VMware Tanzu Mission Control Feature Comparison Chart
 url: https://tanzu.vmware.com/content/tanzu-mission-control/tmc-comparison-chart
 ```
-
+```dashboard:delete-dashboard
+name: VMware Tanzu Mission Control Feature Comparison Chart
+```
 - <ins>Tanzu Mission Control Essentials</ins>
 
     Crafted specifically for Tanzu services on VMware Cloud offerings like VMware Cloud on AWS, Tanzu Mission Control Essentials provides a set of essential capabilities to organize your Kubernetes clusters and namespaces for scalable operations, and secure them with access control policies.
