@@ -5,16 +5,19 @@ To access the Tanzu Mission Control console, you must first make sure you have a
 
 **Procedure**
 
-1. Open a browser and log in to the VMware Cloud Services [console](https://console.cloud.vmware.com/).
+1. Open a browser and log in to the VMware Cloud Services.
 
-    ![](images/vmw-cloud-console-1.png)
-
-```dashboard:create-dashboard
-name: VMware Cloud Services
+```dashboard:open-url
 url: https://console.cloud.vmware.com
 ```
-2. If you belong to multiple organizations, make sure you have selected the appropriate one. To change organizations, click your name in the title bar.
 
-3. Click the Tanzu Mission Control tile to open the Tanzu Mission Control console. After you have logged in, you can return directly to the Tanzu Mission Control console using the following URL, replacing org-name with the name of your organization.
+![](images/vmw-cloud-console-1.png)
 
-[https://org-name.tmc.cloud.vmware.com/](https://org-name.tmc.cloud.vmware.com/)
+
+2. If you belong to multiple organizations, make sure you have selected **Partner - Tanzu SE Americas**. To change organizations, click your name in the title bar.
+
+3. Click the Tanzu Mission Control tile to open the Tanzu Mission Control console. After you have logged in, you can return directly to the Tanzu Mission Control console using the following URL.
+
+```dashboard:open-url
+url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
+```

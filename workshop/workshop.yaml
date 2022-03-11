@@ -6,4 +6,7 @@ modules:
     - exercises/01-tmc-foundation
     - exercises/02-launch-tmc
     - exercises/03-access-policies
+    - exercises/04-image-policies
+    - exercises/05-access-policies
+    - exercises/06-security-policies
     - workshop-summary

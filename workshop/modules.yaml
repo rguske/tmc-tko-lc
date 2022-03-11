@@ -4,12 +4,21 @@ modules:
     exit_sign: TMC Foundation
   exercises/01-tmc-foundation:
     name: TMC Foundation
-    exit_sign: Launch the Tanzu Mission Control Console
+    exit_sign: Launch the TMC Console
   exercises/02-launch-tmc:
-    name: Launch the Tanzu Mission Control Console
+    name: Launch the TMC Console
     exit_sign: Access Policies
   exercises/03-access-policies:
     name: Access Policies
+    exit_sign: Image Policies
+  exercises/04-image-policies:
+    name: Image Policies
+    exit_sign: Network Policies
+  exercises/05-network-policies:
+    name: Network Policies
+    exit_sign: Security Policies
+  exercises/06-security-policies:
+    name: Security Policies
     exit_sign: Conclusion
   workshop-summary:
     name: Workshop Summary

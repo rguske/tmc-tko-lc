@@ -1,6 +1,4 @@
 
-### **Access Policies**
-
 VMware Tanzu Mission Control uses secure-by-default, role-based access control (RBAC) to manage user permissions at each level of the hierarchical structure for your organization. Each object is protected by an access policy that defines who has access to that resource, and these policies are inherited down through the organizational hierarchy.
 
 Access policies can be managed at the cluster group level or workspace level.
