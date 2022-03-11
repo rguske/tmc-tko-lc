@@ -10,6 +10,12 @@ modules:
     exit_sign: Access Policies
   exercises/03-access-policies:
     name: Access Policies
+    exit_sign: Image Policies
+  exercises/04-image-policies:
+    name: Image Policies
+    exit_sign: Network Policies
+  exercises/05-network-policies:
+    name: Network Policies
     exit_sign: Conclusion
   workshop-summary:
     name: Workshop Summary
