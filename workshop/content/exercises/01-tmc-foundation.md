@@ -83,6 +83,3 @@ name: VMware Tanzu Mission Control Feature Comparison Chart
 - <ins>Tanzu Mission Control Advanced</ins>
 
     The advanced version of Tanzu Mission Control is available standalone or with the Tanzu Advanced Edition, and contains all currently available functionality. This includes custom roles for access policies, additional policy types like networking, quota, and image registry policies, as well as custom policies for more granular control over your Kubernetes deployments.
-
-
-
