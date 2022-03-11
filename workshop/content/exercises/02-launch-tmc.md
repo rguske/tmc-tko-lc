@@ -11,7 +11,7 @@ To access the Tanzu Mission Control console, you must first make sure you have a
 url: https://console.cloud.vmware.com
 ```
 
-    ![](images/vmw-cloud-console-1.png)
+![](images/vmw-cloud-console-1.png)
 
 
 2. If you belong to multiple organizations, make sure you have selected **Partner - Tanzu SE Americas**. To change organizations, click your name in the title bar.
