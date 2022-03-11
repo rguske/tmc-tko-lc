@@ -24,6 +24,6 @@ Now we will deploy an app with root privileges on the cluster e2e-amer that has 
 
 Go to the workshop tab, on the Terminal Tab
 
-```terminal:execute-1
+```execute-1
 kubectl create deployment nginx-e2e-workshop-w13-s192 --image=nginx -n e2e-workshop-w13-s192
 ```
