@@ -16,6 +16,9 @@ modules:
     exit_sign: Network Policies
   exercises/05-network-policies:
     name: Network Policies
+    exit_sign: Security Policies
+  exercises/06-security-policies:
+    name: Security Policies
     exit_sign: Conclusion
   workshop-summary:
     name: Workshop Summary
