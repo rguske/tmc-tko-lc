@@ -2,6 +2,8 @@ apiVersion: learningcenter.tanzu.vmware.com/v1beta1
 kind: Workshop
 metadata:
   name: tko-day1
+  annotations:
+    kapp.k14s.io/update-strategy: always-replace
 spec:
   title: Partner Demo Workshop - Module 2
   description: Workshop created to demo the TKO Day 1 operations.
@@ -11,10 +13,13 @@ spec:
   url: https://github.com/Tanzu-Partner-SE/tmc-tko-lc
   content:
     files: github.com/Tanzu-Partner-SE/tmc-tko-lc?ref=main
-    image: harbor.mytanzusandbox.com/learningcenter/tko-day1:0.0.1
+    image: harbor.mytanzusandbox.com/learningcenter/tko-day1:0.0.4
   session:
+    resources:
+      storage: 5Gi
     namespaces:
-      budget: small
+      #budget: small
+      budget: custom
     applications:
       terminal:
         enabled: true
@@ -24,3 +29,51 @@ spec:
         vendor: octant
       editor:
         enabled: true
+      docker:
+        enabled: true
+    objects:
+      - apiVersion: v1
+        kind: LimitRange
+        metadata:
+          name: resource-limits
+        spec:
+          limits:
+            - max:
+                cpu: "4"
+                memory: 10Gi
+              min:
+                cpu: 5m
+                memory: 32Mi
+              type: Pod
+            - default:
+                cpu: 250m
+                memory: 256Mi
+              defaultRequest:
+                cpu: 50m
+                memory: 128Mi
+              max:
+                cpu: "4"
+                memory: 10Gi
+              min:
+                cpu: 5m
+                memory: 32Mi
+              type: Container
+            - max:
+                storage: 10Gi
+              min:
+                storage: 1Gi
+              type: PersistentVolumeClaim
+      - apiVersion: projectcontour.io/v1
+        kind: HTTPProxy
+        metadata:
+          name: $(session_namespace)-vcluster-1
+          namespace: $(session_namespace)
+        spec:
+          virtualhost:
+            fqdn: $(session_namespace)-cluster.$(ingress_domain)
+            tls:
+              passthrough: true
+          tcpproxy:
+            services:
+              - name: vcluster-1
+                port: 443

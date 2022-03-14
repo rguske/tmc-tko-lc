@@ -1,29 +1,40 @@
-Containers are the base unit of deployment that runs any application on Kubernetes. Containers are processes that run on a given Kubernetes Host, they can have access to the host file systems, networks, host namespaces, password files, listen to traffic on the host etc. An application running in a container can see host/system level objects. To prevent containers from doing so, Kubernetes has created Admission Controllers that check the provisioning of a pod based on a set of Pod Security Policies (PSPs). It is important to not let containers access host based resources unless necessary as doing so opens unnecessary potential attack vectors. By default, Kubernetes does not implement any pod security policies.
+Containers are the base unit of deployment that runs any application on Kubernetes. Containers are processes that run on a given Kubernetes Host, they can have access to the host file systems, networks, host namespaces, password files, listen to traffic on the host etc. 
+An application running in a container can see host/system level objects. To prevent containers from doing so, Kubernetes has created Admission Controllers that check the provisioning of a pod based on a set of Pod Security Policies (PSPs). It is important to not let containers access host based resources unless necessary as doing so opens unnecessary potential attack vectors. By default, Kubernetes does not implement any pod security policies.
 
-By default, Tanzu Mission Control implements security policies around running pods with root access, privileged mode, access to host networks, volumes etc.
+Using VMware Tanzu Mission Control, you can make the deployments to your clusters more secure by implementing constraints that govern what deployed pods can do. Security policies, implemented using OPA Gatekeeper, allow you to restrict certain aspects of pod execution in your clusters, such as privilege escalation, Linux capabilities, and allowed volume types.
 
 To view these policies:
 
 * Click on the **Security** tab within the policy assignments section and click on the **Clusters** view if you are still seeing **Workspaces**.
 
-* Click on the root of the **Clusters** tree, on **Tanzu End to End**
+* Click on the **{{ session_namespace }}-cluster** Cluster under the Cluster Group **tko-day1-ops** 
 
-* Select the **Direct Policy** applied, `dhubao-strict` then click edit
+* Click **Create Security Policy**
 
-Review the Security Policies applied to all clusters in the entire organization.
+* Select the **Security template** *Strict*
 
-Let's validate this by trying to deploy a container that needs privileged access to run.
+* Provide a policy name **strict-policy**
 
-* On the Security tab, expand the Cluster Group e2e-amer and notice that cluster group has the policy dhubao-strict applied as an Inherited security policy.
-
-* Click on the Cluster Group tko-psp-demo and notice the Direct policy on it called psp-strict.
-
-* Edit this policy by clicking on it and selecting edit, notice this policy enforces the Strict default security template.
+* Click **Create policy**
 
 Now we will deploy an app with root privileges on the cluster e2e-amer that has no default security policy enabled.
 
-Go to the workshop tab, on the Terminal Tab
+* Go to the workshop tab, on the Terminal Tab
 
 ```execute-1
-tmc cg iam add-binding
+kubectl create deployment nginx-{{ session_namespace }} --image=nginx 
+```
+
+* Notice that the admission webhook blocks the creation due to privilege escalation being blocked:
+
+```execute-1
+kubectl get events --field-selector type=Warning
+```
+
+This is because the security policy is enabled on the cluster is blocking any cluster needing privileged mode/root access implemented by Tanzu Mission Control.
+
+* Delete the deployment
+
+```execute-1
+kubectl delete deployment nginx-{{ session_namespace }}
 ```

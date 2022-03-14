@@ -11,7 +11,7 @@ spec:
     #     secret: secret-workshop
     registration:
       type: anonymous
-    #      enabled: true
+      enabled: true
     # credentials:
     #   admin:
     #     username: admin

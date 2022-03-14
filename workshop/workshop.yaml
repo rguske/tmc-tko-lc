@@ -9,4 +9,6 @@ modules:
     - exercises/04-image-policies
     - exercises/05-access-policies
     - exercises/06-security-policies
+    - exercises/07-quota-policies
+    - exercises/07-custom-policies
     - workshop-summary

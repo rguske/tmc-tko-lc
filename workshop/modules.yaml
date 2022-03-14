@@ -19,6 +19,12 @@ modules:
     exit_sign: Security Policies
   exercises/06-security-policies:
     name: Security Policies
+    exit_sign: Quota Policies
+  exercises/07-quota-policies:
+    name: Quota Policies
+    exit_sign: Custom Policies
+  exercises/08-custom-policies:
+    name: Custom Policies
     exit_sign: Conclusion
   workshop-summary:
     name: Workshop Summary
