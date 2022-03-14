@@ -22,40 +22,27 @@ url: https://console.cloud.vmware.com
 url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
 ```
 
-## Authenticate to TMC CLI
+**Authenticate to TMC CLI**
 
 ```execute-1
 tmc login -n {{ session_namespace }} --no-configure
 ```
 
-###### Provide API Token
-###### Login context name(leave to default) - Press Enter
+* Provide your API Token
+* Login context name(leave to default) - Press Enter
 
 ```execute-1
 tmc system context configure -l "log" -m {{ session_namespace }}-tmc
 ```
 
-### Attach your Cluster to TMC
-
-```execute-1
-cat <<EOT >> values.yaml
-syncer:
-  extraArgs:
-  - --tls-san={{ session_namespace }}-cluster.{{ ingress_domain }}
-EOT
-```
-
-```execute-1
-vcluster create cluster -f values.yaml
-```
-
-
-### Attach your Cluster to under your Cluster Group
+**Attach your Cluster to under your Cluster Group**
 
 * Grab the kubeconfig file
+
 ```execute-1
-vcluster connect vcluster-1 --server=https://{{ session_namespace }}-cluster.{{ ingress_domain }}
+vcluster connect cluster --server=https://{{ session_namespace }}-cluster.{{ ingress_domain }}
 ```
+
 * Make it as the default Kubeconfig
 
 ```execute-1
