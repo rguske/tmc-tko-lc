@@ -56,3 +56,7 @@ tmc cluster attach -g tko-day1-ops -n {{ session_namespace }}-cluster -k kubecon
 On Tanzu Mission Control console, wait until the attachment is complete, and then the cluster **{{ session_namespace }}-cluster** state changes to **Healthy**
 
 ![](images/tmc-attach.png)
+
+```execute-1
+tmc cluster validate -k kubeconfig.yaml
+```
