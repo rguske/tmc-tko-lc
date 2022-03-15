@@ -55,7 +55,7 @@ Note the `securityContext` specs of this deployment
 
 ```editor:select-matching-text
 file: ~/deployment-with-security-policy.yaml
-text: "(.*)"
+text: ".*"
 isRegex: true
 start: 20
 stop: 24
