@@ -57,6 +57,6 @@ Note the `securityContext` specs of this deployment
 file: ~/deployment-with-security-policy.yaml
 text: "(.*)"
 isRegex: true
-start: 21
-stop: 23
+start: 20
+stop: 24
 ```
