@@ -11,3 +11,11 @@ Custom policies in Tanzu Mission Control are implemented using the Gatekeeper pr
 * Specify the target resources *Deployment*, and then click **Add Resource**
 * Specify parameters for your policy, under **Key** add **env**
 * Click **Create Policy**
+
+Now we will deploy an app without the required tags on the cluster **{{ session_namespace }}-cluster** .
+
+* Go to the workshop tab, on the Terminal Tab
+
+```execute-1
+kubectl apply -f deployment-without-tags.yaml --kubeconfig=./kubeconfig.yaml
+```
