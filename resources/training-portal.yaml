@@ -21,7 +21,3 @@ spec:
       capacity: 25
       expires: 300m
       orphaned: 45m
-    - name: tko-day1-vcluster
-      capacity: 25
-      expires: 300m
-      orphaned: 45m
