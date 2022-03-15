@@ -9,5 +9,5 @@ Custom policies in Tanzu Mission Control are implemented using the Gatekeeper pr
 * Click Create Custom Policy
 * On the custom policy create form, select the policy template **tmc-require-labels** , and then provide a name **tmc-require-labels-policy** for the policy
 * Specify the target resources *Deployment*, and then click **Add Resource**
-* Specify parameters for your policy, under **Key** add env
+* Specify parameters for your policy, under **Key** add **env**
 * Click **Create Policy**
