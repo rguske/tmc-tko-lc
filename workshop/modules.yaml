@@ -25,7 +25,7 @@ modules:
     exit_sign: Custom Policies
   exercises/08-custom-policies:
     name: Custom Policies
-    exit_sign: Conclusion
+    exit_sign: Workshop Summary
   workshop-summary:
     name: Workshop Summary
     exit_sign: Finish Workshop
