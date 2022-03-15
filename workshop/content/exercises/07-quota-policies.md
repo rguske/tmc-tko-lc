@@ -18,7 +18,7 @@ kubectl describe resourcequota tmc.cp.small-policy --kubeconfig=./kubeconfig.yam
 ```
 
 
-Now we will deploy an app with with request and limits on the cluster **{{ session_namespace }}-cluster** that has security policy enabled.
+Now we will deploy an app with with request and limits on the cluster **{{ session_namespace }}-cluster** that has quota policy enabled.
 
 * Go to the workshop tab, on the Terminal Tab
 
