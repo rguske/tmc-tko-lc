@@ -50,6 +50,6 @@ export KUBECONFIG=./kubeconfig.yaml
 ```
 
 ```execute-1
-tmc cluster attach -g tko-day1-ops -n {{ session_namespace }}-cluster --continue-bootstrap -k kubeconfig.yaml
+tmc cluster attach -g tko-day1-ops -n {{ session_namespace }}-cluster -k kubeconfig.yaml
 ```
 
