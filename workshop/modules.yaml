@@ -27,7 +27,7 @@ modules:
     name: Custom Policies
     exit_sign: inspections
   exercises/09-inspection:
-    name: Custom Policies
+    name: Inspections
     exit_sign: Workshop Summary
   workshop-summary:
     name: Workshop Summary
