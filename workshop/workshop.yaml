@@ -10,5 +10,5 @@ modules:
     - exercises/05-access-policies
     - exercises/06-security-policies
     - exercises/07-quota-policies
-    - exercises/07-custom-policies
+    - exercises/08-custom-policies
     - workshop-summary
