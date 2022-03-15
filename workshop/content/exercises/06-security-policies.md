@@ -17,6 +17,12 @@ To create these policies:
 
 * Click **Create policy**
 
+* Confirm that the policy has been created
+
+```execute-2
+kubectl get opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=./kubeconfig.yaml
+```
+
 Now we will deploy an app with root privileges on the cluster **{{ session_namespace }}-cluster** that has security policy enabled.
 
 * Go to the workshop tab, on the Terminal Tab
