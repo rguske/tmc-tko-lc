@@ -3,7 +3,7 @@ An application running in a container can see host/system level objects. To prev
 
 Using VMware Tanzu Mission Control, you can make the deployments to your clusters more secure by implementing constraints that govern what deployed pods can do. Security policies, implemented using OPA Gatekeeper, allow you to restrict certain aspects of pod execution in your clusters, such as privilege escalation, Linux capabilities, and allowed volume types.
 
-To view these policies:
+To create these policies:
 
 * Click on the **Security** tab within the policy assignments section and click on the **Clusters** view if you are still seeing **Workspaces**.
 
