@@ -24,15 +24,28 @@ Now we will deploy an app with with request and limits on the cluster **{{ sessi
 * Go to the workshop tab, on the Terminal Tab
 
 ```execute-1
-kubectl apply -f busybox.yaml --kubeconfig=./kubeconfig.yaml
+kubectl apply -f kurd.yaml --kubeconfig=./kubeconfig.yaml
 ```
 See the updated settings on the namespace and note the data displayed in the “used” column. You will now notice a difference, with the new pod just created having used some of the quota:
 
 ```execute-2
 kubectl describe resourcequota tmc.cp.small-policy --kubeconfig=./kubeconfig.yaml
 ```
-To continue the process, we will scale our deployment to s:
+To continue the process, we will scale our deployment to 3 replicas:
 
+```execute-1
+kubectl scale deployment kuard --replicas=3 --kubeconfig=./kubeconfig.yaml
+```
+
+Check the consumed quota again
+```execute-2
+kubectl describe resourcequota tmc.cp.small-policy --kubeconfig=./kubeconfig.yaml
+```
+* We will now receive an error message that states we don’t have enough quota left to create the new pod:
+
+```execute-1
+kubectl get events --field-selector type=Warning --kubeconfig=./kubeconfig.yaml
+```
 You can opt to create a custom policy if you don't want to use any of the pre-defined ones or you wish to implement more detailed policies on objects such as: CPU, memory, storage, or even limits on most Kubernetes objects within a namespace.
 
 Once complete, exit out of the wizard.
