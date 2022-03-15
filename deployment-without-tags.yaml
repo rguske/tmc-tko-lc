@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: kuard
-  name: kuard
+    app: deployment-without-tags
+  name: deployment-without-tags
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kuard
+      app: deployment-without-tags
   template:
     metadata:
       labels:
-        app: kuard
+        app: deployment-without-tags
     spec:
       containers:
         - name: kurd

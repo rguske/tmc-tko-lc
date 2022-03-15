@@ -44,3 +44,16 @@ This is because the security policy is enabled on the cluster is blocking any cl
 ```execute-1
 kubectl delete deployment nginx-{{ session_namespace }} --kubeconfig=./kubeconfig.yaml
 ```
+
+* Now let's deploy an application that is **Strict Policy** compliant 
+
+```execute-1
+kubectl apply -f deployment-with-security-policy.yaml --kubeconfig=./kubeconfig.yaml
+```
+
+Note the `securityContext` specs of this deployment 
+
+```editor:open-file
+file: ~/deployment-with-security-policy.yaml
+line: 21
+```

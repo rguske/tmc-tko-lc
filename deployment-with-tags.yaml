@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: kuard
+    app: deployment-with-tags
     env: test
-  name: kuard
+  name: deployment-with-tags
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kuard
+      app: deployment-with-tags
   template:
     metadata:
       labels:
-        app: kuard
+        app: deployment-with-tags
     spec:
       containers:
         - name: kurd
