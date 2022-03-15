@@ -22,13 +22,13 @@ Now we will deploy an app with root privileges on the cluster **{{ session_names
 * Go to the workshop tab, on the Terminal Tab
 
 ```execute-1
-kubectl create deployment nginx-{{ session_namespace }} --image=nginx 
+kubectl create deployment nginx-{{ session_namespace }} --image=nginx --kubeconfig=./kubeconfig.yaml
 ```
 
 * Notice that the admission webhook blocks the creation due to privilege escalation being blocked:
 
 ```execute-1
-kubectl get events --field-selector type=Warning
+kubectl get events --field-selector type=Warning --kubeconfig=./kubeconfig.yaml
 ```
 
 This is because the security policy is enabled on the cluster is blocking any cluster needing privileged mode/root access implemented by Tanzu Mission Control.
@@ -36,5 +36,5 @@ This is because the security policy is enabled on the cluster is blocking any cl
 * Delete the deployment
 
 ```execute-1
-kubectl delete deployment nginx-{{ session_namespace }}
+kubectl delete deployment nginx-{{ session_namespace }} --kubeconfig=./kubeconfig.yaml
 ```
