@@ -13,7 +13,6 @@ On the flip side, this means the teams managing the platform need to be aware of
 * Provide a policy name **small-policy**
 
 * Confirm that the policy has been created
-
 ```execute-2
 kubectl describe resourcequota tmc.cp.small-policy --kubeconfig=./kubeconfig.yaml
 ```
