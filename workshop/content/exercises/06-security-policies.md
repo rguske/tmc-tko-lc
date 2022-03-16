@@ -57,5 +57,5 @@ Note the `securityContext` specs of this deployment
 file: ~/deployment-with-security-policy.yaml
 text: "securityContext"
 before: 0
-after: 3
+after: 2
 ```
