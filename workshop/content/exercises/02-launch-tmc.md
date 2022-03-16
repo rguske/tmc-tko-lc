@@ -25,14 +25,6 @@ url: https://console.cloud.vmware.com
 url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
 ```
 
-```dashboard:create-dashboard
-name: VMware Tanzu Mission Control 
-url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
-```
-```dashboard:create-dashboard
-name: VMware Tanzu Mission Control 
-url: https://console.cloud.vmware.com
-```
 **Authenticate to TMC CLI**
 
 ```execute-1
@@ -43,7 +35,7 @@ tmc login -n {{ session_namespace }} --no-configure
 * Login context name(leave to default) - Press Enter
 
 ```execute-1
-tmc system context configure -l "log" -m {{ session_namespace }}-tmc
+tmc system context configure -l "log" -m attached -p attached
 ```
 
 **Attach your Cluster to under your Cluster Group**
