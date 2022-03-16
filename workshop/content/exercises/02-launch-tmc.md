@@ -29,7 +29,10 @@ url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
 name: VMware Tanzu Mission Control 
 url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
 ```
-
+```dashboard:create-dashboard
+name: VMware Tanzu Mission Control 
+url: https://console.cloud.vmware.com
+```
 **Authenticate to TMC CLI**
 
 ```execute-1
