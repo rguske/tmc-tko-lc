@@ -53,7 +53,7 @@ kubectl apply -f deployment-with-security-policy.yaml --kubeconfig=./kubeconfig.
 
 Note the `securityContext` specs of this deployment 
 
-```editor:select-matching-text
+```editor:open-file
 file: ~/deployment-with-security-policy.yaml
 line: 21
 ```
