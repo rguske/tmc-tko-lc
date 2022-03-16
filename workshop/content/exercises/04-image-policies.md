@@ -20,18 +20,22 @@ Image registry policies cannot be set at a cluster level. To set an image regist
 
 ![](./images/policy-image-registry-1.png)
 
-Select a workspace such as *tmc-wkshp* and click Create Image Registry Policy. We are going to configure that all the container images to be deployed to this workspace must have a message digest. Under Image registry template dropdown, select Require Digest:
+Select a workspace such as *tko-day1-ops-ws* and click Create Image 
+Registry Policy. We are going to configure that all the container 
+images to be deployed to this workspace must have a message digest. 
+Under Image registry template dropdown, select Require Digest:
 
 ![](./images/policy-image-registry-digest-1.png)
 
-Give a name such as *tmc-wksp-image-policy* and proceed with default values for other fields. If needed, you may specify label selectors to include or exclude certain namespaces for this policy. Finally click Create Policy: 
-
-![](./images/policy-image-registry-digest-2.png)
+Give a name such as *digest-image-policy* and proceed with default values 
+for other fields. If needed, you may specify label selectors to 
+include or exclude certain namespaces for this policy. 
+Finally click Create Policy. 
 
 The steps above show how to create an image registry policy to require digest. Similarly, image 
 registry policies to specify a name-tag allowlist, block the latest tag, or even custom policies may be created:
  
-![](./images/policy-image-registry-digest-3.png)
+![](./images/policy-image-registry-digest-2.png)
 
 Once created, you may edit or delete an image registry policy.
 
