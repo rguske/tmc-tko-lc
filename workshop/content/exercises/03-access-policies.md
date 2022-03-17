@@ -17,7 +17,7 @@ In the organizational view on the Access tab of the Policies page, select the ob
 
 ![](./images/policy-access-cg-1.png)
 
-- Click on the cluster group such as *cg-tmc-user1*. 
+- Click on the cluster group such as *tko-day1-ops-cg*. 
 - Click the arrow next to the object name under Direct access policies.
 - Click Create Role Binding.
 - Select the cluster.admin role to grant administrative access to this cluster group that you want to bind to an identity.
