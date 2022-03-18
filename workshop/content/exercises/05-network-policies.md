@@ -4,7 +4,6 @@ Using VMware Tanzu Mission Control, you can create a network policy that defines
 
 Tanzu Mission Control implements network policies using Kubernetes native network policies. Each namespace and workspace can be governed by a network policy, and these policies are inherited down through the organizational hierarchy. Network policies are additive, both inherited and direct network policies are applied and are effective on your namespaces according to Kubernetes rules.
 
-Let us add a network policy that governs how our pods communicate with each other.
 To create a network policy for an object, you must be associated 
 with the *.admin* role for that object.
 
