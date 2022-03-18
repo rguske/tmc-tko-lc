@@ -5,13 +5,17 @@ Using VMware Tanzu Mission Control, you can create a network policy that defines
 Tanzu Mission Control implements network policies using Kubernetes native network policies. Each namespace and workspace can be governed by a network policy, and these policies are inherited down through the organizational hierarchy. Network policies are additive, both inherited and direct network policies are applied and are effective on your namespaces according to Kubernetes rules.
 
 Let us add a network policy that governs how our pods communicate with each other.
-To create a network policy for an object, you must be associated with the .admin role for that object.
+To create a network policy for an object, you must be associated 
+with the *.admin* role for that object.
 
-Below is the procedure:
+Let follow the following procedure to create a network policy that allows all ingress
+traffic in our workspace  *tko-day1-ops-ws*:
 
 1. On the Policies page, click the Network tab, and then click the Workspaces organization view.
 
-1. Use the tree control to navigate to and select the object for which you want to create a network policy.  In this case, let us click tmc-wksp to add a network policy for this workspace.
+1. Use the tree control to navigate to and select the object for which 
+you want to create a network policy.  In this case,  
+click *tko-day1-ops-ws* to add a network policy for this workspace.
 
   ![](./images/policy-network-1.png)
 
@@ -23,7 +27,7 @@ are: *allow-all* (allow all ingress traffic), *deny-all* (deny all ingress traff
 to selected pods), *custom-ingress* (define a custom ingress policy), *custom-egress* (define an egress policy). In this case, we select allow-all.
 
 
-5. Provide a policy name, such as *my-allow-all-polic*y.
+5. Provide a policy name: *my-allow-all-policy*.
 
 6. If you select a pod-specific recipe, you must specify the labels to identify the pods 
 to which the policy applies. Under Labels, enter the key and value 
