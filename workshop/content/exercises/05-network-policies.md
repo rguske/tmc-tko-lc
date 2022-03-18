@@ -8,7 +8,7 @@ Let us add a network policy that governs how our pods communicate with each othe
 To create a network policy for an object, you must be associated 
 with the *.admin* role for that object.
 
-Let follow the following procedure to create a network policy that allows all ingress
+Let us follow the following procedure to create a network policy that allows all ingress
 traffic in our workspace  *tko-day1-ops-ws*:
 
 1. On the Policies page, click the Network tab, and then click the Workspaces organization view.
