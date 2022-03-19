@@ -17,7 +17,11 @@ spec:
     #     username: admin
     #     password: Welcome11!
   workshops:
-    - name: tko-day1
+    # - name: tko-day1
+    #   capacity: 25
+    #   expires: 300m
+    #   orphaned: 45m
+    - name: tko-day1-vcluster
       capacity: 25
       expires: 300m
       orphaned: 45m
