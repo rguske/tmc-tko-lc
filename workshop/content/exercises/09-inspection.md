@@ -11,7 +11,8 @@ Businesses can pick the hosting platform that best meets their needs
 based on application requirements. 
 If the requirements change or new offerings emerge, the application 
 isn’t tied to a single Kubernetes environment. 
-Without conformance, the key goals of Kubernetes, including portability and automated deployment, cannot be achieved
+Without conformance, the key goals of Kubernetes, including portability 
+and automated deployment, cannot be achieved.
 
 To run a cluster inspection, you must be associated with the 
 cluster.edit role in the cluster.
@@ -25,7 +26,10 @@ the following steps:
   ![](./images/inspection-1.png)
 
 2. Click the cluster group that contains the cluster you want to inspect, and then click the cluster.
-3. On the Overview tab of the cluster detail page, in the Inspections box, click Run Inspection.  Make sure the correct cluster group and cluster are selected.
+3. On the Overview tab of the cluster detail page, in the Inspection box at
+the bottom of the page, click Run Inspection. 
+Alternatively, you may use the Inspections tab. 
+
 4. Choose Lite as the type of inspection you want to run, 
 and then click Run Inspection. This will take the least amount of time to run.
 There are three types of inspection that you may run: Conformance, 

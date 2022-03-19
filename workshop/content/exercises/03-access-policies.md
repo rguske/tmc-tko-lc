@@ -17,10 +17,10 @@ In the organizational view on the Access tab of the Policies page, select the ob
 
 ![](./images/policy-access-cg-1.png)
 
-- Click on the cluster group such as *cg-tmc-user1*. 
+- Click on the cluster group:  *tko-day1-ops-cg*. 
 - Click the arrow next to the object name under Direct access policies.
 - Click Create Role Binding.
-- Select the cluster.admin role to grant administrative access to this cluster group that you want to bind to an identity.
+- Select the *cluster.admin* role to grant administrative access to this cluster group that you want to bind to an identity.
 - Select the identity type (user or group) that you want to bind.
 - Enter one or more identities, clicking Add after each identity, and then click Save.
 
@@ -32,8 +32,10 @@ Access policies may be configured at the workspace level. Click on Access and th
 
 ![](./images/policy-access-ws-1.png)
 
-Then click on the workspace such as *tmc-wksp*. Similar to the steps given above, we can grant a desired
-role binding to a workspace such as *tmc-wksp* as shown below. 
+Then click on the workspace: *tko-day1-ops-ws*. Similar to the steps given above, we can grant a desired
+role binding to the workspace:  *tko-day1-ops-ws* as shown below. 
+This time grant the *namespace.admin* privilege to a group of users. 
+ Click Add after each identity, and then click Save.
 
 ![](./images/policy-access-ws-2.png)
 
