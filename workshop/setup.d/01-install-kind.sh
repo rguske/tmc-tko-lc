@@ -5,7 +5,7 @@ set +e
 
 echo "Setting up KIND cluster"
 
-cat <<EOF >> kind1-config.yaml
+cat <<EOF >> kind-config.yaml
 apiVersion: kind.x-k8s.io/v1alpha4
 kind: Cluster
 networking:
