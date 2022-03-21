@@ -1,5 +1,5 @@
 FROM registry.tanzu.vmware.com/tanzu-application-platform/tap-packages@sha256:681ef8d2e6fc8414b3783e4de424adbfabf2aa0126e34fa7dcd07dab61e55a89
-
+ARG KIND_VERSION="v0.12.0"
 # All the direct Downloads need to run as root as they are going to /usr/local/bin
 USER root
 # TMC
@@ -35,6 +35,8 @@ RUN gpasswd -a eduk8s docker
 RUN echo 'eduk8s  ALL=(ALL) /bin/su' >>  /etc/sudoers
 #RUN newgrp docker
 #RUN adduser --uid 1001 --group root
-RUN curl -s -L "https://github.com/loft-sh/vcluster/releases/latest" | sed -nE 's!.*"([^"]*vcluster-linux-amd64)".*!https://github.com\1!p' | xargs -n 1 curl -L -o vcluster && chmod +x vcluster;
-RUN mv vcluster /usr/local/bin;
+RUN curl -Lso /usr/bin/kind "https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERSION}/kind-linux-amd64" && \
+    chmod +x /usr/bin/kind
+# RUN curl -s -L "https://github.com/loft-sh/vcluster/releases/latest" | sed -nE 's!.*"([^"]*vcluster-linux-amd64)".*!https://github.com\1!p' | xargs -n 1 curl -L -o vcluster && chmod +x vcluster;
+# RUN mv vcluster /usr/local/bin;
 USER 1001
