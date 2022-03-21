@@ -17,10 +17,10 @@ Now we will deploy an app without the required tags on the cluster **{{ session_
 * Go to the workshop tab, on the Terminal Tab
 
 ```execute-1
-kubectl apply -f deployment-without-tags.yaml --kubeconfig=./kubeconfig.yaml
+kubectl apply -f deployment-without-tags.yaml --kubeconfig=.kube/config
 ```
 * Notice that the admission webhook blocks the creation due to the missing tags in the deployment metadata:
 
 ```execute-1
-kubectl get events --field-selector type=Warning --kubeconfig=./kubeconfig.yaml
+kubectl get events --field-selector type=Warning --kubeconfig=.kube/config
 ```
