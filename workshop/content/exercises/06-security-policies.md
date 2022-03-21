@@ -28,13 +28,13 @@ Now we will deploy an app with root privileges on the cluster **{{ session_names
 * Go to the workshop tab, on the Terminal Tab
 
 ```execute-1
-kubectl create deployment nginx-{{ session_namespace }} --image=nginx --kubeconfig=.kube/config
+kubectl create deployment nginx-{{ session_namespace }} --image=nginx --kubeconfig=.kube/config -n default
 ```
 
 * Notice that the admission webhook blocks the creation due to privilege escalation being blocked:
 
 ```execute-1
-kubectl get events --field-selector type=Warning --kubeconfig=.kube/config
+kubectl get events --field-selector type=Warning --kubeconfig=.kube/config -n default
 ```
 
 This is because the security policy is enabled on the cluster is blocking any cluster needing privileged mode/root access implemented by Tanzu Mission Control.
@@ -42,13 +42,13 @@ This is because the security policy is enabled on the cluster is blocking any cl
 * Delete the deployment
 
 ```execute-1
-kubectl delete deployment nginx-{{ session_namespace }} --kubeconfig=.kube/config
+kubectl delete deployment nginx-{{ session_namespace }} --kubeconfig=.kube/config -n default
 ```
 
 * Now let's deploy an application that is **Strict Policy** compliant 
 
 ```execute-1
-kubectl apply -f deployment-with-security-policy.yaml --kubeconfig=.kube/config
+kubectl apply -f deployment-with-security-policy.yaml --kubeconfig=.kube/config -n default
 ```
 
 Note the `securityContext` specs of this deployment 
