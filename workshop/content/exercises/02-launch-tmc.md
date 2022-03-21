@@ -38,22 +38,11 @@ tmc login -n {{ session_namespace }} --no-configure
 tmc system context configure -l "log" -m attached -p attached
 ```
 
-**Attach your Cluster to under your Cluster Group**
+**Attach your Cluster to under tko-day1-ops-cg Cluster Group**
 
-* Grab the kubeconfig file
-
-```execute-1
-vcluster connect cluster --server=https://{{ session_namespace }}-cluster.{{ ingress_domain }}
-```
-
-* Make it as the default Kubeconfig
 
 ```execute-1
-export KUBECONFIG=./kubeconfig.yaml
-```
-
-```execute-1
-tmc cluster attach -g tko-day1-ops-cg -n {{ session_namespace }}-cluster -k kubeconfig.yaml
+tmc cluster attach -g tko-day1-ops-cg -n {{ session_name }}-cluster -k .kube/config
 ```
 
 On Tanzu Mission Control console, wait until the attachment is complete, and then the cluster **{{ session_namespace }}-cluster** state changes to **Healthy**
@@ -61,5 +50,5 @@ On Tanzu Mission Control console, wait until the attachment is complete, and the
 ![](images/tmc-attach.png)
 
 ```execute-1
-tmc cluster validate -k kubeconfig.yaml
+tmc cluster validate -k .kube/config
 ```
