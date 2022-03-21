@@ -42,7 +42,7 @@ tmc system context configure -l "log" -m attached -p attached
 
 
 ```execute-1
-tmc cluster attach -g tko-day1-ops-cg -n {{ session_name }}-cluster -k .kube/config
+tmc cluster attach -g tko-day1-ops-cg -n {{ session_namespace }}-cluster -k .kube/config
 ```
 
 On Tanzu Mission Control console, wait until the attachment is complete, and then the cluster **{{ session_namespace }}-cluster** state changes to **Healthy**
