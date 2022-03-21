@@ -27,4 +27,4 @@ nodes:
         - 127.0.0.1
 EOF
 
-kind create cluster --name $SESSION_NAME-cluster --config kind-config.yaml --wait=900s
+kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=900s
