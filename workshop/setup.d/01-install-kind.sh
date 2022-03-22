@@ -25,6 +25,13 @@ nodes:
         - localhost
         - $(hostname -i)
         - 127.0.0.1
+    extraPortMappings:
+    - containerPort: 80
+        hostPort: 80
+        listenAddress: "0.0.0.0"
+    - containerPort: 443
+        hostPort: 443
+        listenAddress: "0.0.0.0"    
 EOF
 
 kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=900s
