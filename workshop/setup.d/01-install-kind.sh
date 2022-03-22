@@ -33,7 +33,11 @@ nodes:
     - containerPort: 443
       hostPort: 443
       listenAddress: "0.0.0.0"
-      protocol: TCP 
+      protocol: TCP
+    - containerPort: 30080
+      hostPort: 30080
+      listenAddress: "0.0.0.0"
+      protocol: TCP  
 EOF
 
 kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=900s
