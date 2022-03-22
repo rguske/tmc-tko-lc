@@ -12,4 +12,5 @@ modules:
     - exercises/07-quota-policies
     - exercises/08-custom-policies
     - exercises/09-inspection
+    - exercises/10-data-protection
     - workshop-summary

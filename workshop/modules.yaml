@@ -28,6 +28,9 @@ modules:
     exit_sign: inspections
   exercises/09-inspection:
     name: Inspections
+    exit_sign: Data Protection
+  exercises/10-data-protection:
+    name: Data Protection
     exit_sign: Workshop Summary
   workshop-summary:
     name: Workshop Summary
