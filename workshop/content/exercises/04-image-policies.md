@@ -66,6 +66,11 @@ Make sure the namespace *{{ session_namespace }}*  exists on the cluster;
 kubectl --kubeconfig=.kube/config get ns {{ session_namespace }}
 ```
 
+If it does not exist yet, create it:
+```execute-1
+kubectl --kubeconfig=.kube/config create ns {{ session_namespace }}
+```
+
 Attach the namespace to the workspace *tko-day1-ops-ws*:
 ```execute-1
 tmc cluster namespace attach --kubeconfig=.kube/config -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
