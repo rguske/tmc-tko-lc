@@ -61,27 +61,27 @@ Let us validate that our image registry policy is working by trying to deploy
 the busybox image to the namespace *{{ session_namespace }}*, 
 which is part of the workspace *tko-day1-ops-ws*.
 
-Make sure the namespace **{{ session_namespace }}  exists on the cluster;
+Make sure the namespace *{{ session_namespace }}*  exists on the cluster;
 ```execute-1
-kubectl --kubeconfig=./kubeconfig.yaml get {{ session_namespace }}
+kubectl --kubeconfig=.kube/config get ns {{ session_namespace }}
 ```
 
 Attach the namespace to the workspace *tko-day1-ops-ws*:
 ```execute-1
-tmc cluster namespace attach --kubeconfig=./kubeconfig.yaml -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+tmc cluster namespace attach --kubeconfig=.kube/config -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
 ```
 
 Create a deployment with the image busybox:
 ```execute-1
-kubectl --kubeconfig=./kubeconfig.yaml create deployment busybox-{{ session_namespace }} --image=busybox -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config create deployment busybox-{{ session_namespace }} --image=busybox -n {{ session_namespace }}
 ```
 
 Notice the deployment is blocked and won't progress because of the image rules:
 ```execute-1
-kubectl --kubeconfig=./kubeconfig.yaml get events --field-selector type=Warning -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
 Delete the deployment
 ```execute-1
-kubectl --kubeconfig=./kubeconfig.yaml delete deployment busybox-{{ session_namespace }} -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config delete deployment busybox-{{ session_namespace }} -n {{ session_namespace }}
 ```
 
