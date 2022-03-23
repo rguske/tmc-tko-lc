@@ -73,7 +73,7 @@ kubectl --kubeconfig=.kube/config create ns {{ session_namespace }}
 
 Attach the namespace to the workspace *tko-day1-ops-ws*:
 ```execute-1
-tmc cluster namespace attach --kubeconfig=.kube/config -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+tmc cluster namespace attach  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
 ```
 
 Create a deployment with the image busybox:
