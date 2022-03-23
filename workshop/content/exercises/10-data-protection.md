@@ -24,6 +24,12 @@ kubectl apply -k ./wordpress --kubeconfig=.kube/config -n default
 name: Wordpress APP
 url: {{ ingress_protocol }}://{{ session_namespace }}-wp.{{ ingress_domain }}
 ```
+
+```dashboard:reload-dashboard
+name: Wordpress APP
+url: {{ ingress_protocol }}://{{ session_namespace }}-wp.{{ ingress_domain }}
+```
+
 ```dashboard:delete-dashboard
 name: Wordpress APP
 ```
