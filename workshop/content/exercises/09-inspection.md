@@ -81,3 +81,13 @@ Now let us use TMC CLI to create a Lite inspection on the cluster: *{{ session_n
 tmc cluster inspection scan create -m attached -c {{ session_namespace }}-cluster -p attached --inspection-type=LITE
 ```
 
+List all the inspection scans (find the name of interest): 
+```execute-1
+tmc cluster inspection scan list --all
+```
+
+Finally delete the inspection: 
+```execute-1
+tmc cluster inspection scan delete $(tmc cluster inspection scan list --all -o json | jq '.scans[0].fullName.name') --cluster-name {{ session_namespace }}-cluster 
+```
+
