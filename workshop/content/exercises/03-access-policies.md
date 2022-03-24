@@ -39,3 +39,14 @@ This time grant the *namespace.admin* privilege to a group of users.
 
 ![](./images/policy-access-ws-2.png)
 
+
+Now let us use TMC CLI to add an access policy, which
+grants *cluster.edit* privilege to the current user (*{{ session_id }}*): 
+```execute-1
+tmc cluster iam add-binding {{ session_namespace }}-cluster -r cluster.edit -u {{ session_id }}
+```
+
+This command retrieves the access policies for the cluster *{{ session_namespace }}-cluster* in yaml format:
+```execute-1
+tmc cluster iam get-policy {{ session_namespace }}-cluster -o yaml
+```
