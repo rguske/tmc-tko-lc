@@ -74,3 +74,10 @@ and then choosing Download.
 
 For this exericse, download the Lite inspection result that was generated 
 earlier.
+
+
+Now let us use TMC CLI to create a Lite inspection on the cluster: *{{ session_namespace }}-cluster*:
+```execute-1
+tmc cluster inspection scan create -m attached -c {{ session_namespace }}-cluster -p attached --inspection-type=LITE
+```
+
