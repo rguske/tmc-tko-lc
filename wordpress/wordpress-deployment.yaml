@@ -59,6 +59,23 @@ spec:
                 secretKeyRef:
                   name: mysql-pass
                   key: password
+            - name: WORDPRESS_EMAIL
+              value: "admin@admin.com"
+            - name: WORDPRESS_FIRST_NAME
+              value: "TKO"
+            - name: WORDPRESS_LAST_NAME
+              value: "admin"
+            - name: WORDPRESS_BLOG_NAME
+              value: "TKO"
+            - name: WORDPRESS_SKIP_BOOTSTRAP
+              value: "yes"
+            - name: WORDPRESS_SCHEME
+              value: "https"
+            - name: WORDPRESS_USERNAME
+              value: "admin"
+            - name: WORDPRESS_PASSWORD
+              value: "admin"
+
           ports:
             - containerPort: 80
               name: wordpress
