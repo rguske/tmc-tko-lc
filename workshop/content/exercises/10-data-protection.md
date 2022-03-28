@@ -80,14 +80,17 @@ Telephone: `0123456789`
 
 
 3. Confirm that the owner has been added to the list 
+
 FIND OWNERS -> Find Owner
 ![](./images/petclinic-2.png)
 
 * Let's make a backup of our Petclinic App
+
 ```execute-1
 tmc cluster dataprotection backup create -n petclinic-app-backup --include-namespaces app --backup-location-name aws-s3-store --cluster-name {{ session_namespace }}-cluster
 ```
 * Check the STATUS of the **petclinic-app-backup** backup
+
 ```execute-2
 tmc cluster dataprotection backup list --name petclinic-app-backup --cluster-name {{ session_namespace }}-cluster
 ```
@@ -116,11 +119,13 @@ url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domai
 tmc cluster dataprotection restore create -n petclinic-app-restore --include-namespaces app --backup-name petclinic-app-backup --cluster-name {{ session_namespace }}-cluster
 ```
 * Check the STATUS of the **petclinic-app-restore** restore
+
 ```execute-2
 tmc cluster dataprotection restore list --name petclinic-app-restore --cluster-name {{ session_namespace }}-cluster
 ```
 
 3. Confirm that the new owner is in the list 
+
 FIND OWNERS -> Find Owner
 ![](./images/petclinic-2.png)
 
