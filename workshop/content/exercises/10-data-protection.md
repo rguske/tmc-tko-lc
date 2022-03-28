@@ -69,9 +69,13 @@ url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domai
 For Example: 
 
 First Name: `Example`
+
 Last Name: `User`
+
 Address: `Example Address 01`
+
 City: `Example City`
+
 Telephone: `0123456789`
 
 
@@ -95,14 +99,30 @@ kubectl delete ns app
 ```
 * Try to access the Petclinic App
 
+```dashboard:delete-dashboard
+name: Petclinic APP
+```
+```dashboard:create-dashboard
+name: Petclinic APP
+url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domain }}
+```
 ```dashboard:reload-dashboard
 name: Petclinic APP
 url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domain }}
 ```
 * Let's trigger a restore process 
+
 ```execute-1
 tmc cluster dataprotection restore create -n petclinic-app-restore --include-namespaces app --backup-name petclinic-app-backup --cluster-name {{ session_namespace }}-cluster
 ```
+* Check the STATUS of the **petclinic-app-restore** restore
+```execute-2
+tmc cluster dataprotection restore list --name petclinic-app-restore --cluster-name {{ session_namespace }}-cluster
+```
+
+3. Confirm that the new owner is in the list 
+FIND OWNERS -> Find Owner
+![](./images/petclinic-2.png)
 
 ```dashboard:delete-dashboard
 name: Petclinic APP
