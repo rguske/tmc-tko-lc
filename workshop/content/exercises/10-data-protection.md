@@ -124,10 +124,10 @@ tmc cluster dataprotection restore create -n petclinic-app-restore --include-nam
 tmc cluster dataprotection restore list --name petclinic-app-restore --cluster-name {{ session_namespace }}-cluster
 ```
 
-3. Confirm that the new owner is in the list 
+3. Confirm that the newly created owner is in the list 
 
 FIND OWNERS -> Find Owner
-![](./images/petclinic-2.png)
+![](./images/petclinic-3.png)
 
 ```dashboard:delete-dashboard
 name: Petclinic APP
