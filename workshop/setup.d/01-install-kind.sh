@@ -42,6 +42,6 @@ EOF
 
 kind get clusters | egrep -e "$SESSION_NAME-cluster"
 if [ "$?" != "0" ]; then
-    exit 0
+  kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=900s
+  exit 0
 fi
-kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=900s
