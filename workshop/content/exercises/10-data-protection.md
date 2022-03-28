@@ -53,7 +53,7 @@ cascade: true
 ``` -->
 * Open the Petclinic app and insert a new owner to list of the sample owners list 
 
-```dashboard:reload-dashboard
+```dashboard:create-dashboard
 name: Petclinic APP
 url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domain }}
 ```
