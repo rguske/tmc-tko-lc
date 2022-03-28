@@ -39,7 +39,7 @@ nodes:
       listenAddress: "0.0.0.0"
       protocol: TCP  
 EOF
-
+cat /opt/workshop/setup.d/kind-config.yaml
 kind get clusters | egrep -e "$SESSION_NAME-cluster"
 if [ "$?" != "0" ]; then
   kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=900s
