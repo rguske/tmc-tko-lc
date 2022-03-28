@@ -12,7 +12,7 @@ Additionally, you can schedule regular backups and manage the storage of backups
 
 When you perform a backup for a cluster, Tanzu Mission Control uses Velero to create a backup of the specified Kubernetes resources with snapshots of persistent volume data, and then stores the backup in the location that you specify.
 
-### Enable Data Protection for **{{ session_namespace }}-cluster** Cluster
+#### Enable Data Protection for **{{ session_namespace }}-cluster** Cluster
 Before you can use Tanzu Mission Control to back up data resources in your clusters, you must set up your cluster and your target location. This procedure describes how to install the data protection extension (and Velero) on your cluster so that you can use Tanzu Mission Control to perform data protection actions using a specified backup location.
 
 ```execute-1
@@ -66,51 +66,42 @@ url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domai
 
 ![](./images/petclinic-2.png)
 
-```workshop:copy
-First Name: echo "Example"
-```
-```workshop:copy
-Last Name: echo "User"
-```
-```workshop:copy
-Address: echo "Example Address 01"
-```
-```workshop:copy
-City: echo "Example City"
-```
-```workshop:copy
-Telephone: echo "0123456789"
-```
+For Example: 
+
+First Name: `Example`
+Last Name: `User`
+Address: `Example Address 01`
+City: `Example City`
+Telephone: `0123456789`
+
 
 3. Confirm that the owner has been added to the list 
 FIND OWNERS -> Find Owner
 ![](./images/petclinic-2.png)
 
-Now let's simulate disaster scenario 
+* Let's make a backup of our Petclinic App
+```execute-1
+tmc cluster dataprotection backup create -n petclinic-app-backup --include-namespaces app --backup-location-name aws-s3-store --cluster-name {{ session_namespace }}-cluster
+```
+* Check the STATUS of the **petclinic-app-backup** backup
+```execute-2
+tmc cluster dataprotection backup list --name petclinic-app-backup --cluster-name {{ session_namespace }}-cluster
+```
+
+**Now, let's simulate disaster scenario**
 
 ```execute-1
-kubectl delete -f ./petclinic-app/deployment.yaml -n app
+kubectl delete ns app
 ```
-```examiner:execute-test
-name: petclinic-app-does-not-exist
-title: Verify that Petclinic App no longer exists
-timeout: 5
-retries: .INF
-delay: 1
-```
+* Try to access the Petclinic App
 
 ```dashboard:reload-dashboard
 name: Petclinic APP
 url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domain }}
 ```
-
-
-```execute-2
-tmc cluster dataprotection backup get wp-backup --cluster-name {{ session_namespace }}-cluster
-```
-
-```execute-2
-tmc cluster dataprotection backup get wp-backup --cluster-name {{ session_namespace }}-cluster
+* Let's trigger a restore process 
+```execute-1
+tmc cluster dataprotection restore create -n petclinic-app-restore --include-namespaces app --backup-name petclinic-app-backup --cluster-name {{ session_namespace }}-cluster
 ```
 
 ```dashboard:delete-dashboard
