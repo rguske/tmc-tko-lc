@@ -82,7 +82,7 @@ Telephone: `0123456789`
 3. Confirm that the owner has been added to the list 
 
 FIND OWNERS -> Find Owner
-![](./images/petclinic-2.png)
+![](./images/petclinic-3.png)
 
 * Let's make a backup of our Petclinic App
 
