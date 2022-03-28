@@ -46,11 +46,11 @@ url: {{ingress_protocol}}://{{session_namespace}}-console.{{ingress_domain}}/#/p
 description: ""
 ```
 
-```examiner:execute-test
+<!-- ```examiner:execute-test
 name: petclinic-app-exists
 title: Verify that Petclinic App is running
 cascade: true
-```
+``` -->
 * Open the Petclinic app and insert a new owner to list of the sample owners list 
 
 ```dashboard:reload-dashboard
