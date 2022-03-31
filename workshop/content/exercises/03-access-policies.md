@@ -1,7 +1,44 @@
 
 VMware Tanzu Mission Control uses secure-by-default, role-based access control (RBAC) to manage user permissions at each level of the hierarchical structure for your organization. Each object is protected by an access policy that defines who has access to that resource, and these policies are inherited down through the organizational hierarchy.
 
-Access policies can be managed at the cluster group level or workspace level.
+Access policies can be managed at three levels:
+
+* organization level
+* cluster group level 
+* workspace level.
+
+***Managing Users and Groups***
+
+Before we start to look into how TMC can help you to use access policies to implement role-based access control (RBAC) for the users and resources in your organization. We need to understand how users and groups can be created and managed. For this purpose, you can use VMware Cloud Services Platform tools to invite users to your organization and organize them into user groups. 
+By combining your users into groups, you can simplify access control by creating access policies that bind roles to groups rather than individuals. For more information about Identity & Access Management in VMware Cloud Services, see [Identity & Access Management](https://docs.vmware.com/en/VMware-Cloud-services/services/Using-VMware-Cloud-Services/GUID-D8316607-FE94-4DBA-9712-5CAD4DE885B5.html) in the Using VMware Cloud documentation.
+
+You are not limited to create local users and groups in your VMWare Cloud Service Organization, you can also set up <ins>federation</ins> with your corporate domain that allows you to use your organization's single sign-on and identity source. For more information about federating identity management, see What is [enterprise federation and how does it work](https://docs.vmware.com/en/VMware-Cloud-services/services/setting-up-enterprise-federation-cloud-services/GUID-76FAECB3-CFAA-461E-B9C9-2A49C39CD17F.html) in the Using VMware Cloud Services Console documentation.
+
+<ins>**Add local user**</ins> 
+
+As an organization owner, you invite users to your organization and give them access to the services associated with it. You can also track the invitations you send. Invitations are valid for up to seven days. If you have sent an invitation in error, you can revoke it.
+
+![](./images/csp-adduser.png)
+
+Below is an example of a user and a group
+
+![](./images/csp-users.png)
+
+![](./images/csp-groups.png)
+
+<ins>**About Roles in VMware Cloud Services Platform**</ins>
+
+For services in the VMware Cloud Services platform, the organization provides two roles, owner and member. As an organization owner, you can specify the roles of members in your organization, both at the organizational level and at the service level. For the Tanzu Mission Control service, there are two service roles:
+
+<ins>Service Admin</ins>
+
+This role provides additional permissions for administrators of the service in your organization.
+
+<ins>Service Member</ins>
+
+This role provides typical service usage permissions for most members in your organization.
+
+![](./images/csp-roles.png)
 
 To grant a user or group an access privilege, click on Policies and then Assigments from the left pane, as shown below:
 
@@ -9,7 +46,42 @@ To grant a user or group an access privilege, click on Policies and then Assigme
 
 To edit the access policy for an object, you must be associated with the *.admin* role for that object.
 
-***Access Policy  at Cluster Group Level***
+<details>
+  <summary><b><u>Access Policy at Organization Level</u></b></summary>
+  <p>
+  Access policies may be configured at the organization level either using TMC Console or TMC CLI . 
+  </p>
+    <details>
+    <summary><b>TMC Console</b></summary>
+    <p>
+
+* Click on Access then the root organization in the left pane.
+* In the organizational view on the Access tab of the Policies page, select the object whose access policy you want to add a role binding to.
+
+![](./images/policy-org.png)
+
+- Click on the organization:  *Partner - Tanzu SE Americas*
+- Click the arrow next to the object name *Partner - Tanzu SE Americas* under Direct access policies.
+- Click Create Role Binding.
+- Select the *cluster.admin* role to grant administrative access to this cluster group that you want to bind to an identity.
+- Select the identity type (user or group) that you want to bind.
+- Enter one or more identities, clicking Add after each identity, and then click Save.
+    </p> 
+    </details>
+    <details>
+    <summary><b>TMC CLI</b></summary>
+    <p>
+
+    ```execute-1
+    tmc organization iam add-binding --permission cluster.edit -u user01 
+    ```
+    </p> 
+    </details>
+
+</details>
+
+
+***Access Policy at Cluster Group Level***
 
 Access policies may be configured at the cluster group level. Click on 
 Access in the right pane and then Clusters.

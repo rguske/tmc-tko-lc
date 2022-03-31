@@ -27,12 +27,17 @@ url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
 
 **Authenticate to TMC CLI**
 
+If you are not still logged in from the previous session 
+
+* Provide your API Token
+* For the login context name, leave to default
+
+
 ```execute-1
 tmc login -n {{ session_namespace }} --no-configure
 ```
 
-* Provide your API Token
-* Login context name(leave to default) - Press Enter
+* Configure environment defaults that make the CLI easier to use. 
 
 ```execute-1
 tmc system context configure -l "log" -m attached -p attached
