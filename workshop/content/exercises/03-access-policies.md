@@ -1,10 +1,11 @@
 
 VMware Tanzu Mission Control uses secure-by-default, role-based access control (RBAC) to manage user permissions at each level of the hierarchical structure for your organization. Each object is protected by an access policy that defines who has access to that resource, and these policies are inherited down through the organizational hierarchy.
 
-Access policies can be managed at three levels:
+Access policies can be managed at four levels:
 
 * organization level
-* cluster group level 
+* cluster group level
+* cluster level 
 * workspace level.
 
 ***Managing Users and Groups***
@@ -49,7 +50,8 @@ To edit the access policy for an object, you must be associated with the *.admin
 <details>
   <summary><b><u>Access Policy at Organization Level</u></b></summary>
   <p>
-  Access policies may be configured at the organization level either using TMC Console or TMC CLI . 
+  Access policies can be configured at the organization level either using TMC Console or TMC CLI.
+  When you configure an access policy at the organization level, it will cascade to all existing and newly created cluster groups and clusters underneath.  
   </p>
     <details>
     <summary><b>TMC Console</b></summary>
@@ -91,12 +93,15 @@ To edit the access policy for an object, you must be associated with the *.admin
 
 </details>
 
-
-***Access Policy at Cluster Group Level***
-
-Access policies may be configured at the cluster group level. Click on 
-Access in the right pane and then Clusters.
-In the organizational view on the Access tab of the Policies page, select the object whose access policy you want to add a role binding to.
+<details>
+  <summary><b><u>Access Policy at Cluster Group Level and at Cluster Level</u></b></summary>
+  <p>
+  Access policies can be configured at the cluster group level either using TMC Console or TMC CLI.
+  When you configure an access policy at the cluster group level, it will automatically cascade to all existing and newly created clusters underneath.  
+  </p>
+    <details>
+    <summary><b>TMC Console</b></summary>
+    <p>
 
 ![](./images/policy-access-cg-1.png)
 
@@ -107,8 +112,46 @@ In the organizational view on the Access tab of the Policies page, select the ob
 - Select the identity type (user or group) that you want to bind.
 - Enter one or more identities, clicking Add after each identity, and then click Save.
 
-![](./images/policy-access-cg-2.png)
+>You can repeat the same step above for {{ session_namespace }}-cluster to assign access policies at cluster level
 
+![](./images/policy-access-cg-2.png)
+</p> 
+    </details>
+    <details>
+    <summary><b>TMC CLI</b></summary>
+    <p>
+
+* Create a policy 
+    * Cluster Group Level
+    ```execute-1
+    tmc clustergroup iam add-binding tko-day1-ops-cg -r cluster.edit -u user01 
+    ```
+    * Cluster Level
+    ```execute-1
+    tmc cluster iam add-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
+    ```
+* Confirm that the policy has been created    
+    * Cluster Group Level
+    ```execute-1
+    tmc clustergroup iam get-policy tko-day1-ops-cg
+    ```
+    * Cluster Level
+    ```execute-1
+    tmc cluster iam add-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
+    ```
+* Delete the created policy 
+    * Cluster Group Level
+    ```execute-1
+    tmc clustergroup iam remove-binding tko-day1-ops-cg -r cluster.edit -u user01 
+    ```
+    * Cluster Level
+    ```execute-1
+    tmc cluster iam remove-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
+    ```
+    </p> 
+    </details>
+
+</details>
 ***Access Policy  at Workspace Level***
 
 Access policies may be configured at the workspace level. Click on Access and then Workspaces:
