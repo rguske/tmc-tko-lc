@@ -9,7 +9,10 @@ spec:
     ingress:
       hostname: workshop.tko.mytanzusandbox.com
     #     secret: secret-workshop
+    password: C9fRFU9oRIoS
     registration:
+      #   type: one-step
+      #   enabled: false
       type: anonymous
       enabled: true
     # credentials:
