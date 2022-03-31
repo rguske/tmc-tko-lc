@@ -137,7 +137,7 @@ To edit the access policy for an object, you must be associated with the *.admin
     ```
     * Cluster Level
     ```execute-1
-    tmc cluster iam get-policy {{ session_namespace }}-cluster -r cluster.edit -u user01 
+    tmc cluster iam get-policy {{ session_namespace }}-cluster
     ```
 * Delete the created policy 
     * Cluster Group Level
