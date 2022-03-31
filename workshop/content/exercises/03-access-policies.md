@@ -112,7 +112,7 @@ To edit the access policy for an object, you must be associated with the *.admin
 - Select the identity type (user or group) that you want to bind.
 - Enter one or more identities, clicking Add after each identity, and then click Save.
 
->You can repeat the same step above for {{ session_namespace }}-cluster to assign access policies at cluster level
+>You can repeat the same step above for **{{ session_namespace }}-cluster** to assign access policies at cluster level
 
 ![](./images/policy-access-cg-2.png)
 </p> 
