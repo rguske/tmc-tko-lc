@@ -73,7 +73,7 @@ To edit the access policy for an object, you must be associated with the *.admin
     <p>
 
     ```execute-1
-    tmc organization iam add-binding --permission cluster.edit -u user01 
+    tmc organization iam add-binding -r cluster.edit -u user01 
     ```
     </p> 
     </details>
