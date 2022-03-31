@@ -12,18 +12,14 @@ traffic in our workspace  *tko-day1-ops-ws*:
 
 1. On the Policies page, click the Network tab, and then click the Workspaces organization view.
 
-1. Use the tree control to navigate to and select the object for which 
-you want to create a network policy.  In this case,  
-click *tko-day1-ops-ws* to add a network policy for this workspace.
+1. Use the tree control to navigate to and select the object for which you want to create a network policy.  In this case, click *tko-day1-ops-ws* to add a network policy for this workspace.
 
   ![](./images/policy-network-1.png)
 
 3. Click Create Network Policy.
 
 4. Select the network policy recipe to use. Choose one of the values from the dropdown. Available values 
-are: *allow-all* (allow all ingress traffic), *deny-all* (deny all ingress traffic), 
-*allow-all-to-pods* (allow all ingress traffic to selected pods), *deny-all-to-pods* (deny all ingress traffic 
-to selected pods), *custom-ingress* (define a custom ingress policy), *custom-egress* (define an egress policy). In this case, we select allow-all.
+are: *allow-all* (allow all ingress traffic), *deny-all* (deny all ingress traffic), *allow-all-to-pods* (allow all ingress traffic to selected pods), *deny-all-to-pods* (deny all ingress traffic to selected pods), *custom-ingress* (define a custom ingress policy), *custom-egress* (define an egress policy). In this case, we select *allow-all*.
 
 
 5. Provide a policy name: *my-allow-all-policy*.
