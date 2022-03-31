@@ -71,10 +71,21 @@ To edit the access policy for an object, you must be associated with the *.admin
     <details>
     <summary><b>TMC CLI</b></summary>
     <p>
+* Create a policy 
 
     ```execute-1
     tmc organization iam add-binding -r cluster.edit -u user01 
     ```
+* Confirm that the policy has been created    
+
+    ```execute-1
+    tmc organization iam get-policy
+    ```
+* Delete the created policy 
+
+    ```execute-1
+    tmc organization iam remove-binding -r cluster.edit -u user01 
+    ```    
     </p> 
     </details>
 
