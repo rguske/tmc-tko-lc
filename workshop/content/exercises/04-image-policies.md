@@ -39,7 +39,11 @@ registry policies to specify a name-tag allowlist, block the latest tag, or even
 
 Once created, you may edit or delete an image registry policy.
 
-Now let us create a custom policy in workspace *tko-day1-ops-ws* that blocks any container image that has the name busybox on it: 
+Now let us create a custom policy in workspace *tko-day1-ops-ws* that blocks any container image that doesn't have the name busybox on it: 
+
+<details>
+<summary><b>TMC Console</b></summary>
+<p>
 
 1. Click Workspaces under the Image Registry tab in the Policies page 
 and select workspace *tko-day1-ops-ws*
@@ -49,13 +53,61 @@ and select workspace *tko-day1-ops-ws*
   ![](./images/policy-image-registry-custom-1.png)
 
 3. Choose Custom in the Image Registry Template field and give it a name 
-  such as *no-busybox-image-policy* in the Policy Name field. Under the Rule pane, type in
+  such as *busybox-image-policy* in the Policy Name field. Under the Rule pane, type in
   *busybox* in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
 
   ![](./images/policy-image-registry-custom-2.png)
 
 4. Optionally, this custom rule may be made to apply to certain namespaces of this 
 workspace if desired by specifying the Label Selectors fields. At the end, click Create Policy.
+</p>
+</details>
+
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
+
+* Create a policy 
+
+    ```execute-1
+    tmc workspace image-policy create -f busybox-image-policy.yaml 
+    ```
+* Confirm that the policy has been created    
+
+    ```execute-1
+    tmc workspace image-policy get busybox-image-policy  --workspace-name tko-day1-ops-ws 
+    ```
+* Delete the created policy 
+
+    ```execute-1
+    tmc workspace image-policy delete busybox-image-policy  --workspace-name tko-day1-ops-ws
+    ```
+</p>
+</details>
+
+Now, let's create a policy that will allow pulling images from only a particular container registry  
+
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
+
+* Create a policy 
+
+    ```execute-1
+    tmc workspace image-policy create -f registry-hotsname-policy.yaml
+    ```
+* Confirm that the policy has been created    
+
+    ```execute-1
+    tmc workspace image-policy get registry-hotsname-policy  --workspace-name tko-day1-ops-ws 
+    ```
+* Delete the created policy 
+
+    ```execute-1
+    tmc workspace image-policy delete registry-hotsname-policy  --workspace-name tko-day1-ops-ws
+    ```
+</p>
+</details>
 
 Let us validate that our image registry policy is working by trying to deploy 
 the busybox image to the namespace *{{ session_namespace }}*, 

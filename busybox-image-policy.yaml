@@ -1,0 +1,11 @@
+fullName:
+  name: busybox-image-policy
+  workspaceName: tko-day1-ops-ws
+spec:
+  input:
+    rules:
+      - imageName: busybox
+        tag: {}
+  recipe: custom
+  recipeVersion: v1
+  type: image-policy
