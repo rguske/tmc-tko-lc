@@ -148,9 +148,8 @@ When you configure an access policy at the organization level, it will cascade t
     ```
 </p> 
 </details>
-
-
-<b><u>Access Policy  at Workspace Level</u></b>
+<p></p>
+<b><u>Access Policy at Workspace Level</u></b>
 
 Access policies can be configured at the workspace level either using TMC Console or TMC CLI.
 
