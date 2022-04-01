@@ -90,8 +90,7 @@ When you configure an access policy at the organization level, it will cascade t
     ```    
 </p> 
 </details>
-
-
+<p></p>
 <b><u>Access Policy at Cluster Group Level and at Cluster Level</u></b>
 
   Access policies can be configured at the cluster group level either using TMC Console or TMC CLI.
