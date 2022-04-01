@@ -63,6 +63,12 @@ workspace if desired by specifying the Label Selectors fields. At the end, click
 </p>
 </details>
 
+Before we apply this policy using the TMC CLI, let's have a look on its definition
+
+```editor:open-file
+file: ~/busybox-image-policy.yaml
+```
+
 <details>
 <summary><b>TMC CLI</b></summary>
 <p>
@@ -86,7 +92,11 @@ workspace if desired by specifying the Label Selectors fields. At the end, click
 </details>
 
 Now, let's create a policy that will allow pulling images from only a particular container registry  
+Before we apply this policy using the TMC CLI, let's have a look on its definition
 
+```editor:open-file
+file: ~/registry-hotsname-policy.yaml
+```
 <details>
 <summary><b>TMC CLI</b></summary>
 <p>
