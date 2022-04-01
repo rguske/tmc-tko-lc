@@ -47,15 +47,13 @@ To grant a user or group an access privilege, click on Policies and then Assigme
 
 To edit the access policy for an object, you must be associated with the *.admin* role for that object.
 
-<details>
-  <summary><b><u>Access Policy at Organization Level</u></b></summary>
-  <p>
+<b><u>Access Policy at Organization Level</u></b>
   Access policies can be configured at the organization level either using TMC Console or TMC CLI.
   When you configure an access policy at the organization level, it will cascade to all existing and newly created cluster groups and clusters underneath.  
-  </p>
-    <details>
-    <summary><b>TMC Console</b></summary>
-    <p>
+
+<details>
+<summary><b>TMC Console</b></summary>
+<p>
 
 * Click on Access then the root organization in the left pane.
 * In the organizational view on the Access tab of the Policies page, select the object whose access policy you want to add a role binding to.
@@ -68,11 +66,12 @@ To edit the access policy for an object, you must be associated with the *.admin
 - Select the *cluster.admin* role to grant administrative access to this cluster group that you want to bind to an identity.
 - Select the identity type (user or group) that you want to bind.
 - Enter one or more identities, clicking Add after each identity, and then click Save.
-    </p> 
-    </details>
-    <details>
-    <summary><b>TMC CLI</b></summary>
-    <p>
+</p> 
+</details>
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
+
 * Create a policy 
 
     ```execute-1
@@ -88,20 +87,17 @@ To edit the access policy for an object, you must be associated with the *.admin
     ```execute-1
     tmc organization iam remove-binding -r cluster.edit -u user01 
     ```    
-    </p> 
-    </details>
-
+</p> 
 </details>
 
-<details>
-  <summary><b><u>Access Policy at Cluster Group Level and at Cluster Level</u></b></summary>
-  <p>
+<b><u>Access Policy at Cluster Group Level and at Cluster Level</u></b>
+
   Access policies can be configured at the cluster group level either using TMC Console or TMC CLI.
   When you configure an access policy at the cluster group level, it will automatically cascade to all existing and newly created clusters underneath.  
-  </p>
-    <details>
-    <summary><b>TMC Console</b></summary>
-    <p>
+
+<details>
+<summary><b>TMC Console</b></summary>
+<p>
 
 ![](./images/policy-access-cg-1.png)
 
@@ -116,10 +112,10 @@ To edit the access policy for an object, you must be associated with the *.admin
 
 ![](./images/policy-access-cg-2.png)
 </p> 
-    </details>
-    <details>
-    <summary><b>TMC CLI</b></summary>
-    <p>
+</details>
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
 
 * Create a policy 
     * Cluster Group Level
@@ -148,32 +144,46 @@ To edit the access policy for an object, you must be associated with the *.admin
     ```execute-1
     tmc cluster iam remove-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
     ```
-    </p> 
-    </details>
-
+</p> 
 </details>
-***Access Policy  at Workspace Level***
 
-Access policies may be configured at the workspace level. Click on Access and then Workspaces:
+<b><u>Access Policy  at Workspace Level</u></b>
 
+Access policies can be configured at the workspace level either using TMC Console or TMC CLI.
+
+<details>
+<summary><b>TMC Console</b></summary>
+<p>
 ![](./images/policy-access-ws-1.png)
 
-Then click on the workspace: *tko-day1-ops-ws*. Similar to the steps given above, we can grant a desired
-role binding to the workspace:  *tko-day1-ops-ws* as shown below. 
-This time grant the *namespace.admin* privilege to a group of users. 
- Click Add after each identity, and then click Save.
+* click on the workspace: *tko-day1-ops-ws*. Similar to the steps given above, we can grant a desired
+* role binding to the workspace:  *tko-day1-ops-ws* as shown below. 
+* this time grant the *namespace.admin* privilege to a group of users. 
+* click Add after each identity, and then click Save.
 
 ![](./images/policy-access-ws-2.png)
 
+</p> 
+</details>
 
-[//]: # (This is a comment line)
-Now let us use TMC CLI to add an access policy, which
-grants *cluster.edit* privilege to a user: *user01*: 
-```execute-1
-tmc cluster iam add-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
-```
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
 
-This command retrieves the access policies for the cluster *{{ session_namespace }}-cluster* in yaml format:
-```execute-1
-tmc cluster iam get-policy {{ session_namespace }}-cluster -o yaml
-```
+* Create a policy 
+
+    ```execute-1
+    tmc workspace iam add-binding -r cluster.edit -u user01 
+    ```
+* Confirm that the policy has been created    
+
+    ```execute-1
+    tmc workspace iam get-policy
+    ```
+* Delete the created policy 
+
+    ```execute-1
+    tmc workspace iam remove-binding -r cluster.edit -u user01 
+    ``` 
+</p> 
+</details>
