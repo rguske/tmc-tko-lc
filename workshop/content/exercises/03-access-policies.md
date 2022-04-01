@@ -48,8 +48,9 @@ To grant a user or group an access privilege, click on Policies and then Assigme
 To edit the access policy for an object, you must be associated with the *.admin* role for that object.
 
 <b><u>Access Policy at Organization Level</u></b>
-  Access policies can be configured at the organization level either using TMC Console or TMC CLI.
-  When you configure an access policy at the organization level, it will cascade to all existing and newly created cluster groups and clusters underneath.  
+
+Access policies can be configured at the organization level either using TMC Console or TMC CLI.
+When you configure an access policy at the organization level, it will cascade to all existing and newly created cluster groups and clusters underneath.  
 
 <details>
 <summary><b>TMC Console</b></summary>
@@ -89,6 +90,7 @@ To edit the access policy for an object, you must be associated with the *.admin
     ```    
 </p> 
 </details>
+
 
 <b><u>Access Policy at Cluster Group Level and at Cluster Level</u></b>
 
@@ -146,6 +148,7 @@ To edit the access policy for an object, you must be associated with the *.admin
     ```
 </p> 
 </details>
+
 
 <b><u>Access Policy  at Workspace Level</u></b>
 
