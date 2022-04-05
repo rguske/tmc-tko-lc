@@ -192,7 +192,8 @@ Access policies can be configured at the workspace level either using TMC Consol
 <p>
 </p>
 
-### Connect to *{{ session_namespace }}-cluster* with kubectl
+##### Connect to *{{ session_namespace }}-cluster* with kubectl
+
 <details>
 <summary><b>TMC Console</b></summary>
 <p>
@@ -209,6 +210,7 @@ Access policies can be configured at the workspace level either using TMC Consol
 <details>
 <summary><b>TMC CLI</b></summary>
 <p>
+
 ```execute-1
 tmc cluster auth kubeconfig get {{ session_namespace }}-cluster > kubeconfig.yaml 
 ```
