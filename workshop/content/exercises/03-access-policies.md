@@ -189,12 +189,32 @@ Access policies can be configured at the workspace level either using TMC Consol
 </p> 
 </details>
 
+<p>
+</p>
 
-**Connect to {{ session_namespace }}-cluster with kubectl**
+### Connect to *{{ session_namespace }}-cluster* with kubectl
+<details>
+<summary><b>TMC Console</b></summary>
+<p>
 
+1. In the left navigation pane of the Tanzu Mission Control console, click Clusters.
+2. On the Clusters page, click *{{ session_namespace }}-cluster*.
+3. On the cluster detail page, in the upper right corner, click Access this cluster.
+![](./images/cluster-access-1.png)
+4. In the resulting popup modal, click Download KUBECONFIG file. and save the downloaded YAML file in a location that is accessible to kubectl (for example, in `~/.kube/config` or in a location specified in the KUBECONFIG environment variable).
+![](./images/cluster-access-2.png)
+</p> 
+</details>
+
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
 ```execute-1
 tmc cluster auth kubeconfig get {{ session_namespace }}-cluster > kubeconfig.yaml 
 ```
+</p> 
+</details>
+
 To test the downloaded KUBECONFIG
 
 ```execute-1
