@@ -1,6 +1,3 @@
-
-### **Image Registry Policies**
-
 Using VMware Tanzu Mission Control, you can make the deployments to namespaces in your clusters more secure by restricting the image registries from which images can be pulled, as well as the images that can be pulled from a registry. By default, Tanzu Mission Control does not impose any such restriction, and allows you to manage image registry restrictions at the organizational level and at the workspace level.
 
 Tanzu Mission control has Image based policies that can be applied to namespaces within a cluster. These policies can be applied fleet-wide across clusters and clouds by grouping namespaces together in a logical group called Workspaces.
@@ -14,20 +11,18 @@ Examples of image registry polices include:
 - Stop container images with latest tag from deploying 
 - Blacklist certain images/repos 
 
-
-
-Image registry policies cannot be set at a cluster level. To set an image registry policy, select Workspaces under the Image Registry tab in the Policies page.
+> Image registry policies cannot be set at a cluster level. To set an image registry policy, select Workspaces under the Image Registry tab in the Policies page.
 
 ![](./images/policy-image-registry-1.png)
 
-Select a workspace such as *tko-day1-ops-ws* and click Create Image 
+Select a workspace such as ***tko-day1-ops-ws*** and click Create Image 
 Registry Policy. We are going to configure that all the container 
 images to be deployed to this workspace must have a message digest. 
 Under Image registry template dropdown, select Require Digest:
 
 ![](./images/policy-image-registry-digest-1.png)
 
-Give it a name such as *digest-image-policy* and proceed with default values 
+Give it a name such as <mark>*digest-image-policy*</mark> and proceed with default values 
 for other fields. If needed, you may specify label selectors to 
 include or exclude certain namespaces for this policy. 
 Finally click Create Policy. 

@@ -188,3 +188,15 @@ Access policies can be configured at the workspace level either using TMC Consol
     ``` 
 </p> 
 </details>
+
+
+**Connect to {{ session_namespace }}-cluster with kubectl**
+
+```execute-1
+tmc cluster auth kubeconfig get {{ session_namespace }}-cluster > kubeconfig.yaml 
+```
+To test the downloaded KUBECONFIG
+
+```execute-1
+kubectl get po -A --kubeconfig=kubeconfig.yaml
+```

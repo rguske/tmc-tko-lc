@@ -10,9 +10,9 @@ modules:
     exit_sign: Access Policies
   exercises/03-access-policies:
     name: Access Policies
-    exit_sign: Image Policies
+    exit_sign: Image Registry Policies
   exercises/04-image-policies:
-    name: Image Policies
+    name: Image Registry Policies
     exit_sign: Network Policies
   exercises/05-network-policies:
     name: Network Policies
