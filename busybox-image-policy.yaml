@@ -4,7 +4,7 @@ fullName:
 spec:
   input:
     rules:
-      - imageName: busybox
+      - imageName: library/busybox
         tag: {}
   recipe: custom
   recipeVersion: v1

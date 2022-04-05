@@ -17,7 +17,7 @@ Examples of image registry polices include:
 
 Select a workspace such as ***tko-day1-ops-ws*** and click Create Image 
 Registry Policy. We are going to configure that all the container 
-images to be deployed to this workspace must have a message digest. 
+images to be deployed to this workspace must have a container digest. 
 Under Image registry template dropdown, select Require Digest:
 
 ![](./images/policy-image-registry-digest-1.png)
@@ -49,7 +49,7 @@ and select workspace *tko-day1-ops-ws*
 
 3. Choose Custom in the Image Registry Template field and give it a name 
   such as *busybox-image-policy* in the Policy Name field. Under the Rule pane, type in
-  *busybox* in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
+  *library/busybox* in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
 
   ![](./images/policy-image-registry-custom-2.png)
 
@@ -115,8 +115,8 @@ file: ~/registry-hotsname-policy.yaml
 </details>
 
 Let us validate that our image registry policy is working by trying to deploy 
-the busybox image to the namespace *{{ session_namespace }}*, 
-which is part of the workspace *tko-day1-ops-ws*.
+the busybox image to the namespace **{{ session_namespace }}**, 
+which is part of the workspace **tko-day1-ops-ws**.
 
 Make sure the namespace *{{ session_namespace }}*  exists on the cluster;
 ```execute-1
@@ -128,14 +128,14 @@ If it does not exist yet, create it:
 kubectl --kubeconfig=.kube/config create ns {{ session_namespace }}
 ```
 
-Attach the namespace to the workspace *tko-day1-ops-ws*:
+Attach the namespace to the workspace **tko-day1-ops-ws**:
 ```execute-1
 tmc cluster namespace attach  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
 ```
 
-Create a deployment with the image busybox:
+Create a deployment with for example **nginx** image:
 ```execute-1
-kubectl --kubeconfig=.kube/config create deployment busybox-{{ session_namespace }} --image=busybox -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
 ```
 
 Notice the deployment is blocked and won't progress because of the image rules:
@@ -144,6 +144,6 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 ```
 Delete the deployment
 ```execute-1
-kubectl --kubeconfig=.kube/config delete deployment busybox-{{ session_namespace }} -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
 ```
 
