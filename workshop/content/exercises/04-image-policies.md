@@ -49,7 +49,7 @@ and select workspace *tko-day1-ops-ws*
 
 3. Choose Custom in the Image Registry Template field and give it a name 
   such as *busybox-image-policy* in the Policy Name field. Under the Rule pane, type in
-  *library/busybox* in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
+  `library/busybox` in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
 
   ![](./images/policy-image-registry-custom-2.png)
 
@@ -138,12 +138,29 @@ Create a deployment with for example **nginx** image:
 kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
 ```
 
-Notice the deployment is blocked and won't progress because of the image rules:
+Notice the deployment is blocked and won't progress because of the image rules.
+
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
 Delete the deployment
 ```execute-1
 kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
+```
+
+Now let's deploy a busybox container to check if the policy will allow it run
+
+```execute-1
+kubectl --kubeconfig=.kube/config apply -f busybox-deployment.yaml -n {{ session_namespace }}
+```
+Confirm that the busybox pod has been deployed
+
+```execute-1
+kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
+```
+Again, check the events if there is any error
+
+```execute-1
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
 
