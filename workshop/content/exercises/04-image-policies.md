@@ -57,17 +57,15 @@ and select workspace *tko-day1-ops-ws*
 workspace if desired by specifying the Label Selectors fields. At the end, click Create Policy.
 </p>
 </details>
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
 
 Before we apply this policy using the TMC CLI, let's have a look on its definition
 
 ```editor:open-file
 file: ~/busybox-image-policy.yaml
 ```
-
-<details>
-<summary><b>TMC CLI</b></summary>
-<p>
-
 * Create a policy 
 
     ```execute-1
