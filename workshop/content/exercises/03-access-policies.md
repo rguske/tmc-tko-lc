@@ -91,10 +91,11 @@ When you configure an access policy at the organization level, it will cascade t
 </p> 
 </details>
 <p></p>
+
 <b><u>Access Policy at Cluster Group Level and at Cluster Level</u></b>
 
-  Access policies can be configured at the cluster group level either using TMC Console or TMC CLI.
-  When you configure an access policy at the cluster group level, it will automatically cascade to all existing and newly created clusters underneath.  
+Access policies can be configured at the cluster group level either using TMC Console or TMC CLI.
+When you configure an access policy at the cluster group level, it will automatically cascade to all existing and newly created clusters underneath.  
 
 <details>
 <summary><b>TMC Console</b></summary>
@@ -148,6 +149,7 @@ When you configure an access policy at the organization level, it will cascade t
 </p> 
 </details>
 <p></p>
+
 <b><u>Access Policy at Workspace Level</u></b>
 
 Access policies can be configured at the workspace level either using TMC Console or TMC CLI.
