@@ -25,10 +25,12 @@ Under Image registry template dropdown, select Require Digest:
 
 ![](./images/policy-image-registry-digest-1.png)
 
-Give it a name such as <mark>*digest-image-policy*</mark> and proceed with default values 
+Give it a name such as `digest-image-policy`{{copy}} and proceed with default values 
 for other fields. If needed, you may specify label selectors to 
 include or exclude certain namespaces for this policy. 
 Finally click Create Policy. 
+
+Text to `copy`{{copy}}.
 
 The steps above show how to create an image registry policy to require digest. Similarly, image 
 registry policies to specify a name-tag allowlist, block the latest tag, or even custom policies may be created:
