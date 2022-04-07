@@ -117,7 +117,7 @@ If it does not exist yet, create it and add it to the workspace **tko-day1-ops-w
 tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
 ```
 
-Create a deployment with for example **nginx** image:
+Create a deployment with **nginx** image:
 
 ```execute-1
 kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
@@ -131,6 +131,10 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 Delete the deployment
 ```execute-1
 kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
+```
+
+```execute-all
+clear
 ```
 
 Now let's deploy a busybox container to check if the policy will allow it run
@@ -152,7 +156,7 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 * Delete the created policy 
 
     ```execute-1
-    tmc workspace image-policy delete busybox-image-policy-cli  --workspace-name tko-day1-ops-ws
+    tmc workspace image-policy delete {{ session_namespace }}-image-policy-cli  --workspace-name tko-day1-ops-ws
     ```
 
 Now, let's create a policy that will allow pulling images from only a particular container registry  
@@ -160,6 +164,15 @@ Before we apply this policy using the TMC CLI, let's have a look on its definiti
 
 ```editor:open-file
 file: ~/registry-hotsname-policy.yaml
+```
+```editor:select-matching-text
+file: ~/registry-hotsname-policy.yaml
+text: "name: (.*)"
+isRegex: true
+```
+```editor:replace-text-selection
+file: ~/registry-hotsname-policy.yaml
+text: name: {{ session_namespace }}-registry-policy-cli
 ```
 <details>
 <summary><b>TMC CLI</b></summary>
@@ -173,12 +186,31 @@ file: ~/registry-hotsname-policy.yaml
 * Confirm that the policy has been created    
 
     ```execute-1
-    tmc workspace image-policy get registry-hotsname-policy  --workspace-name tko-day1-ops-ws 
+    tmc workspace image-policy get {{ session_namespace }}-registry-policy-cli  --workspace-name tko-day1-ops-ws 
+    ```
+    Create a deployment with **nginx** image from docker hub:
+
+    ```execute-1
+    kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
+    ```
+
+    Notice the deployment is blocked and won't progress because of the registry rules.
+
+    ```execute-1
+    kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+    ```
+    Delete the deployment
+    ```execute-1
+    kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
+    ```
+
+    ```execute-all
+    clear
     ```
 * Delete the created policy 
 
     ```execute-1
-    tmc workspace image-policy delete registry-hotsname-policy  --workspace-name tko-day1-ops-ws
+    tmc workspace image-policy delete {{ session_namespace }}-registry-policy-cli --workspace-name tko-day1-ops-ws
     ```
 </p>
 </details>
