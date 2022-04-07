@@ -37,6 +37,10 @@ If you are not still logged in from the previous session
 tmc login -n {{ session_namespace }} --no-configure
 ```
 
+```terminal:input
+text: API Token
+```
+
 * Configure environment defaults that make the CLI easier to use. 
 
 ```execute-1
