@@ -15,6 +15,16 @@ Examples of image registry polices include:
 
 Image registry policies cannot be set at a cluster level. To set an image registry policy, select Workspaces under the Image Registry tab in the Policies page.
 
+To create an image registry policy for an object, you must be associated with the **.admin** role for that object
+
+* Click Create Image Registry Policy.
+* Select the recipe you want to use.
+    * The *Block latest tag* recipe prevents the use of images that are tagged latest.
+    * The *Require Digest* recipe prevents the use of images that do not have a digest.
+    * The *Name-Tag allowlist* recipe allows you to create rules using an image name or tag name or both.
+    * The *Custom* recipe allows you to create rules using multiple factors.
+
+As quick example we are going to create a *Require Digest* recipe policy using the TMC Console
 
 ![](./images/policy-image-registry-1.png)
 
@@ -37,22 +47,21 @@ registry policies to specify a name-tag allowlist, block the latest tag, or even
 
 Once created, you may edit or delete an image registry policy.
 
-Now let us create a custom policy in workspace *tko-day1-ops-ws* that blocks any container image that doesn't have the name busybox on it: 
+Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks any container image that doesn't have the name busybox on it: 
 
 <details>
 <summary><b>TMC Console</b></summary>
 <p>
 
 1. Click Workspaces under the Image Registry tab in the Policies page 
-and select workspace *tko-day1-ops-ws*
+and select workspace ***tko-day1-ops-ws***
 
 2. Click Create Image Registry Policy
 
   ![](./images/policy-image-registry-custom-1.png)
 
 3. Choose Custom in the Image Registry Template field and give it a name 
-  such as *busybox-image-policy* in the Policy Name field. Under the Rule pane, type in
-  `library/busybox` in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
+  such as `busybox-image-policy-ui`{{copy}} in the Policy Name field. Under the Rule pane, type in `library/busybox`{{copy}} in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
 
   ![](./images/policy-image-registry-custom-2.png)
 
@@ -77,12 +86,12 @@ file: ~/busybox-image-policy.yaml
 * Confirm that the policy has been created    
 
     ```execute-1
-    tmc workspace image-policy get busybox-image-policy  --workspace-name tko-day1-ops-ws 
+    tmc workspace image-policy get busybox-image-policy-cli  --workspace-name tko-day1-ops-ws 
     ```
 * Delete the created policy 
 
     ```execute-1
-    tmc workspace image-policy delete busybox-image-policy  --workspace-name tko-day1-ops-ws
+    tmc workspace image-policy delete busybox-image-policy-cli  --workspace-name tko-day1-ops-ws
     ```
 </p>
 </details>

@@ -1,5 +1,5 @@
 fullName:
-  name: busybox-image-policy
+  name: busybox-image-policy-cli
   workspaceName: tko-day1-ops-ws
 spec:
   input:
