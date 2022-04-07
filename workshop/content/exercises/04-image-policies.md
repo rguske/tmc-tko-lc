@@ -95,22 +95,20 @@ Let's validate that our image registry policy is working by trying to deploy
 the busybox image to the namespace **{{ session_namespace }}**, 
 which is part of the workspace **tko-day1-ops-ws**.
 
-Make sure the namespace *{{ session_namespace }}*  exists on the cluster;
+Make sure the namespace **{{ session_namespace }}** doesn't exist on the cluster **{{ session_namespace }}-cluster**;
+
 ```execute-1
 kubectl --kubeconfig=.kube/config get ns {{ session_namespace }}
 ```
 
-If it does not exist yet, create it:
-```execute-1
-kubectl --kubeconfig=.kube/config create ns {{ session_namespace }}
-```
+If it does not exist yet, create it and add it to the workspace **tko-day1-ops-ws**:
 
-Attach the namespace to the workspace **tko-day1-ops-ws**:
 ```execute-1
-tmc cluster namespace attach  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
 ```
 
 Create a deployment with for example **nginx** image:
+
 ```execute-1
 kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
 ```
