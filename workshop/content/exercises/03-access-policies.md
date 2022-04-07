@@ -175,7 +175,7 @@ Access policies can be configured at the workspace level either using TMC Consol
 <p>
 </p>
 
-**Connect to *{{ session_namespace }}-cluster* with kubectl**
+<b><u>Connect to *{{ session_namespace }}-cluster* with kubectl</u></b>
 
 <details>
 <summary><b>TMC Console</b></summary>
