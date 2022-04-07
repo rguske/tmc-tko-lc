@@ -47,7 +47,7 @@ registry policies to specify a name-tag allowlist, block the latest tag, or even
 
 Once created, you may edit or delete an image registry policy.
 
-Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks any container image that doesn't have the name busybox on it: 
+Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks any container image that doesn't have the name `busybox`: 
 
 <details>
 <summary><b>TMC Console</b></summary>
@@ -90,7 +90,8 @@ file: ~/busybox-image-policy.yaml
     ```
 </p>
 </details>
-
+<p>
+</p>
 Let's validate that our image registry policy is working by trying to deploy 
 the busybox image to the namespace **{{ session_namespace }}**, 
 which is part of the workspace **tko-day1-ops-ws**.
