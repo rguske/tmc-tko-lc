@@ -61,10 +61,10 @@ When you configure an access policy at the organization level, it will cascade t
 
 ![](./images/policy-org.png)
 
-- Click on the organization:  *Partner - Tanzu SE Americas*
-- Click the arrow next to the object name *Partner - Tanzu SE Americas* under Direct access policies.
+- Click on the organization:  ***Partner - Tanzu SE Americas***
+- Click the arrow next to the object name ***Partner - Tanzu SE Americas*** under Direct access policies.
 - Click Create Role Binding.
-- Select the *cluster.admin* role to grant administrative access to this cluster group that you want to bind to an identity.
+- Select the **cluster.admin** role to grant administrative access to this cluster group that you want to bind to an identity.
 - Select the identity type (user or group) that you want to bind.
 - Enter one or more identities, clicking Add after each identity, and then click Save.
 </p> 
@@ -82,12 +82,7 @@ When you configure an access policy at the organization level, it will cascade t
 
     ```execute-1
     tmc organization iam get-policy
-    ```
-* Delete the created policy 
-
-    ```execute-1
-    tmc organization iam remove-binding -r cluster.edit -u user01 
-    ```    
+    ```   
 </p> 
 </details>
 <p></p>
@@ -103,10 +98,10 @@ When you configure an access policy at the cluster group level, it will automati
 
 ![](./images/policy-access-cg-1.png)
 
-- Click on the cluster group:  *tko-day1-ops-cg*. 
+- Click on the cluster group:  ***tko-day1-ops-cg***. 
 - Click the arrow next to the object name under Direct access policies.
 - Click Create Role Binding.
-- Select the *cluster.admin* role to grant administrative access to this cluster group that you want to bind to an identity.
+- Select the ***cluster.admin*** role to grant administrative access to this cluster group that you want to bind to an identity.
 - Select the identity type (user or group) that you want to bind.
 - Enter one or more identities, clicking Add after each identity, and then click Save.
 
@@ -137,15 +132,6 @@ When you configure an access policy at the cluster group level, it will automati
     ```execute-1
     tmc cluster iam get-policy {{ session_namespace }}-cluster
     ```
-* Delete the created policy 
-    * Cluster Group Level
-    ```execute-1
-    tmc clustergroup iam remove-binding tko-day1-ops-cg -r cluster.edit -u user01 
-    ```
-    * Cluster Level
-    ```execute-1
-    tmc cluster iam remove-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
-    ```
 </p> 
 </details>
 <p></p>
@@ -159,9 +145,9 @@ Access policies can be configured at the workspace level either using TMC Consol
 <p>
 ![](./images/policy-access-ws-1.png)
 
-* click on the workspace: *tko-day1-ops-ws*. Similar to the steps given above, we can grant a desired
-* role binding to the workspace:  *tko-day1-ops-ws* as shown below. 
-* this time grant the *namespace.admin* privilege to a group of users. 
+* click on the workspace: ***tko-day1-ops-ws***. Similar to the steps given above, we can grant a desired
+* role binding to the workspace:  ***tko-day1-ops-ws*** as shown below. 
+* this time grant the ***namespace.admin*** privilege to a group of users. 
 * click Add after each identity, and then click Save.
 
 ![](./images/policy-access-ws-2.png)
@@ -183,11 +169,6 @@ Access policies can be configured at the workspace level either using TMC Consol
     ```execute-1
     tmc workspace iam get-policy
     ```
-* Delete the created policy 
-
-    ```execute-1
-    tmc workspace iam remove-binding -r cluster.edit -u user01 
-    ``` 
 </p> 
 </details>
 
@@ -201,7 +182,7 @@ Access policies can be configured at the workspace level either using TMC Consol
 <p>
 
 1. In the left navigation pane of the Tanzu Mission Control console, click Clusters.
-2. On the Clusters page, click *{{ session_namespace }}-cluster*.
+2. On the Clusters page, click ***{{ session_namespace }}-cluster***.
 3. On the cluster detail page, in the upper right corner, click Access this cluster.
 ![](./images/cluster-access-1.png)
 4. In the resulting popup modal, click Download KUBECONFIG file. and save the downloaded YAML file in a location that is accessible to kubectl (for example, in `~/.kube/config` or in a location specified in the KUBECONFIG environment variable).
@@ -227,3 +208,26 @@ To test the downloaded KUBECONFIG
 ```execute-1
 kubectl get po -A --kubeconfig=kubeconfig.yaml
 ```
+**Cleanup the created policies**
+
+* Delete the created policy at the organization level
+
+    ```execute-1
+    tmc organization iam remove-binding -r cluster.edit -u user01 
+    ``` 
+* Delete the created policy at Cluster Group Level & at Cluster Level
+
+    * Cluster Group Level
+    ```execute-1
+    tmc clustergroup iam remove-binding tko-day1-ops-cg -r cluster.edit -u user01 
+    ```
+
+    * Cluster Level
+    ```execute-1
+    tmc cluster iam remove-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
+    ```
+* Delete the created policy at the workspace level
+
+    ```execute-1
+    tmc workspace iam remove-binding -r cluster.edit -u user01 
+    ```     
