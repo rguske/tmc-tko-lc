@@ -76,7 +76,7 @@ When you configure an access policy at the organization level, it will cascade t
 * Create a policy 
 
     ```execute-1
-    tmc organization iam add-binding -r cluster.edit -u user01 
+    tmc organization iam add-binding -r cluster.edit -u {{ session_namespace }}-user
     ```
 * Confirm that the policy has been created    
 
@@ -122,11 +122,11 @@ You can repeat the same step above for **{{ session_namespace }}-cluster** to as
 * Create a policy 
     * Cluster Group Level
     ```execute-1
-    tmc clustergroup iam add-binding tko-day1-ops-cg -r cluster.edit -u user01 
+    tmc clustergroup iam add-binding tko-day1-ops-cg -r cluster.edit -u {{ session_namespace }}-user 
     ```
     * Cluster Level
     ```execute-1
-    tmc cluster iam add-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
+    tmc cluster iam add-binding {{ session_namespace }}-cluster -r cluster.edit -u {{ session_namespace }}-user 
     ```
 * Confirm that the policy has been created    
     * Cluster Group Level
@@ -167,7 +167,7 @@ Access policies can be configured at the workspace level either using TMC Consol
 * Create a policy 
 
     ```execute-1
-    tmc workspace iam add-binding tko-day1-ops-ws -r namespace.edit -u user01 
+    tmc workspace iam add-binding tko-day1-ops-ws -r namespace.edit -u {{ session_namespace }}-user 
     ```
 * Confirm that the policy has been created    
 
@@ -218,21 +218,21 @@ kubectl get po -A --kubeconfig=kubeconfig.yaml
 * Delete the created policy at the organization level
 
     ```execute-1
-    tmc organization iam remove-binding -r cluster.edit -u user01 
+    tmc organization iam remove-binding -r cluster.edit -u {{ session_namespace }}-user 
     ``` 
 * Delete the created policy at Cluster Group Level & at Cluster Level
 
     * Cluster Group Level
     ```execute-1
-    tmc clustergroup iam remove-binding tko-day1-ops-cg -r cluster.edit -u user01 
+    tmc clustergroup iam remove-binding tko-day1-ops-cg -r cluster.edit -u {{ session_namespace }}-user 
     ```
 
     * Cluster Level
     ```execute-1
-    tmc cluster iam remove-binding {{ session_namespace }}-cluster -r cluster.edit -u user01 
+    tmc cluster iam remove-binding {{ session_namespace }}-cluster -r cluster.edit -u {{ session_namespace }}-user 
     ```
 * Delete the created policy at the workspace level
 
     ```execute-1
-    tmc workspace iam remove-binding tko-day1-ops-ws -r namespace.edit -u user01 
+    tmc workspace iam remove-binding tko-day1-ops-ws -r namespace.edit -u {{ session_namespace }}-user 
     ```     
