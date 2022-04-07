@@ -78,6 +78,15 @@ Before we apply this policy using the TMC CLI, let's have a look on its definiti
 ```editor:open-file
 file: ~/busybox-image-policy.yaml
 ```
+```editor:select-matching-text
+file: ~/exercises/sample.txt
+text: "name: (.*)"
+isRegex: true
+```
+```editor:replace-text-selection
+file: ~/busybox-image-policy.yaml
+text: {{ session_namespace }}-image-policy-cli
+```
 * Create a policy 
 
     ```execute-1
