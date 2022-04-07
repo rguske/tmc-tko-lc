@@ -167,12 +167,12 @@ Access policies can be configured at the workspace level either using TMC Consol
 * Create a policy 
 
     ```execute-1
-    tmc workspace iam add-binding -r cluster.edit -u user01 
+    tmc workspace iam add-binding tko-day1-ops-ws -r cluster.edit -u user01 
     ```
 * Confirm that the policy has been created    
 
     ```execute-1
-    tmc workspace iam get-policy
+    tmc workspace iam get-policy tko-day1-ops-ws
     ```
 </p> 
 </details>
