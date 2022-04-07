@@ -79,7 +79,7 @@ Before we apply this policy using the TMC CLI, let's have a look on its definiti
 file: ~/busybox-image-policy.yaml
 ```
 ```editor:select-matching-text
-file: ~/exercises/sample.txt
+file: ~/busybox-image-policy.yaml
 text: "name: (.*)"
 isRegex: true
 ```
