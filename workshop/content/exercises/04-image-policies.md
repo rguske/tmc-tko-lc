@@ -155,8 +155,9 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 
 * Delete the created policy 
 
+[//]: # tmc workspace image-policy delete {{ session_namespace }}-image-policy-cli  --workspace-name tko-day1-ops-ws
+
     ```execute-1
-[//]: # (tmc workspace image-policy delete {{ session_namespace }}-image-policy-cli  --workspace-name tko-day1-ops-ws)
     tmc workspace image-policy delete busybox-image-policy-cli  --workspace-name tko-day1-ops-ws
     ```
 
