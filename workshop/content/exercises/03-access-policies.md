@@ -234,5 +234,5 @@ kubectl get po -A --kubeconfig=kubeconfig.yaml
 * Delete the created policy at the workspace level
 
     ```execute-1
-    tmc workspace iam remove-binding -r cluster.edit -u user01 
+    tmc workspace iam remove-binding tko-day1-ops-ws -r namespace.edit -u user01 
     ```     
