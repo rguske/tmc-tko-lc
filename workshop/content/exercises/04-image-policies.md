@@ -88,43 +88,10 @@ file: ~/busybox-image-policy.yaml
     ```execute-1
     tmc workspace image-policy get busybox-image-policy-cli  --workspace-name tko-day1-ops-ws 
     ```
-* Delete the created policy 
-
-    ```execute-1
-    tmc workspace image-policy delete busybox-image-policy-cli  --workspace-name tko-day1-ops-ws
-    ```
 </p>
 </details>
 
-Now, let's create a policy that will allow pulling images from only a particular container registry  
-Before we apply this policy using the TMC CLI, let's have a look on its definition
-
-```editor:open-file
-file: ~/registry-hotsname-policy.yaml
-```
-<details>
-<summary><b>TMC CLI</b></summary>
-<p>
-
-* Create a policy 
-
-    ```execute-1
-    tmc workspace image-policy create -f registry-hotsname-policy.yaml
-    ```
-* Confirm that the policy has been created    
-
-    ```execute-1
-    tmc workspace image-policy get registry-hotsname-policy  --workspace-name tko-day1-ops-ws 
-    ```
-* Delete the created policy 
-
-    ```execute-1
-    tmc workspace image-policy delete registry-hotsname-policy  --workspace-name tko-day1-ops-ws
-    ```
-</p>
-</details>
-
-Let us validate that our image registry policy is working by trying to deploy 
+Let's validate that our image registry policy is working by trying to deploy 
 the busybox image to the namespace **{{ session_namespace }}**, 
 which is part of the workspace **tko-day1-ops-ws**.
 
@@ -173,4 +140,40 @@ Again, check the events if there is any error
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
+
+* Delete the created policy 
+
+    ```execute-1
+    tmc workspace image-policy delete busybox-image-policy-cli  --workspace-name tko-day1-ops-ws
+    ```
+
+Now, let's create a policy that will allow pulling images from only a particular container registry  
+Before we apply this policy using the TMC CLI, let's have a look on its definition
+
+```editor:open-file
+file: ~/registry-hotsname-policy.yaml
+```
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
+
+* Create a policy 
+
+    ```execute-1
+    tmc workspace image-policy create -f registry-hotsname-policy.yaml
+    ```
+* Confirm that the policy has been created    
+
+    ```execute-1
+    tmc workspace image-policy get registry-hotsname-policy  --workspace-name tko-day1-ops-ws 
+    ```
+* Delete the created policy 
+
+    ```execute-1
+    tmc workspace image-policy delete registry-hotsname-policy  --workspace-name tko-day1-ops-ws
+    ```
+</p>
+</details>
+
+
 
