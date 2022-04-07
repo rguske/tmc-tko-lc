@@ -30,8 +30,6 @@ for other fields. If needed, you may specify label selectors to
 include or exclude certain namespaces for this policy. 
 Finally click Create Policy. 
 
-Text to `copy`{{copy}}.
-
 The steps above show how to create an image registry policy to require digest. Similarly, image 
 registry policies to specify a name-tag allowlist, block the latest tag, or even custom policies may be created:
  
