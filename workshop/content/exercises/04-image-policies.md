@@ -19,12 +19,12 @@ To create an image registry policy for an object, you must be associated with th
 
 * Click Create Image Registry Policy.
 * Select the recipe you want to use.
-    * The *Block latest tag* recipe prevents the use of images that are tagged latest.
-    * The *Require Digest* recipe prevents the use of images that do not have a digest.
-    * The *Name-Tag allowlist* recipe allows you to create rules using an image name or tag name or both.
-    * The *Custom* recipe allows you to create rules using multiple factors.
+    * The *`Block latest tag`* recipe prevents the use of images that are tagged latest.
+    * The *`Require Digest`* recipe prevents the use of images that do not have a digest.
+    * The *`Name-Tag allowlist`* recipe allows you to create rules using an image name or tag name or both.
+    * The *`Custom`* recipe allows you to create rules using multiple factors.
 
-As quick example we are going to create a *Require Digest* recipe policy using the TMC Console
+As quick example we are going to create a *`Require Digest`* recipe policy using the TMC Console
 
 ![](./images/policy-image-registry-1.png)
 
