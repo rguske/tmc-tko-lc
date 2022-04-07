@@ -105,7 +105,12 @@ When you configure an access policy at the cluster group level, it will automati
 - Select the identity type (user or group) that you want to bind.
 - Enter one or more identities, clicking Add after each identity, and then click Save.
 
->You can repeat the same step above for **{{ session_namespace }}-cluster** to assign access policies at cluster level
+---
+**Note:** 
+
+You can repeat the same step above for **{{ session_namespace }}-cluster** to assign access policies at cluster level
+
+---
 
 ![](./images/policy-access-cg-2.png)
 </p> 
