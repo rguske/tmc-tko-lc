@@ -61,7 +61,7 @@ and select workspace ***tko-day1-ops-ws***
   ![](./images/policy-image-registry-custom-1.png)
 
 3. Choose Custom in the Image Registry Template field and give it a name 
-  such as `busybox-image-policy-ui`{{copy}} in the Policy Name field. Under the Rule pane, type in `library/busybox`{{copy}} in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
+  such as `{{ session_namespace }}-image-policy-ui`{{copy}} in the Policy Name field. Under the Rule pane, type in `library/busybox`{{copy}} in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
 
   ![](./images/policy-image-registry-custom-2.png)
 
@@ -85,7 +85,7 @@ isRegex: true
 ```
 ```editor:replace-text-selection
 file: ~/busybox-image-policy.yaml
-text: {{ session_namespace }}-image-policy-cli
+text: name: {{ session_namespace }}-image-policy-cli
 ```
 * Create a policy 
 
@@ -95,14 +95,14 @@ text: {{ session_namespace }}-image-policy-cli
 * Confirm that the policy has been created    
 
     ```execute-1
-    tmc workspace image-policy get busybox-image-policy-cli  --workspace-name tko-day1-ops-ws 
+    tmc workspace image-policy get {{ session_namespace }}-image-policy-cli  --workspace-name tko-day1-ops-ws 
     ```
 </p>
 </details>
 <p>
 </p>
-Let's validate that our image registry policy is working by trying to deploy 
-the busybox image to the namespace **{{ session_namespace }}**, 
+
+Let's validate that our image registry policy is working by trying to deploy the busybox image to the namespace **{{ session_namespace }}**, 
 which is part of the workspace **tko-day1-ops-ws**.
 
 Make sure the namespace **{{ session_namespace }}** doesn't exist on the cluster **{{ session_namespace }}-cluster**;
