@@ -12,7 +12,8 @@ Additionally, you can schedule regular backups and manage the storage of backups
 
 When you perform a backup for a cluster, Tanzu Mission Control uses Velero to create a backup of the specified Kubernetes resources with snapshots of persistent volume data, and then stores the backup in the location that you specify.
 
-#### Enable Data Protection for **{{ session_namespace }}-cluster** Cluster
+**Enable Data Protection for *{{ session_namespace }}-cluster* Cluster**
+
 Before you can use Tanzu Mission Control to back up data resources in your clusters, you must set up your cluster and your target location. This procedure describes how to install the data protection extension (and Velero) on your cluster so that you can use Tanzu Mission Control to perform data protection actions using a specified backup location.
 
 ```execute-1
