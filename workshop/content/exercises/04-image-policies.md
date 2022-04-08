@@ -122,6 +122,8 @@ text: "{{ session_namespace }}-ip-cli"
 Let's validate that our image registry policy is working by trying to deploy the busybox image to the namespace **{{ session_namespace }}**, 
 which is part of the workspace **tko-day1-ops-ws**.
 
+Wait for 20 ~ 30 seconds for the policy to get effective 
+
 Create a deployment with **nginx** image:
 
 ```execute-1
@@ -176,6 +178,7 @@ file: ~/registry-hotsname-policy.yaml
 file: ~/registry-hotsname-policy.yaml
 text: "name: (.*)"
 isRegex: true
+group: 1
 ```
 
 ```editor:replace-text-selection
@@ -195,7 +198,7 @@ text: "{{ session_namespace }}-rp-cli"
 * Confirm that the policy has been created    
 
     ```execute-1
-    tmc workspace image-policy get {{ session_namespace }}-registry-policy-cli  --workspace-name tko-day1-ops-ws 
+    tmc workspace image-policy get {{ session_namespace }}-rp-cli  --workspace-name tko-day1-ops-ws 
     ```
     Create a deployment with **nginx** image from docker hub:
 

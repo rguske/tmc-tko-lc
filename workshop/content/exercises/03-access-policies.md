@@ -141,7 +141,7 @@ You can repeat the same step above for **{{ session_namespace }}-cluster** to as
 </details>
 <p></p>
 
-<b><u>Access Policy at Workspace Level</u></b>
+<b><u>Access Policy at Workspace/Namespace Level</u></b>
 
 Access policies can be configured at the workspace level either using TMC Console or TMC CLI.
 
