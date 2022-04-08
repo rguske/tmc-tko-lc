@@ -93,11 +93,6 @@ file: ~/busybox-image-policy.yaml
 text: "name: {{ session_namespace }}-ip-cli"
 ```
 
-```editor:replace-text-selection
-file: ~/busybox-image-policy.yaml
-text: name: {{ session_namespace }}-ip-cli
-```
-
 <details>
 <summary><b>TMC CLI</b></summary>
 <p>
@@ -178,13 +173,10 @@ file: ~/registry-hotsname-policy.yaml
 text: "name: (.*)"
 isRegex: true
 ```
-<p>
-</p>
 
 ```editor:replace-text-selection
 file: ~/registry-hotsname-policy.yaml
 text: "name: {{ session_namespace }}-rp-cli"
-isRegex: true
 ```
 
 <details>
