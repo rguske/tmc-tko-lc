@@ -47,6 +47,12 @@ registry policies to specify a name-tag allowlist, block the latest tag, or even
 
 Once created, you may edit or delete an image registry policy.
 
+Since image policies can be assigned to a workspace/namespace only, let create a new namespace and add it to the workspace **tko-day1-ops-ws**:
+
+```execute-1
+tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+```
+
 Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks any container image that doesn't have the name `busybox`: 
 
 <details>
@@ -69,16 +75,6 @@ and select workspace ***tko-day1-ops-ws***
 </p>
 </details>
 
-Since image policies can be assigned to a workspace/namespace, let create a new namespace and add it to the workspace **tko-day1-ops-ws**:
-
-```execute-1
-tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
-```
-
-<details>
-<summary><b>TMC CLI</b></summary>
-<p>
-
 Before we apply this policy using the TMC CLI, let's have a look on its definition
 
 ```editor:open-file
@@ -90,13 +86,15 @@ file: ~/busybox-image-policy.yaml
 text: "name: (.*)"
 isRegex: true
 ```
-<p>
-</p>
 
 ```editor:replace-text-selection
 file: ~/busybox-image-policy.yaml
 text: name: {{ session_namespace }}-ip-cli
 ```
+
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
 
 * Create a policy 
 
