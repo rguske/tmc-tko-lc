@@ -13,7 +13,7 @@ To create these policies:
 
 * Select the **Security template** *Strict*
 
-* Provide a policy name `{{ session_namespace }}-strict-policy`{{copy}}
+* Provide a policy name `{{ session_namespace }}-sp`{{copy}}
 
 * Click **Create policy**
 
