@@ -103,10 +103,14 @@ text: name: {{ session_namespace }}-ip-cli
     ```execute-1
     tmc workspace image-policy create -f busybox-image-policy.yaml 
     ```
-* Confirm that the policy has been created    
+* Confirm that the policy has been created and synced to the {{ session_namespace }}-cluster   
 
     ```execute-1
     tmc workspace image-policy get {{ session_namespace }}-ip-cli  --workspace-name tko-day1-ops-ws 
+    ```
+
+    ```execute-1
+    kubectl describe opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config wsp.{{ session_namespace }}.{{ session_namespace }}-ip-cli.vmware-system-tmc-allowed-images-v1
     ```
 </p>
 </details>
@@ -214,7 +218,7 @@ text: name: {{ session_namespace }}-rp-cli
 * Delete the created policy 
 
     ```execute-1
-    tmc workspace image-policy delete {{ session_namespace }}-registry-policy-cli --workspace-name tko-day1-ops-ws
+    tmc workspace image-policy delete {{ session_namespace }}-rp-cli --workspace-name tko-day1-ops-ws
     ```
 </p>
 </details>
