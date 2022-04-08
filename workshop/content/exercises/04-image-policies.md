@@ -93,7 +93,7 @@ group: 1
 
 ```editor:replace-text-selection
 file: ~/busybox-image-policy.yaml
-text: "name: {{ session_namespace }}-ip-cli"
+text: "{{ session_namespace }}-ip-cli"
 ```
 
 <details>
@@ -179,7 +179,7 @@ isRegex: true
 
 ```editor:replace-text-selection
 file: ~/registry-hotsname-policy.yaml
-text: "name: {{ session_namespace }}-rp-cli"
+text: "{{ session_namespace }}-rp-cli"
 ```
 
 <details>
