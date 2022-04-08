@@ -85,11 +85,17 @@ file: ~/busybox-image-policy.yaml
 file: ~/busybox-image-policy.yaml
 text: "name: (.*)"
 isRegex: true
+group: 1
 ```
 
 ```editor:replace-text-selection
 file: ~/busybox-image-policy.yaml
 text: "name: {{ session_namespace }}-ip-cli"
+```
+
+```editor:replace-text-selection
+file: ~/busybox-image-policy.yaml
+text: name: {{ session_namespace }}-ip-cli
 ```
 
 <details>

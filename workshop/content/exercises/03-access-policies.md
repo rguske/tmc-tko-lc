@@ -148,6 +148,7 @@ Access policies can be configured at the workspace level either using TMC Consol
 <details>
 <summary><b>TMC Console</b></summary>
 <p>
+
 ![](./images/policy-access-ws-1.png)
 
 * click on the workspace: ***tko-day1-ops-ws***. Similar to the steps given above, we can grant a desired
