@@ -12,8 +12,7 @@ Additionally, you can schedule regular backups and manage the storage of backups
 
 When you perform a backup for a cluster, Tanzu Mission Control uses Velero to create a backup of the specified Kubernetes resources with snapshots of persistent volume data, and then stores the backup in the location that you specify.
 
-**Enable Data Protection for *{{ session_namespace }}-cluster* Cluster**
-
+#### Enable Data Protection for **{{ session_namespace }}-cluster** Cluster
 Before you can use Tanzu Mission Control to back up data resources in your clusters, you must set up your cluster and your target location. This procedure describes how to install the data protection extension (and Velero) on your cluster so that you can use Tanzu Mission Control to perform data protection actions using a specified backup location.
 
 ```execute-1
@@ -25,23 +24,20 @@ Wait until **STATUS** of {{ session_namespace }}-cluster cluster to become **REA
 tmc cluster dataprotection list --cluster-name {{ session_namespace }}-cluster
 ```
 
-Now we will deploy the Petclinic Spring boot sample app with persistent data in a mysql database on the cluster **{{ session_namespace }}-cluster** in the **app** Namespace.
+Now we will deploy the Petclinic Spring boot sample app with persistent data in mysql database on the cluster **{{ session_namespace }}-cluster** in the **app** Namespace.
 
 * Go to the workshop tab, on the Terminal Tab
 
 ```execute-1
 kubectl create namespace app
 ```
-* Deploy the Petclinic app in the namespace **app**
+* Deploy the Petclinic app in app namespace **app**
 
 ```execute-1
 kubectl apply -f ./petclinic-app/deployment.yaml -n app
 ```
 * Wait until the PODs in the **app** namespace are up and running 
 
-```execute-1
-kubectl get po -n app
-```
 ```dashboard:reload-dashboard
 name: Console
 prefix: Console
@@ -50,6 +46,11 @@ url: {{ingress_protocol}}://{{session_namespace}}-console.{{ingress_domain}}/#/p
 description: ""
 ```
 
+<!-- ```examiner:execute-test
+name: petclinic-app-exists
+title: Verify that Petclinic App is running
+cascade: true
+``` -->
 * Open the Petclinic app and insert a new owner to list of the sample owners list 
 
 ```dashboard:create-dashboard
@@ -67,15 +68,15 @@ url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domai
 
 For Example: 
 
-First Name: `Example`{{copy}}
+First Name: `Example`
 
-Last Name: `User`{{copy}}
+Last Name: `User`
 
-Address: `Example Address 01`{{copy}}
+Address: `Example Address 01`
 
-City: `Example City`{{copy}}
+City: `Example City`
 
-Telephone: `0123456789`{{copy}}
+Telephone: `0123456789`
 
 
 3. Confirm that the owner has been added to the list 
