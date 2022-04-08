@@ -68,15 +68,15 @@ url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domai
 
 For Example: 
 
-First Name: `Example`
+First Name: `Example`{{copy}}
 
-Last Name: `User`
+Last Name: `User`{{copy}}
 
-Address: `Example Address 01`
+Address: `Example Address 01`{{copy}}
 
-City: `Example City`
+City: `Example City`{{copy}}
 
-Telephone: `0123456789`
+Telephone: `0123456789`{{copy}}
 
 
 3. Confirm that the owner has been added to the list 
