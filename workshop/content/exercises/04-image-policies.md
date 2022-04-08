@@ -61,14 +61,20 @@ and select workspace ***tko-day1-ops-ws***
   ![](./images/policy-image-registry-custom-1.png)
 
 3. Choose Custom in the Image Registry Template field and give it a name 
-  such as `{{ session_namespace }}-image-policy-ui`{{copy}} in the Policy Name field. Under the Rule pane, type in `library/busybox`{{copy}} in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
+  such as `{{ session_namespace }}-ip-ui`{{copy}} in the Policy Name field. Under the Rule pane, type in `library/busybox`{{copy}} in the Image Name field. Optionally, you may specify the hostname and port to restrict where the images are pulled from. In addition, you may add more rules by clicking Add Another Rule.
 
   ![](./images/policy-image-registry-custom-2.png)
 
-4. Optionally, this custom rule may be made to apply to certain namespaces of this 
-workspace if desired by specifying the Label Selectors fields. At the end, click Create Policy.
+4. Optionally, this custom rule may be made to apply to certain namespaces of this workspace if desired by specifying the Label Selectors fields. At the end, click Create Policy.
 </p>
 </details>
+
+Since image policies can be assigned to a workspace/namespace, let create a new namespace and add it to the workspace **tko-day1-ops-ws**:
+
+```execute-1
+tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+```
+
 <details>
 <summary><b>TMC CLI</b></summary>
 <p>
@@ -84,10 +90,12 @@ file: ~/busybox-image-policy.yaml
 text: "name: (.*)"
 isRegex: true
 ```
+<p>
+</p>
 
 ```editor:replace-text-selection
 file: ~/busybox-image-policy.yaml
-text: name: {{ session_namespace }}-image-policy-cli
+text: name: {{ session_namespace }}-ip-cli
 ```
 
 * Create a policy 
@@ -98,7 +106,7 @@ text: name: {{ session_namespace }}-image-policy-cli
 * Confirm that the policy has been created    
 
     ```execute-1
-    tmc workspace image-policy get {{ session_namespace }}-image-policy-cli  --workspace-name tko-day1-ops-ws 
+    tmc workspace image-policy get {{ session_namespace }}-ip-cli  --workspace-name tko-day1-ops-ws 
     ```
 </p>
 </details>
@@ -107,18 +115,6 @@ text: name: {{ session_namespace }}-image-policy-cli
 
 Let's validate that our image registry policy is working by trying to deploy the busybox image to the namespace **{{ session_namespace }}**, 
 which is part of the workspace **tko-day1-ops-ws**.
-
-Make sure the namespace **{{ session_namespace }}** doesn't exist on the cluster **{{ session_namespace }}-cluster**;
-
-```execute-1
-kubectl --kubeconfig=.kube/config get ns {{ session_namespace }}
-```
-
-If it does not exist yet, create it and add it to the workspace **tko-day1-ops-ws**:
-
-```execute-1
-tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
-```
 
 Create a deployment with **nginx** image:
 
@@ -159,7 +155,7 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 * Delete the created policy 
 
     ```execute-1
-    tmc workspace image-policy delete {{ session_namespace }}-image-policy-cli  --workspace-name tko-day1-ops-ws 
+    tmc workspace image-policy delete {{ session_namespace }}-ip-cli  --workspace-name tko-day1-ops-ws 
     ```
 
 Now, let's create a policy that will allow pulling images from only a particular container registry  
@@ -168,15 +164,20 @@ Before we apply this policy using the TMC CLI, let's have a look on its definiti
 ```editor:open-file
 file: ~/registry-hotsname-policy.yaml
 ```
+
 ```editor:select-matching-text
 file: ~/registry-hotsname-policy.yaml
 text: "name: (.*)"
 isRegex: true
 ```
+<p>
+</p>
+
 ```editor:replace-text-selection
 file: ~/registry-hotsname-policy.yaml
-text: name: {{ session_namespace }}-registry-policy-cli
+text: name: {{ session_namespace }}-rp-cli
 ```
+
 <details>
 <summary><b>TMC CLI</b></summary>
 <p>
