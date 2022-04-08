@@ -8,6 +8,27 @@ Access policies can be managed at four levels:
 * cluster level 
 * workspace level.
 
+```editor:open-file
+file: ~/busybox-image-policy.yaml
+```
+
+```editor:select-matching-text
+file: ~/busybox-image-policy.yaml
+text: "name: (.*)"
+isRegex: true
+group: 1
+```
+
+```editor:replace-text-selection
+file: ~/busybox-image-policy.yaml
+text: "name: {{ session_namespace }}-ip-cli"
+```
+
+```editor:replace-text-selection
+file: ~/busybox-image-policy.yaml
+text: name: {{ session_namespace }}-ip-cli
+```
+
 ***Managing Users and Groups***
 
 Before we start to look into how TMC can help you to use access policies to implement role-based access control (RBAC) for the users and resources in your organization. We need to understand how users and groups can be created and managed. For this purpose, you can use VMware Cloud Services Platform tools to invite users to your organization and organize them into user groups. 
