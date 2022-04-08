@@ -165,7 +165,8 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
     ```
 
 Now, let's create a policy that will allow pulling images from only a particular container registry  
-Before we apply this policy using the TMC CLI, let's have a look on its definition
+
+Before we apply this policy using the TMC CLI, let's have a look on its definition:
 
 ```editor:open-file
 file: ~/registry-hotsname-policy.yaml
