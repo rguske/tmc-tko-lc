@@ -19,6 +19,7 @@ Examples of image registry polices include:
 Image registry policies cannot be set at a cluster level. To set an image registry policy, select Workspaces under the Image Registry tab in the Policies page.
 
 ---
+
 </p>
 
 To create an image registry policy for an object, you must be associated with the **.admin** role for that object
