@@ -18,7 +18,7 @@ Notice it has been assigned an quota to requests of 0.5 vCPU / 512 MB memory and
 
 ---
 
-* Provide a policy name `{{ session_namespace }}-small`{{copy}}
+* Provide a policy name `small-qp-ui`{{copy}}
 
 </p>
 </details>
@@ -40,7 +40,7 @@ group: 1
 
 ```editor:replace-text-selection
 file: ~/small-quota-policy.yaml
-text: "{{ session_namespace }}-small-cli"
+text: "{{ session_namespace }}-cluster"
 ```
 
 * Create a policy 
