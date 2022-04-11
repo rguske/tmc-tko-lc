@@ -11,9 +11,6 @@ On the flip side, this means the teams managing the platform need to be aware of
 * Click on CREATE QUOTA POLICY
 * Select the **Quota policy** *Small*
 
-</p>
-</details>
-
 ---
 **Note:** 
 
