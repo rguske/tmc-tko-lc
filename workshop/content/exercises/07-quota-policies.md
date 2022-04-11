@@ -5,15 +5,17 @@ On the flip side, this means the teams managing the platform need to be aware of
 <details>
 <summary><b>TMC Console</b></summary>
 <p>
+
 * Go to the tab with Tanzu Mission Control, click on Policies then Assignments
 * Click on the tab **Quota**, select CLUSTERS then click on Cluster Group >  **tko-day1-ops** > **{{ session_namespace }}-cluster**
 * Click on CREATE QUOTA POLICY
 * Select the **Quota policy** *Small*
+
 </p>
 </details>
 
 ---
-**Note**
+**Note:** 
 
 Notice it has been assigned an quota to requests of 0.5 vCPU / 512 MB memory and limit of 1 vCPU / 2 GB of memory per workload.
 
