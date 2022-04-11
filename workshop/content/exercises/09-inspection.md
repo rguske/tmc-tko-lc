@@ -88,6 +88,6 @@ tmc cluster inspection scan list --all
 
 Finally delete the inspection: 
 ```execute-1
-tmc cluster inspection scan delete $(tmc cluster inspection scan list --all -o json | jq '.scans[0].fullName.name') --cluster-name {{ session_namespace }}-cluster 
+tmc cluster inspection scan delete $(tmc cluster inspection scan list --all -o json | jq '.scans[0].fullName.name' -r) --cluster-name {{ session_namespace }}-cluster 
 ```
 
