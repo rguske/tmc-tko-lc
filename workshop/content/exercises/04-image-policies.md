@@ -12,6 +12,7 @@ Examples of image registry polices include:
 - Blacklist certain images/repos 
 
 <p>
+
 ---
 **Note:**
 
