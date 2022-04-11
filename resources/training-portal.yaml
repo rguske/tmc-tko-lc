@@ -17,4 +17,4 @@ spec:
       capacity: 25
       expires: 300m
       orphaned: 45m
-      reserved: 8
+      #reserved: 8

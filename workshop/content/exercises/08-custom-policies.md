@@ -22,5 +22,5 @@ kubectl apply -f deployment-without-tags.yaml --kubeconfig=.kube/config -n defau
 * Notice that the admission webhook blocks the creation due to the missing tags in the deployment metadata:
 
 ```execute-1
-kubectl get events --field-selector type=Warning --kubeconfig=.kube/config
+kubectl get events --field-selector type=Warning --kubeconfig=.kube/config -n default
 ```
