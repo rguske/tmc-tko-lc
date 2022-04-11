@@ -27,6 +27,22 @@ Notice it has been assigned an quota to requests of 0.5 vCPU / 512 MB memory and
 <summary><b>TMC CLI</b></summary>
 <p>
 
+```editor:open-file
+file: ~/small-quota-policy.yaml
+```
+
+```editor:select-matching-text
+file: ~/small-quota-policy.yaml
+text: "clusterName: (.*)"
+isRegex: true
+group: 1
+```
+
+```editor:replace-text-selection
+file: ~/small-quota-policy.yaml
+text: "{{ session_namespace }}-small-cli"
+```
+
 * Create a policy 
 
     ```execute-1
@@ -44,6 +60,9 @@ Notice it has been assigned an quota to requests of 0.5 vCPU / 512 MB memory and
 </p>
 </details>
 
+<p>
+
+</p>
 
 Now we will deploy an app with with request and limits on the cluster **{{ session_namespace }}-cluster** that has quota policy enabled.
 
