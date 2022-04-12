@@ -2,7 +2,11 @@ For many aspects of cluster management, VMware Tanzu Mission Control provides sp
 
 To implement a custom policy, you must first have a template that declaratively defines the structure of the policy. The custom policy template can then be used to create and apply custom policies to your clusters.
 
-Custom policies in Tanzu Mission Control are implemented using the Gatekeeper project from Open Policy Agent (OPA). To create a custom policy template, you use Rego, the policy language of OPA. For more information about Rego, see the OPA [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) documentation
+Custom policies in Tanzu Mission Control are implemented using the Gatekeeper project from Open Policy Agent (OPA). To create a custom policy template, you use Rego, the policy language of OPA. For more information about Rego, see the OPA [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) documentation.
+
+<details>
+<summary><b>TMC Console</b></summary>
+<p>
 
 * On the Policies page, click the Custom tab, and then click the Clusters organization view
 * Use the tree control to navigate to **{{ session_namespace }}-cluster** Cluster under the Cluster Group **tko-day1-ops** 

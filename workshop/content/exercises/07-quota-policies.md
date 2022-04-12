@@ -55,7 +55,7 @@ text: "{{ session_namespace }}-cluster"
     ```
 
     ```execute-1
-    kubectl describe resourcequota tmc.cp.{{ session_namespace }}-small-cli --kubeconfig=.kube/config -n default
+    kubectl describe resourcequota tmc.cp.small-qp-cli --kubeconfig=.kube/config -n default
     ```
 </p>
 </details>
@@ -71,26 +71,42 @@ Now we will deploy an app with with request and limits on the cluster **{{ sessi
 ```execute-1
 kubectl apply -f kurd.yaml --kubeconfig=.kube/config -n default
 ```
+
+* Confirm that the deployment is up and running
+
+```execute-1
+kubectl get po -n default
+```
+
 See the updated settings on the namespace and note the data displayed in the “used” column. You will now notice a difference, with the new pod just created having used some of the quota:
 
 ```execute-2
-kubectl describe resourcequota tmc.cp.{{ session_namespace }}-small-policy --kubeconfig=.kube/config -n default
+kubectl describe resourcequota tmc.cp.small-qp-cli --kubeconfig=.kube/config -n default
 ```
 To continue the process, we will scale our deployment to 3 replicas:
 
 ```execute-1
 kubectl scale deployment kuard --replicas=3 --kubeconfig=.kube/config -n default
 ```
+* We will see that only two pods a running though we wanted to scale our deployment to three pods
+
+```execute-1
+kubectl get po -n default
+```
 
 Check the consumed quota again
 ```execute-2
-kubectl describe resourcequota tmc.cp.{{ session_namespace }}-small-policy --kubeconfig=.kube/config -n default
+kubectl describe resourcequota tmc.cp.small-qp-cli --kubeconfig=.kube/config -n default
 ```
 * We will now receive an error message that states we don’t have enough quota left to create the new pod:
 
 ```execute-1
 kubectl get events --field-selector type=Warning --kubeconfig=.kube/config -n default
 ```
-You can opt to create a custom policy if you don't want to use any of the pre-defined ones or you wish to implement more detailed policies on objects such as: CPU, memory, storage, or even limits on most Kubernetes objects within a namespace.
+* Cleanup the created resources  
 
-Once complete, exit out of the wizard.
+```execute-1
+kubectl delete -f kurd.yaml --kubeconfig=.kube/config -n default
+```
+
+You can also opt to create a custom policy if you don't want to use any of the pre-defined ones or you wish to implement more detailed policies on objects such as: CPU, memory, storage, or even limits on most Kubernetes objects within a namespace.

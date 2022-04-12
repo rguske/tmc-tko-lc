@@ -38,7 +38,7 @@ Under Image registry template dropdown, select Require Digest:
 
 ![](./images/policy-image-registry-digest-1.png)
 
-Give it a name such as `digest-image-policy`{{copy}} and proceed with default values 
+Give it a name such as `{{ session_namespace }}-di-policy`{{copy}} and proceed with default values 
 for other fields. If needed, you may specify label selectors to 
 include or exclude certain namespaces for this policy. 
 Finally click Create Policy. 
@@ -50,10 +50,53 @@ registry policies to specify a name-tag allowlist, block the latest tag, or even
 
 Once created, you may edit or delete an image registry policy.
 
-Since image policies can be assigned to a workspace/namespace only, let create a new namespace and add it to the workspace **tko-day1-ops-ws**:
+
+Since image policies can be assigned to a workspace or at the organization only that will cascade to the namespace(s) underneath. Let's create a new namespace and add it to the workspace **tko-day1-ops-ws**:
 
 ```execute-1
 tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+```
+
+Let's validate that our image *`Require Digest`* registry policy is working by trying to deploy a container image with and without a gigest to the namespace **{{ session_namespace }}**
+ 
+
+Create a deployment with **nginx** image:
+
+```execute-1
+kubectl --kubeconfig=.kube/config create deployment nginx-without-digest --image=nginx -n {{ session_namespace }}
+```
+
+Notice the deployment is blocked and won't progress because of *`Require Digest`* registry policy.
+
+```execute-1
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+```
+
+
+Delete the deployment
+
+```execute-1
+kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
+```
+
+```execute-all
+clear
+```
+
+Now let's deploy a nginx container with digest to check if the policy will allow it run
+
+```execute-1
+kubectl --kubeconfig=.kube/config create deployment nginx-without-digest --image=nginx:sha256:98ec00a8e99c4b6636596db6fa8b82346462bf99f54f107abc97ee8f384c5963 -n {{ session_namespace }}
+```
+Confirm that the busybox pod has been deployed
+
+```execute-1
+kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
+```
+Again, check the events if there is any error
+
+```execute-1
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
 
 Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks any container image that doesn't have the name `busybox`: 
@@ -135,7 +178,9 @@ Notice the deployment is blocked and won't progress because of the image rules.
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
+
 Delete the deployment
+
 ```execute-1
 kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
 ```
