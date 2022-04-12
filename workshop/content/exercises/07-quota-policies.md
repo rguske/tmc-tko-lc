@@ -51,7 +51,7 @@ text: "{{ session_namespace }}-cluster"
 * Confirm that the policy has been created and synced to the {{ session_namespace }}-cluster   
 
     ```execute-1
-    tmc cluster namespace-quota-policy get {{ session_namespace }}-small-cli  --workspace-name tko-day1-ops-ws 
+    tmc cluster namespace-quota-policy get small-qp-cli --cluster-name {{ session_namespace }}-cluster 
     ```
 
     ```execute-1
