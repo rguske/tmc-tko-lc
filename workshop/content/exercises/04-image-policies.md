@@ -60,43 +60,67 @@ tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {
 Let's validate that our image *`Require Digest`* registry policy is working by trying to deploy a container image with and without a gigest to the namespace **{{ session_namespace }}**
  
 
-Create a deployment with **nginx** image:
+* Create a deployment with **nginx** image:
 
 ```execute-1
 kubectl --kubeconfig=.kube/config create deployment nginx-without-digest --image=nginx -n {{ session_namespace }}
 ```
 
-Notice the deployment is blocked and won't progress because of *`Require Digest`* registry policy.
+* Notice the deployment is blocked and won't progress because of *`Require Digest`* registry policy.
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
 
-
-Delete the deployment
+* Confirm that the nginx pod hasn't been deployed
 
 ```execute-1
-kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
+```
+
+* Delete the deployment
+
+```execute-1
+kubectl --kubeconfig=.kube/config delete deployment nginx-without-digest -n {{ session_namespace }}
 ```
 
 ```execute-all
 clear
 ```
 
-Now let's deploy a nginx container with digest to check if the policy will allow it run
+* Now let's deploy a nginx container with digest to check if the policy will allow it run
 
 ```execute-1
-kubectl --kubeconfig=.kube/config create deployment nginx-without-digest --image=nginx:sha256:98ec00a8e99c4b6636596db6fa8b82346462bf99f54f107abc97ee8f384c5963 -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config create deployment nginx-with-digest --image=nginx@sha256:2275af0f20d71b293916f1958f8497f987b8d8fd8113df54635f2a5915002bf1 -n {{ session_namespace }}
 ```
-Confirm that the busybox pod has been deployed
+
+* Confirm that the nginx pod has been deployed
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
 ```
-Again, check the events if there is any error
+
+* Again, check the events if there is any error
+
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+```
+
+* Delete the deployment
+
+```execute-1
+kubectl --kubeconfig=.kube/config delete deployment nginx-without-digest -n {{ session_namespace }}
+```
+
+* Delete the created policy 
+
+```execute-1
+tmc workspace image-policy delete {{ session_namespace }}-di-policy --workspace-name tko-day1-ops-ws
+```
+
+```execute-all
+clear
 ```
 
 Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks any container image that doesn't have the name `busybox`: 
@@ -105,8 +129,7 @@ Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks 
 <summary><b>TMC Console</b></summary>
 <p>
 
-1. Click Workspaces under the Image Registry tab in the Policies page 
-and select workspace ***tko-day1-ops-ws***
+1. Click Workspaces under the Image Registry tab in the Policies page and select workspace ***tko-day1-ops-ws***
 
 2. Click Create Image Registry Policy
 
@@ -121,7 +144,7 @@ and select workspace ***tko-day1-ops-ws***
 </p>
 </details>
 
-Before we apply this policy using the TMC CLI, let's have a look on its definition
+Before we apply this policy using the TMC CLI, let's have a look on its definition and do some modifications
 
 ```editor:open-file
 file: ~/busybox-image-policy.yaml
@@ -167,19 +190,19 @@ which is part of the workspace **tko-day1-ops-ws**.
 
 Wait for 20 ~ 30 seconds for the policy to get effective 
 
-Create a deployment with **nginx** image:
+* Create a deployment with **nginx** image:
 
 ```execute-1
-kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config create deployment nginx --image=nginx -n {{ session_namespace }}
 ```
 
-Notice the deployment is blocked and won't progress because of the image rules.
+* Notice the deployment is blocked and won't progress because of the image rule
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
 ```
 
-Delete the deployment
+* Delete the deployment
 
 ```execute-1
 kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
@@ -189,17 +212,17 @@ kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }
 clear
 ```
 
-Now let's deploy a busybox container to check if the policy will allow it run
+* Now let's deploy a busybox container to check if the policy will allow it run
 
 ```execute-1
 kubectl --kubeconfig=.kube/config apply -f busybox-deployment.yaml -n {{ session_namespace }}
 ```
-Confirm that the busybox pod has been deployed
+* Confirm that the busybox pod has been deployed
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
 ```
-Again, check the events if there is any error
+* Again, check the events if there is any error
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
@@ -207,9 +230,9 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 
 * Delete the created policy 
 
-    ```execute-1
-    tmc workspace image-policy delete {{ session_namespace }}-ip-cli  --workspace-name tko-day1-ops-ws 
-    ```
+```execute-1
+tmc workspace image-policy delete {{ session_namespace }}-ip-cli  --workspace-name tko-day1-ops-ws 
+```
 
 Now, let's create a policy that will allow pulling images from only a particular container registry  
 
@@ -245,18 +268,18 @@ text: "{{ session_namespace }}-rp-cli"
     ```execute-1
     tmc workspace image-policy get {{ session_namespace }}-rp-cli  --workspace-name tko-day1-ops-ws 
     ```
-    Create a deployment with **nginx** image from docker hub:
+* Create a deployment with **nginx** image from docker hub:
 
     ```execute-1
     kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
     ```
 
-    Notice the deployment is blocked and won't progress because of the registry rules.
+* Notice the deployment is blocked and won't progress because of the registry rules.
 
     ```execute-1
     kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
     ```
-    Delete the deployment
+* Delete the deployment
     ```execute-1
     kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
     ```
