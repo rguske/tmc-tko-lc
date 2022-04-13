@@ -148,7 +148,8 @@ Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks 
 4. Optionally, this custom rule may be made to apply to certain namespaces of this workspace if desired by specifying the Label Selectors fields. At the end, click Create Policy.
 </p>
 </details>
-
+<p>
+</p>
 Before we apply this policy using the TMC CLI, let's have a look on its definition and do some modifications
 
 ```editor:open-file
@@ -185,15 +186,14 @@ text: "{{ session_namespace }}-ip-cli"
     ```execute-1
     kubectl describe opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config wsp.{{ session_namespace }}.{{ session_namespace }}-ip-cli.vmware-system-tmc-allowed-images-v1
     ```
+* Repeat the previous command until the policy **Status** changes to **True**    
 </p>
 </details>
 <p>
 </p>
 
 Let's validate that our image registry policy is working by trying to deploy the busybox image to the namespace **{{ session_namespace }}**, 
-which is part of the workspace **tko-day1-ops-ws**.
-
-Wait for 20 ~ 30 seconds for the policy to get effective 
+which is part of the workspace **tko-day1-ops-ws**. 
 
 * Create a deployment with **nginx** image:
 
