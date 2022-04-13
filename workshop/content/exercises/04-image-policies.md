@@ -59,7 +59,7 @@ Once created, you may edit or delete an image registry policy.
 Since image policies can be assigned to a workspace or at the organization only that will cascade to the namespace(s) underneath. Let's create a new namespace and add it to the workspace **tko-day1-ops-ws**:
 
 ```execute-1
-tmc cluster namespace create  -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+tmc cluster namespace create -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
 ```
 
 Let's validate that our image *`Require Digest`* registry policy is working by trying to deploy a container image with and without a gigest to the namespace **{{ session_namespace }}**
@@ -201,7 +201,7 @@ which is part of the workspace **tko-day1-ops-ws**.
 kubectl --kubeconfig=.kube/config create deployment nginx --image=nginx -n {{ session_namespace }}
 ```
 
-* Notice the deployment is blocked and won't progress because of the image rule
+* Notice the deployment is blocked and won't progress because of the image policy that allows only busybox image name to be deployed
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }} --sort-by='.metadata.creationTimestamp'
@@ -210,7 +210,7 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 * Delete the deployment
 
 ```execute-1
-kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config delete deployment nginx -n {{ session_namespace }}
 ```
 
 ```execute-all
@@ -238,8 +238,13 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 ```execute-1
 tmc workspace image-policy delete {{ session_namespace }}-ip-cli  --workspace-name tko-day1-ops-ws 
 ```
+* Delete the busybox deployment
 
-Now, let's create a policy that will allow pulling images from only a particular container registry  
+```execute-1
+kubectl --kubeconfig=.kube/config delete -f busybox-deployment.yaml -n {{ session_namespace }}
+```
+
+Now, let's create a policy that will allow pulling images from a particular container registry only
 
 Before we apply this policy using the TMC CLI, let's have a look on its definition:
 

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-server
+  name: web-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-server
+  template:
+    metadata:
+      labels:
+        app: web-server
+    spec:
+      containers:
+        - image: public.ecr.aws/lts/nginx:latest
+          name: web-server
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: web-server
+  name: web-server
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: web-server

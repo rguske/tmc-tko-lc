@@ -5,8 +5,7 @@ Tanzu Mission Control implements network policies using Kubernetes native networ
 To create a network policy for an object, you must be associated 
 with the *.admin* role for that object.
 
-Let us follow the following procedure to create a network policy that allows all ingress
-traffic in our workspace  **tko-day1-ops-ws**:
+Let us follow the following procedure to create a network policy that allows all ingress traffic in our workspace  **tko-day1-ops-ws**:
 
 1. On the Policies page, click the Network tab, and then click the Workspaces organization view.
 
@@ -17,22 +16,61 @@ traffic in our workspace  **tko-day1-ops-ws**:
 3. Click Create Network Policy.
 
 4. Select the network policy recipe to use. Choose one of the values from the dropdown. Available values 
-are: *allow-all* (allow all ingress traffic), *deny-all* (deny all ingress traffic), *allow-all-to-pods* (allow all ingress traffic to selected pods), *deny-all-to-pods* (deny all ingress traffic to selected pods), *custom-ingress* (define a custom ingress policy), *custom-egress* (define an egress policy). In this case, we select *allow-all*.
+are:
+
+- *`allow-all`* (allow all ingress traffic)
+- *`deny-all`* (deny all ingress traffic)
+- *`allow-all-to-pods`* (allow all ingress traffic to selected pods)
+- *`deny-all-to-pods`* (deny all ingress traffic to selected pods)
+- *`custom-ingress`* (define a custom ingress policy)
+- *`custom-egress`* (define an egress policy). In this case, we select *allow-all*.
 
 
 5. Provide a policy name: `{{ session_namespace }}-aa-policy`{{copy}}.
 
-6. If you select a pod-specific recipe, you must specify the labels to identify the pods 
-to which the policy applies. Under Labels, enter the key and value 
-on which to filter pods.  Click Add Label.
-You can optionally repeat this step to add multiple labels. Each label that you add 
-increases the potential group of pods that are impacted by the policy. 
-The policy impacts the pods that have any of the labels that you include.
-
-1. If you select the custom-egress or custom-ingress recipe, you can add a rule to define criteria to restrict network traffic. 
-
-1. Click Create Policy.
+6. Click Create Policy.
 
   ![](./images/policy-network-allow-all.png) 
 
+Now let's create a `custom-ingress` policy and test it. This policy will allow ingress network connection to a `web-server` POD from `allowed-client` POD only. 
+
+Before we apply this policy using the TMC CLI, let's have a look on its definition and do some modifications
+
+```editor:open-file
+file: ~/network-policy.yaml
+```
+
+```editor:select-matching-text
+file: ~/network-policy.yaml
+text: "name: (.*)"
+isRegex: true
+group: 1
+```
+
+```editor:replace-text-selection
+file: ~/network-policy.yaml
+text: "{{ session_namespace }}-ci-policy
+```
+
+* Create a policy 
+
+    ```execute-1
+    tmc workspace network-policy create -f network-policy.yaml 
+    ```
+* Confirm that the policy has been created and synced to the {{ session_namespace }}-cluster   
+
+    ```execute-1
+    tmc workspace network-policy get {{ session_namespace }}-ci-policy  --workspace-name tko-day1-ops-ws 
+    ```
+
+    ```execute-1
+    kubectl describe networkpolicies --kubeconfig=.kube/config tmc.wsp.{{ session_namespace }}.{{ session_namespace }}-ci-policy -n {{ session_namespace }}
+    ```
+Let's validate that our network policy is working by trying to deploy three PODs (`web-server`, `allowed-client` and `not-allowed-client`) to the namespace **{{ session_namespace }}**, which is part of the workspace **tko-day1-ops-ws**. 
+
+* Create a deployment with **nginx** image:
+
+```execute-1
+kubectl --kubeconfig=.kube/config create deployment nginx --image=nginx -n {{ session_namespace }}
+```
 

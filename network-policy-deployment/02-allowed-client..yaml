@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: allowed-client
+  labels:
+    app: allowed-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: allowed-client
+  template:
+    metadata:
+      labels:
+        app: allowed-client
+    spec:
+      containers:
+        - name: allowed-client
+          image: gcr.io/gcp-runtimes/ubuntu_18_0_4:latest
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/bash", "-c"]
+          args:
+            - apt-get install curl -y;
+              sleep infinity;
