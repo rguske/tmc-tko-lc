@@ -44,6 +44,7 @@ EOF
 
 kind get clusters | egrep -e "$SESSION_NAME-cluster"
 if [ "$?" != "0" ]; then
-  kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=900s
+  kind create cluster --name $SESSION_NAME-cluster --config /opt/workshop/setup.d/kind-config.yaml --wait=30s
+  kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
   exit 0
 fi
