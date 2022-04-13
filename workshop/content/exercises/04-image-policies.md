@@ -16,9 +16,7 @@ Examples of image registry polices include:
 <p style='margin-top:1em; text-align:left'>
 <b>Note:</b></p>
 <p style='margin-left:1em;'>
-
 Image registry policies cannot be set at a cluster level. To set an image registry policy, select Workspaces under the Image Registry tab in the Policies page.
-
 </p>
 </span>
 </div>
