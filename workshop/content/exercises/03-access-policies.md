@@ -66,7 +66,7 @@ There are predefined roles for each type of object in your organization. Each ro
 </p>
 </span>
 </div>
-
+<p></p>
 
 <b><u>Access Policy at Organization Level</u></b>
 
@@ -106,7 +106,9 @@ When you configure an access policy at the organization level, it will cascade t
     ```   
 </p> 
 </details>
-<p></p>
+
+<p>
+</p>
 
 <b><u>Access Policy at Cluster Group Level and at Cluster Level</u></b>
 
