@@ -1,0 +1,8 @@
+fullName:
+  clusterName: cluster
+  name: strict-security-policy
+spec:
+  input: {}
+  recipe: strict
+  recipeVersion: v1
+  type: security-policy

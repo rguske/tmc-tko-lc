@@ -5,6 +5,10 @@ Using VMware Tanzu Mission Control, you can make the deployments to your cluster
 
 To create these policies:
 
+<details>
+<summary><b>TMC Console</b></summary>
+<p>
+
 * Click on the **Security** tab within the policy assignments section and click on the **Clusters** view if you are still seeing **Workspaces**.
 
 * Click on the **{{ session_namespace }}-cluster** Cluster under the Cluster Group **tko-day1-ops** 
@@ -13,15 +17,24 @@ To create these policies:
 
 * Select the **Security template** *Strict*
 
-* Provide a policy name `{{ session_namespace }}-sp`{{copy}}
+* Provide a policy name `{{ session_namespace }}-sp-ui`{{copy}}
 
 * Click **Create policy**
+
+</p>
+</details>
+
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
 
 * Confirm that the policy has been created
 
 ```execute-2
 kubectl get opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config
 ```
+</p>
+</details>
 
 Now we will deploy an app with root privileges on the cluster **{{ session_namespace }}-cluster** that has security policy enabled.
 
