@@ -47,7 +47,17 @@ To grant a user or group an access privilege, click on Policies and then Assigme
 
 To edit the access policy for an object, you must be associated with the ***.admin*** role for that object.
 
-----
+
+<div class="warning" style='background-color:#E9D8FD; color: #69337A; border-left: solid #805AD5 4px; border-radius: 4px; padding:0.7em;'>
+<span>
+<p style='margin-top:1em; text-align:left'>
+<b>Note:</b></p>
+<p style='margin-left:1em;'>
+There are predefined roles for each type of object in your organization. Each role defines a set of permissions that apply to a given type of object. By contrast, the access policy where you define the role binding defines the scope to which the role applies. The set of roles that can be assigned at a particular level in your organization depends on the level of the object. For example the set of roles that can be assigned at <b>Cluster Group</b> is different than the set of roles that can be assigned to a <b>Cluster</b> 
+</p>
+</span>
+</div>
+
 
 **Note:**
 
@@ -60,8 +70,6 @@ There are predefined roles for each type of object in your organization. Each ro
 **Cluster Roles**
 
 ![](./images/cluster-roles.png)
-
-----
 
 <b><u>Access Policy at Organization Level</u></b>
 
