@@ -1,0 +1,19 @@
+fullName:
+  name: test
+  workspaceName: tko-day1-ops-ws
+spec:
+  input:
+    rules:
+      - ports:
+          - port: "80"
+            protocol: TCP
+        ruleSpec:
+          - podSelector:
+              - key: app
+                value: allowed-client
+    toPodLabels:
+      - key: app
+        value: web-server
+  recipe: custom-ingress
+  recipeVersion: v1
+  type: network-policy
