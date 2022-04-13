@@ -49,7 +49,7 @@ group: 1
 
 ```editor:replace-text-selection
 file: ~/network-policy.yaml
-text: "{{ session_namespace }}-ci-policy
+text: "{{ session_namespace }}-ci-policy"
 ```
 
 * Create a policy 
