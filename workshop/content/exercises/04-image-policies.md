@@ -105,7 +105,7 @@ kubectl --kubeconfig=.kube/config create deployment nginx-with-digest --image=ng
 kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
 ```
 
-* Again, check the events if there is any error
+* Again, check the events if there is any error, ignore the errors from the previous test
 
 
 ```execute-1
@@ -115,7 +115,7 @@ kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{
 * Delete the deployment
 
 ```execute-1
-kubectl --kubeconfig=.kube/config delete deployment nginx-without-digest -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config delete deployment nginx-with-digest -n {{ session_namespace }}
 ```
 
 * Delete the created policy 
