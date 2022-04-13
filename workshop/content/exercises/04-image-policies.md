@@ -74,7 +74,7 @@ kubectl --kubeconfig=.kube/config create deployment nginx-without-digest --image
 * Notice the deployment is blocked and won't progress because of *`Require Digest`* registry policy.
 
 ```execute-1
-kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }} --sort-by='.metadata.creationTimestamp'
 ```
 
 * Confirm that the nginx pod hasn't been deployed
@@ -109,7 +109,7 @@ kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
 
 
 ```execute-1
-kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }} --sort-by='.metadata.creationTimestamp'
 ```
 
 * Delete the deployment
@@ -204,7 +204,7 @@ kubectl --kubeconfig=.kube/config create deployment nginx --image=nginx -n {{ se
 * Notice the deployment is blocked and won't progress because of the image rule
 
 ```execute-1
-kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }} --sort-by='.metadata.creationTimestamp'
 ```
 
 * Delete the deployment
@@ -230,7 +230,7 @@ kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
 * Again, check the events if there is any error
 
 ```execute-1
-kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }} --sort-by='.metadata.creationTimestamp'
 ```
 
 * Delete the created policy 
@@ -282,7 +282,7 @@ text: "{{ session_namespace }}-rp-cli"
 * Notice the deployment is blocked and won't progress because of the registry rules.
 
     ```execute-1
-    kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }}
+    kubectl --kubeconfig=.kube/config get events --field-selector type=Warning -n {{ session_namespace }} --sort-by='.metadata.creationTimestamp'
     ```
 * Delete the deployment
     ```execute-1
