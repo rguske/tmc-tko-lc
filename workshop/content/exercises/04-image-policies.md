@@ -11,12 +11,19 @@ Examples of image registry polices include:
 - Stop container images with latest tag from deploying 
 - Blacklist certain images/repos 
 
----
-**Note:**
+<div class="info" style='background-color:#e7f3fe; color: #000000; border-left: solid #2196F3 4px; border-radius: 4px; padding:0.7em;'>
+<span>
+<p style='margin-top:1em; text-align:left'>
+<b>Note:</b></p>
+<p style='margin-left:1em;'>
 
 Image registry policies cannot be set at a cluster level. To set an image registry policy, select Workspaces under the Image Registry tab in the Policies page.
 
----
+</p>
+</span>
+</div>
+<p>
+</p>
 
 To create an image registry policy for an object, you must be associated with the **.admin** role for that object
 
