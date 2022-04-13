@@ -80,14 +80,22 @@ kubectl --kubeconfig=.kube/config apply -f network-policy-deployment/ -n {{ sess
 kubectl --kubeconfig=.kube/config get po -n {{ session_namespace }}
 ```
 
-* Run `curl command` from `not-allowed-client` POD to test the connection towards `web-server` POD
+* Run `curl command` from `not-allowed-client` POD to test the connection towards `web-server` POD.
 
 ```execute-1
-kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/not-allowed-client -- curl http://web-server:80
+kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/not-allowed-client -- curl http://web-server:80 --connect-timeout 3 -s
 ```
+
+You should receive **command terminated with exit code 28** Error
 
 * Run `curl command` from `allowed-client` POD to test the connection towards `web-server` POD
 
 ```execute-1
-kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/allowed-client -- curl http://web-server:80
+kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/allowed-client -- curl http://web-server:80 --connect-timeout 3 -s
+```
+
+* Delete the test PODs:
+
+```execute-1
+kubectl --kubeconfig=.kube/config delete -f network-policy-deployment/ -n {{ session_namespace }}
 ```
