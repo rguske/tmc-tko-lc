@@ -68,9 +68,20 @@ text: "{{ session_namespace }}-ci-policy
     ```
 Let's validate that our network policy is working by trying to deploy three PODs (`web-server`, `allowed-client` and `not-allowed-client`) to the namespace **{{ session_namespace }}**, which is part of the workspace **tko-day1-ops-ws**. 
 
-* Create a deployment with **nginx** image:
+* Deploy the test PODs:
 
 ```execute-1
-kubectl --kubeconfig=.kube/config create deployment nginx --image=nginx -n {{ session_namespace }}
+kubectl --kubeconfig=.kube/config apply -f network-policy-deployment/ -n {{ session_namespace }}
 ```
 
+* Run `curl command` from `not-allowed-client` POD to test the connection towards `web-server` POD
+
+```execute-1
+kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/not-allowed-client -- curl http://web-server:80
+```
+
+* Run `curl command` from `allowed-client` POD to test the connection towards `web-server` POD
+
+```execute-1
+kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/allowed-client -- curl http://web-server:80
+```
