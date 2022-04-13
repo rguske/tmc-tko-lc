@@ -66,12 +66,18 @@ text: "{{ session_namespace }}-ci-policy"
     ```execute-1
     kubectl describe networkpolicies --kubeconfig=.kube/config tmc.wsp.{{ session_namespace }}.{{ session_namespace }}-ci-policy -n {{ session_namespace }}
     ```
+
 Let's validate that our network policy is working by trying to deploy three PODs (`web-server`, `allowed-client` and `not-allowed-client`) to the namespace **{{ session_namespace }}**, which is part of the workspace **tko-day1-ops-ws**. 
 
 * Deploy the test PODs:
 
 ```execute-1
 kubectl --kubeconfig=.kube/config apply -f network-policy-deployment/ -n {{ session_namespace }}
+```
+* Confirm that the pods are up and running
+
+```execute-1
+kubectl --kubeconfig=.kube/config get po -n {{ session_namespace }}
 ```
 
 * Run `curl command` from `not-allowed-client` POD to test the connection towards `web-server` POD

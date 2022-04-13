@@ -11,6 +11,7 @@ kind: Cluster
 networking:
   apiServerPort: 6443
   apiServerAddress: $(hostname -i)
+  disableDefaultCNI: true
   podSubnet: "10.245.0.0/16"
   serviceSubnet: "10.246.0.0/16"
 nodes:
