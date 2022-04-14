@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  labels:
+    env: test
 spec:
   selector:
     matchLabels:
@@ -55,6 +57,7 @@ kind: Deployment
 metadata:
   labels:
     app: petclinic
+    env: test
   name: spring-petclinic
 spec:
   replicas: 1

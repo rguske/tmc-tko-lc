@@ -17,7 +17,7 @@ To create these policies:
 
 * Select the **Security template** *Strict*
 
-* Provide a policy name `{{ session_namespace }}-sp-ui`{{copy}}
+* Provide a policy name `strict-security-policy-ui`{{copy}}
 
 * Click **Create policy**
 
@@ -28,11 +28,39 @@ To create these policies:
 <summary><b>TMC CLI</b></summary>
 <p>
 
-* Confirm that the policy has been created
+* Before we apply this policy using the TMC CLI, let's have a look on its definition and do some modifications
 
-```execute-2
-kubectl get opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config
+```editor:open-file
+file: ~/strict-security-policy.yaml
 ```
+
+```editor:select-matching-text
+file: ~/strict-security-policy.yaml
+text: "clusterName: (.*)"
+isRegex: true
+group: 1
+```
+
+```editor:replace-text-selection
+file: ~/strict-security-policy.yaml
+text: "{{ session_namespace }}-cluster"
+```
+* Create the image policy 
+
+    ```execute-1
+    tmc cluster security-policy create -f strict-security-policy.yaml
+    ```
+
+* Confirm that the policy has been created and synced to the {{ session_namespace }}-cluster   
+
+    ```execute-1
+    tmc cluster security-policy get strict-security-policy-cli --cluster-name {{ session_namespace }}-cluster
+    ```
+
+    ```execute-2
+    kubectl get opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config
+    ```
+    You should get both `strict-security-policy-cli` and `strict-security-policy-ui` listed
 </p>
 </details>
 
@@ -41,13 +69,23 @@ Now we will deploy an app with root privileges on the cluster **{{ session_names
 * Go to the workshop tab, on the Terminal Tab
 
 ```execute-1
-kubectl create deployment nginx-{{ session_namespace }} --image=nginx --kubeconfig=.kube/config -n default
+kubectl create deployment nginx --image=nginx --kubeconfig=.kube/config -n default
+```
+
+* Check if the deployment has been created or not
+
+```execute-1
+kubectl get po --kubeconfig=.kube/config -n default
+```
+
+```execute-1
+kubectl get rs --kubeconfig=.kube/config -n default
 ```
 
 * Notice that the admission webhook blocks the creation due to privilege escalation being blocked:
 
 ```execute-1
-kubectl get events --field-selector type=Warning --kubeconfig=.kube/config -n default
+kubectl get events --field-selector type=Warning --kubeconfig=.kube/config -n default --sort-by='.metadata.creationTimestamp'
 ```
 
 This is because the security policy is enabled on the cluster is blocking any cluster needing privileged mode/root access implemented by Tanzu Mission Control.
@@ -55,7 +93,7 @@ This is because the security policy is enabled on the cluster is blocking any cl
 * Delete the deployment
 
 ```execute-1
-kubectl delete deployment nginx-{{ session_namespace }} --kubeconfig=.kube/config -n default
+kubectl delete deployment nginx --kubeconfig=.kube/config -n default
 ```
 
 * Now let's deploy an application that is **Strict Policy** compliant 
@@ -72,3 +110,16 @@ text: "securityContext"
 before: 0
 after: 2
 ```
+* Delete the deployment
+
+    ```execute-1
+    kubectl delete -f deployment-with-security-policy.yaml --kubeconfig=.kube/config -n default
+    ```
+* Delete the created policies  
+
+    ```execute-1
+    tmc workspace security-policy delete strict-security-policy-cli --cluster-name {{ session_namespace }}-cluster
+    ```
+    ```execute-1
+    tmc workspace security-policy delete strict-security-policy-ui --cluster-name {{ session_namespace }}-cluster
+    ```

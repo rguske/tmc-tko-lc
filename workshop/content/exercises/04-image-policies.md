@@ -172,12 +172,12 @@ text: "{{ session_namespace }}-ip-cli"
 <summary><b>TMC CLI</b></summary>
 <p>
 
-* Create a policy 
+* Create the image policy 
 
     ```execute-1
     tmc workspace image-policy create -f busybox-image-policy.yaml 
     ```
-* Confirm that the policy has been created and synced to the {{ session_namespace }}-cluster   
+* Confirm that the image policy has been created and synced to the {{ session_namespace }}-cluster   
 
     ```execute-1
     tmc workspace image-policy get {{ session_namespace }}-ip-cli  --workspace-name tko-day1-ops-ws 

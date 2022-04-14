@@ -10,20 +10,26 @@ On the flip side, this means the teams managing the platform need to be aware of
 * Click on the tab **Quota**, select CLUSTERS then click on Cluster Group >  **tko-day1-ops** > **{{ session_namespace }}-cluster**
 * Click on CREATE QUOTA POLICY
 * Select the **Quota policy** *Small*
+* Provide a policy name `small-qp-ui`{{copy}}
 
----
-**Note:** 
+<div class="info" style='background-color:#e7f3fe; color: #000000; border-left: solid #2196F3 4px; border-radius: 4px; padding:0.7em;'>
+<span>
+<p style='margin-top:1em; text-align:left'>
+<b>Note:</b></p>
+<p style='margin-left:1em;'>
 
 Notice it has been assigned an quota to requests of 0.5 vCPU / 512 MB memory and limit of 1 vCPU / 2 GB of memory per workload.
 
----
-
-* Provide a policy name `small-qp-ui`{{copy}}
+</p>
+</span>
+</div>
 
 </p>
 </details>
 
 <details>
+<p>
+</p>
 <summary><b>TMC CLI</b></summary>
 <p>
 
@@ -75,7 +81,7 @@ kubectl apply -f kurd.yaml --kubeconfig=.kube/config -n default
 * Confirm that the deployment is up and running
 
 ```execute-1
-kubectl get po -n default
+kubectl get po -n default --kubeconfig=.kube/config
 ```
 
 See the updated settings on the namespace and note the data displayed in the “used” column. You will now notice a difference, with the new pod just created having used some of the quota:
@@ -91,22 +97,25 @@ kubectl scale deployment kuard --replicas=3 --kubeconfig=.kube/config -n default
 * We will see that only two pods a running though we wanted to scale our deployment to three pods
 
 ```execute-1
-kubectl get po -n default
+kubectl get po -n default --kubeconfig=.kube/config
 ```
 
 Check the consumed quota again
 ```execute-2
 kubectl describe resourcequota tmc.cp.small-qp-cli --kubeconfig=.kube/config -n default
 ```
-* We will now receive an error message that states we don’t have enough quota left to create the new pod:
+* We should receive an error message states that we don’t have enough quota left to create the new pod:
 
 ```execute-1
-kubectl get events --field-selector type=Warning --kubeconfig=.kube/config -n default
+kubectl get events --field-selector type=Warning --kubeconfig=.kube/config -n default --sort-by='.metadata.creationTimestamp'
 ```
-* Cleanup the created resources  
+* Cleanup the created resources and policy 
 
 ```execute-1
 kubectl delete -f kurd.yaml --kubeconfig=.kube/config -n default
+```
+```execute-1
+tmc cluster namespace-quota-policy delete small-qp-cli --cluster-name {{ session_namespace }}-cluster 
 ```
 
 You can also opt to create a custom policy if you don't want to use any of the pre-defined ones or you wish to implement more detailed policies on objects such as: CPU, memory, storage, or even limits on most Kubernetes objects within a namespace.

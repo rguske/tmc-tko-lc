@@ -1,6 +1,6 @@
 fullName:
   clusterName: cluster
-  name: strict-security-policy
+  name: strict-security-policy-cli
 spec:
   input: {}
   recipe: strict
