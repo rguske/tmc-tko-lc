@@ -302,12 +302,20 @@ text: "{{ session_namespace }}-rp-cli"
     ```execute-1
     tmc workspace image-policy get {{ session_namespace }}-rp-cli  --workspace-name tko-day1-ops-ws 
     ```
-* Create a deployment with **nginx** image from docker hub:
+    ```execute-1
+    kubectl describe opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config wsp.{{ session_namespace }}.{{ session_namespace }}-rp-cli.vmware-system-tmc-allowed-images-v1
+    ```
+* Create a deployment with **nginx** image from **docker hub**:
 
     ```execute-1
-    kubectl --kubeconfig=.kube/config create deployment nginx-{{ session_namespace }} --image=nginx -n {{ session_namespace }}
+    kubectl --kubeconfig=.kube/config create deployment nginx --image=nginx -n {{ session_namespace }}
     ```
 
+* Confirm that the nginx pod hasn't been deployed
+
+    ```execute-1
+    kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
+    ```
 * Notice the deployment is blocked and won't progress because of the registry rules.
 
     ```execute-1
@@ -315,7 +323,7 @@ text: "{{ session_namespace }}-rp-cli"
     ```
 * Delete the deployment
     ```execute-1
-    kubectl --kubeconfig=.kube/config delete deployment nginx-{{ session_namespace }} -n {{ session_namespace }}
+    kubectl --kubeconfig=.kube/config delete deployment nginx -n {{ session_namespace }}
     ```
 
     ```execute-all

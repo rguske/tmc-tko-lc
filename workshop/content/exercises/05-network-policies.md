@@ -94,8 +94,16 @@ You should receive **command terminated with exit code 28** Error
 kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/allowed-client -- curl http://web-server:80 --connect-timeout 3 -s
 ```
 
+As you can see, our policy allows the connection between `allowed-client` POD and `web-server` POD
+
 * Delete the test PODs:
 
 ```execute-1
 kubectl --kubeconfig=.kube/config delete -f network-policy-deployment/ -n {{ session_namespace }}
 ```
+
+* Delete the created policy 
+
+    ```execute-1
+    tmc workspace network-policy delete {{ session_namespace }}-ci-policy  --workspace-name tko-day1-ops-ws
+    ```

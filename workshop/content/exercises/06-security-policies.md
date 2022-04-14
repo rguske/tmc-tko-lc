@@ -63,6 +63,8 @@ text: "{{ session_namespace }}-cluster"
     You should get both `strict-security-policy-cli` and `strict-security-policy-ui` listed
 </p>
 </details>
+<p>
+</p>
 
 Now we will deploy an app with root privileges on the cluster **{{ session_namespace }}-cluster** that has security policy enabled.
 
