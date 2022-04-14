@@ -17,4 +17,4 @@ url: https://{{ session_namespace }}.tko.mytanzusandbox.com/workshop/content/exe
 ```dashboard:delete-dashboard
 name: Kubernetes Operators "Day" Overview Slide
 ```
-This demo will walk you through the important capabilities that are available in Tanzu for Kubernetes Operations for **Day 1** activities.
+This demo will walk you through the important capabilities that are available in Tanzu for Kubernetes Operations for **Day 1** activities, that are mainly covered by **VMware Tanzu Mission Control**.
