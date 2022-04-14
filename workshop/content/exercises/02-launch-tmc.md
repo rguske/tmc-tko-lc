@@ -27,7 +27,7 @@ url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
 
 **Authenticate to TMC CLI**
 
-If you are not still logged in from the previous session 
+If you don't have an API token to access TMC, see [How Do I Generate API Tokens](https://docs.vmware.com/en/VMware-Cloud-services/services/Using-VMware-Cloud-Services/GUID-E2A3B1C1-E9AD-4B00-A6B6-88D31FCDDF7C.html) documentation.   
 
 * Provide your API Token and press enter
 * For the login context name, leave to default

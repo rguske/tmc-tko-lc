@@ -2,8 +2,10 @@ In this module, we will focus on Day 1 activities.
 
 **Day 1** - Implement Access, Security, Quota and Backup Policies
 
-Baseline policies around security, access, quota can be quickly applied to cluster across multiple-clouds at once using logical groups.
-Automate collecting backups of Kubernetes clusters 
+Most of Day 1 activities are about:
+
+* Baseline policies around security, access, quota can be quickly applied to cluster across multiple-clouds at once using logical groups.
+* Automate the creation of backups of Kubernetes clusters and its data   
 
 ![](./exercises/images/tko.png)
 
