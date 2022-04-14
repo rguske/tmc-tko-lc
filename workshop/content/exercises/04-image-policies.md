@@ -65,7 +65,7 @@ tmc cluster namespace create -n {{ session_namespace }} -k tko-day1-ops-ws -c {{
 Confirm that the Namespace has been created
 
 ```execute-1
-kubectl get ns --kubeconfig=.kube/config
+kubectl get ns {{ session_namespace }} --kubeconfig=.kube/config
 ```
 
 Let's validate that our image *`Require Digest`* registry policy is working by trying to deploy a container image with and without a gigest to the namespace **{{ session_namespace }}**
@@ -105,7 +105,7 @@ clear
 kubectl --kubeconfig=.kube/config create deployment nginx-with-digest --image=nginx@sha256:2275af0f20d71b293916f1958f8497f987b8d8fd8113df54635f2a5915002bf1 -n {{ session_namespace }}
 ```
 
-* Confirm that the nginx pod has been deployed
+* Confirm that the nginx pod with the image digest has been deployed
 
 ```execute-1
 kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
@@ -198,13 +198,31 @@ text: "{{ session_namespace }}-ip-cli"
 <p>
 </p>
 
-Let's validate that our image registry policy is working by trying to deploy the busybox image to the namespace **{{ session_namespace }}**, 
+<div class="info" style='background-color:#e7f3fe; color: #000000; border-left: solid #2196F3 4px; border-radius: 4px; padding:0.7em;'>
+<span>
+<p style='margin-top:1em; text-align:left'>
+<b>Note:</b></p>
+<p style='margin-left:1em;'>
+Sometimes it take a few seconds for the policy to be effective. If the test below fails, please delete the deployment and redeploy again.   
+</p>
+</span>
+</div>
+<p>
+</p>
+
+Let's validate that our image registry policy is working by trying to deploy the busybox image and non-busybox image to the namespace **{{ session_namespace }}**, 
 which is part of the workspace **tko-day1-ops-ws**. 
 
 * Create a deployment with **nginx** image:
 
 ```execute-1
 kubectl --kubeconfig=.kube/config create deployment nginx --image=nginx -n {{ session_namespace }}
+```
+
+* Confirm that the nginx pod hasn't been deployed
+
+```execute-1
+kubectl --kubeconfig=.kube/config get pods -n {{ session_namespace }}
 ```
 
 * Notice the deployment is blocked and won't progress because of the image policy that allows only busybox image name to be deployed
