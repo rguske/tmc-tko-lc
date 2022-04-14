@@ -57,3 +57,6 @@ On Tanzu Mission Control console, wait until the attachment is complete, and the
 ```execute-1
 tmc cluster validate -k .kube/config
 ```
+```execute-all
+clear
+```
