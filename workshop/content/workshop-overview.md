@@ -9,12 +9,4 @@ Most of Day 1 activities are about:
 
 ![](./exercises/images/tko.png)
 
-```dashboard:create-dashboard
-name: Kubernetes Operators "Day" Overview Slide
-url: https://{{ session_namespace }}.tko.mytanzusandbox.com/workshop/content/exercises/images/tko.png
-```
-
-```dashboard:delete-dashboard
-name: Kubernetes Operators "Day" Overview Slide
-```
 This demo will walk you through the important capabilities that are available in Tanzu for Kubernetes Operations for **Day 1** activities, that are mainly covered by **VMware Tanzu Mission Control**.
