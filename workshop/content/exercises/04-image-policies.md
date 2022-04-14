@@ -56,10 +56,16 @@ registry policies to specify a name-tag allowlist, block the latest tag, or even
 Once created, you may edit or delete an image registry policy.
 
 
-Since image policies can be assigned to a workspace or at the organization only that will cascade to the namespace(s) underneath. Let's create a new namespace and add it to the workspace **tko-day1-ops-ws**:
+Since image policies can be assigned to a workspace or at the organization level only that will cascade to the namespace(s) underneath. Now, let's create a new namespace and add it to the workspace **tko-day1-ops-ws**:
 
 ```execute-1
 tmc cluster namespace create -n {{ session_namespace }} -k tko-day1-ops-ws -c {{ session_namespace }}-cluster
+```
+
+Confirm that the Namespace has been created
+
+```execute-1
+kubectl get ns --kubeconfig=.kube/config
 ```
 
 Let's validate that our image *`Require Digest`* registry policy is working by trying to deploy a container image with and without a gigest to the namespace **{{ session_namespace }}**
