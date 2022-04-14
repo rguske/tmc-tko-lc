@@ -1,10 +1,13 @@
 Using VMware Tanzu Mission Control, you can protect the valuable data resources in your Kubernetes clusters using the backup and restore functionality provided by Velero, an open source community standard.
 
 The data protection features of Tanzu Mission Control allow you to create the following types of backups for managed clusters (both attached and provisioned):
+
 * all resources in a cluster
 * selected namespaces in a cluster
 * specific resources in a cluster identified by a given label
+
 You can selectively restore the backups you have created, by specifying the following:
+
 * the entire backup
 * selected namespaces from the backup
 * specific resources from the backup identified by a given label

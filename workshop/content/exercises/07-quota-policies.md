@@ -18,7 +18,7 @@ On the flip side, this means the teams managing the platform need to be aware of
 <b>Note:</b></p>
 <p style='margin-left:1em;'>
 
-Notice it has been assigned an quota to requests of 0.5 vCPU / 512 MB memory and limit of 1 vCPU / 2 GB of memory per workload.
+Notice it has been assigned a quota to requests of 0.5 vCPU / 512 MB memory and limit of 1 vCPU / 2 GB of memory per workload.
 
 </p>
 </span>
