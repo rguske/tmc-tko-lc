@@ -164,6 +164,10 @@ Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks 
 </details>
 <p>
 </p>
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
+
 Before we apply this policy using the TMC CLI, let's have a look on its definition and do some modifications
 
 ```editor:open-file
@@ -181,11 +185,6 @@ group: 1
 file: ~/busybox-image-policy.yaml
 text: "{{ session_namespace }}-ip-cli"
 ```
-
-<details>
-<summary><b>TMC CLI</b></summary>
-<p>
-
 * Create the image policy 
 
     ```execute-1
