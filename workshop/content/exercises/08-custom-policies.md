@@ -40,8 +40,17 @@ kubectl delete -f deployment-without-tags.yaml --kubeconfig=.kube/config -n defa
 * Let's deploy an app that complies our tag policy
 
 ```execute-1
-kubectl apply -f deployment-without-tags.yaml --kubeconfig=.kube/config -n default
+kubectl apply -f deployment-with-tags.yaml --kubeconfig=.kube/config -n default
 ```
 ```execute-1
 kubectl get po --kubeconfig=.kube/config -n default
+```
+
+* Cleanup the created resources and policy 
+
+```execute-1
+kubectl delete -f deployment-with-tags.yaml --kubeconfig=.kube/config -n default
+```
+```execute-1
+tmc cluster custom-policy delete {{ session_namespace }}-rl-ui --cluster-name {{ session_namespace }}-cluster 
 ```
