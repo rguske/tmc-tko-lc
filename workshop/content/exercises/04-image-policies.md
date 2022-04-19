@@ -70,6 +70,14 @@ kubectl get ns {{ session_namespace }} --kubeconfig=.kube/config
 
 Let's validate that our image *`Require Digest`* registry policy is working by trying to deploy a container image with and without a gigest to the namespace **{{ session_namespace }}**
  
+* Confirm that the policy has been created    
+    
+    ```execute-1
+    tmc workspace image-policy get {{ session_namespace }}-di-policy  --workspace-name tko-day1-ops-ws 
+    ```
+    ```execute-1
+    kubectl describe opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config wsp.{{ session_namespace }}.{{ session_namespace }}-di-policy.vmware-system-tmc-allowed-images-v1
+    ```
 
 * Create a deployment with **nginx** image:
 

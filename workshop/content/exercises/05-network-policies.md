@@ -96,7 +96,7 @@ kubectl --kubeconfig=.kube/config exec -n {{ session_namespace }} deploy/allowed
 
 As you can see, our policy allows the connection between `allowed-client` POD and `web-server` POD
 
-* Delete the test PODs:
+* Delete the test PODs
 
 ```execute-1
 kubectl --kubeconfig=.kube/config delete -f network-policy-deployment/ -n {{ session_namespace }}
@@ -104,6 +104,6 @@ kubectl --kubeconfig=.kube/config delete -f network-policy-deployment/ -n {{ ses
 
 * Delete the created policy 
 
-    ```execute-1
-    tmc workspace network-policy delete {{ session_namespace }}-ci-policy  --workspace-name tko-day1-ops-ws
-    ```
+```execute-1
+tmc workspace network-policy delete {{ session_namespace }}-ci-policy  --workspace-name tko-day1-ops-ws
+```
