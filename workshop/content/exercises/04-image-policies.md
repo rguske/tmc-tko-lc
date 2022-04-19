@@ -144,6 +144,20 @@ clear
 
 Now let's create a custom policy in workspace ***tko-day1-ops-ws*** that blocks any container image that doesn't have the name `busybox`: 
 
+<div class="info" style='background-color:#e7f3fe; color: #000000; border-left: solid #2196F3 4px; border-radius: 4px; padding:0.7em;'>
+<span>
+<p style='margin-top:1em; text-align:left'>
+<b>Note:</b></p>
+<p style='margin-left:1em;'>
+When you define a custom policy, you can use wildcards to match specific patterns, for example:
+- Registry Hostname (*.mycompany.com)
+- Image name (fooservice/*)
+- Image tag (v1.*)
+</p>
+</span>
+</div>
+<p>
+</p>
 <details>
 <summary><b>TMC Console</b></summary>
 <p>
@@ -277,6 +291,11 @@ kubectl --kubeconfig=.kube/config delete -f busybox-deployment.yaml -n {{ sessio
 
 Now, let's create a policy that will allow pulling images from a particular container registry only
 
+
+<details>
+<summary><b>TMC CLI</b></summary>
+<p>
+
 Before we apply this policy using the TMC CLI, let's have a look on its definition:
 
 ```editor:open-file
@@ -294,10 +313,6 @@ group: 1
 file: ~/registry-hotsname-policy.yaml
 text: "{{ session_namespace }}-rp-cli"
 ```
-
-<details>
-<summary><b>TMC CLI</b></summary>
-<p>
 
 * Create a policy 
 
