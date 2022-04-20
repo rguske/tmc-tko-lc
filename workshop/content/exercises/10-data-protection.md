@@ -22,7 +22,7 @@ Before you can use Tanzu Mission Control to back up data resources in your clust
 ```execute-1
 tmc cluster dataprotection create --cluster-name {{ session_namespace }}-cluster
 ```
-Wait until **STATUS** of {{ session_namespace }}-cluster cluster to become **READY**
+Wait until **STATUS** of **{{ session_namespace }}-cluster** cluster to become **READY**
 
 ```execute-1
 tmc cluster dataprotection list --cluster-name {{ session_namespace }}-cluster
@@ -99,6 +99,9 @@ tmc cluster dataprotection backup list --name petclinic-app-backup --cluster-nam
 ```execute-1
 kubectl delete ns app
 ```
+```execute-1
+kubectl get ns app
+```
 * Try to access the Petclinic App
 
 ```dashboard:delete-dashboard
@@ -108,10 +111,7 @@ name: Petclinic APP
 name: Petclinic APP
 url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domain }}
 ```
-```dashboard:reload-dashboard
-name: Petclinic APP
-url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domain }}
-```
+
 * Let's trigger a restore process 
 
 ```execute-1
@@ -124,6 +124,14 @@ tmc cluster dataprotection restore list --name petclinic-app-restore --cluster-n
 ```
 
 3. Confirm that the newly created owner is in the list 
+
+```dashboard:delete-dashboard
+name: Petclinic APP
+```
+```dashboard:create-dashboard
+name: Petclinic APP
+url: {{ ingress_protocol }}://{{ session_namespace }}-petclinic.{{ ingress_domain }}
+```
 
 FIND OWNERS -> Find Owner
 ![](./images/petclinic-3.png)
