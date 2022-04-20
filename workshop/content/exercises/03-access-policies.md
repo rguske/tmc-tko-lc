@@ -180,7 +180,7 @@ Access policies can be configured at the workspace level either using TMC Consol
 
 ![](./images/policy-access-ws-1.png)
 
-* click on the workspace: ***tko-day1-ops-ws***. Similar to the steps given above, we can grant a desired role binding to the workspace:  ***tko-day1-ops-ws*** as shown below, this time grant the ***namespace.admin*** privilege to a group of users. 
+* click on the workspace: ***{{ session_namespace }}-ws***. Similar to the steps given above, we can grant a desired role binding to the workspace:  ***{{ session_namespace }}-ws*** as shown below, this time grant the ***namespace.admin*** privilege to a group of users. 
 * click Add after each identity, and then click Save.
 
 ![](./images/policy-access-ws-2.png)
@@ -207,12 +207,12 @@ You can repeat the same step above to assign access policies at namespace level
 * Create a policy 
 
     ```execute-1
-    tmc workspace iam add-binding tko-day1-ops-ws -r namespace.edit -u {{ session_namespace }}-user 
+    tmc workspace iam add-binding {{ session_namespace }}-ws -r namespace.edit -u {{ session_namespace }}-user 
     ```
 * Confirm that the policy has been created    
 
     ```execute-1
-    tmc workspace iam get-policy tko-day1-ops-ws
+    tmc workspace iam get-policy {{ session_namespace }}-ws
     ```
 </p> 
 </details>
@@ -274,5 +274,5 @@ kubectl get po -A --kubeconfig=kubeconfig.yaml
 * Delete the created policy at the workspace level
 
     ```execute-1
-    tmc workspace iam remove-binding tko-day1-ops-ws -r namespace.edit -u {{ session_namespace }}-user 
+    tmc workspace iam remove-binding {{ session_namespace }}-ws -r namespace.edit -u {{ session_namespace }}-user 
     ```     
