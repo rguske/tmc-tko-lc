@@ -36,7 +36,7 @@ As quick example we are going to create a *`Require Digest`* recipe policy using
 
 ![](./images/policy-image-registry-1.png)
 
-Select your workspace ***{ session_namespace }}-ws*** and click Create Image 
+Select your workspace ***{{ session_namespace }}-ws*** and click Create Image 
 Registry Policy. We are going to configure that all the container 
 images to be deployed to this workspace must have a container digest. 
 Under Image registry template dropdown, select Require Digest:
