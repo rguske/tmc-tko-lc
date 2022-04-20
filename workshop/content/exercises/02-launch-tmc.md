@@ -92,7 +92,7 @@ clear
 tmc workspace create -n {{ session_namespace }}-ws
 ```
 
-* Confirm that the cluster group **{{ session_namespace }}-cg** has been created    
+* Confirm that the workspace **{{ session_namespace }}-ws** has been created    
 
 ```execute-1
 tmc workspace get {{ session_namespace }}-ws 
