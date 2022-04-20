@@ -121,7 +121,7 @@ When you configure an access policy at the cluster group level, it will automati
 
 ![](./images/policy-access-cg-1.png)
 
-- Click on the cluster group:  ***tko-day1-ops-cg***. 
+- Click on the cluster group:  ***{{ session_namespace }}-cg***. 
 - Click the arrow next to the object name under Direct access policies.
 - Click Create Role Binding.
 - Select the ***cluster.admin*** role to grant administrative access to this cluster group that you want to bind to an identity.
@@ -151,7 +151,7 @@ You can repeat the same step above for <b>{{ session_namespace }}-cluster</b> to
 * Create a policy 
     * Cluster Group Level
     ```execute-1
-    tmc clustergroup iam add-binding tko-day1-ops-cg -r cluster.edit -u {{ session_namespace }}-user 
+    tmc clustergroup iam add-binding {{ session_namespace }}-cg -r cluster.edit -u {{ session_namespace }}-user 
     ```
     * Cluster Level
     ```execute-1
@@ -160,7 +160,7 @@ You can repeat the same step above for <b>{{ session_namespace }}-cluster</b> to
 * Confirm that the policy has been created    
     * Cluster Group Level
     ```execute-1
-    tmc clustergroup iam get-policy tko-day1-ops-cg
+    tmc clustergroup iam get-policy {{ session_namespace }}-cg
     ```
     * Cluster Level
     ```execute-1
@@ -264,7 +264,7 @@ kubectl get po -A --kubeconfig=kubeconfig.yaml
 
     * Cluster Group Level
     ```execute-1
-    tmc clustergroup iam remove-binding tko-day1-ops-cg -r cluster.edit -u {{ session_namespace }}-user 
+    tmc clustergroup iam remove-binding {{ session_namespace }}-cg -r cluster.edit -u {{ session_namespace }}-user 
     ```
 
     * Cluster Level

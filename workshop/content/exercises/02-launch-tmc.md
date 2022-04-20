@@ -50,11 +50,22 @@ tmc system context configure -l "log" -m attached -p attached
 ```execute-1
 tmc clustergroup create -n {{ session_namespace }}-cg
 ```
+* Confirm that the cluster group **{{ session_namespace }}-cg** has been created    
 
-* Add your Cluster Group to the Backup Location **aws-s3-store**
+```execute-1
+tmc clustergroup get {{ session_namespace }}-cg 
+```
+   
+* Add your Cluster Group to the **aws-s3-store** Backup Location 
 
 ```execute-1
 tmc dataprotection provider backuplocation update aws-s3-store --assigned-cluster-groups $(tmc dataprotection provider backuplocation get aws-s3-store -o json | jq -r '[.spec.assignedGroups[].clustergroup.name] + ["{{ session_namespace }}-cg"] | @csv')
+```
+
+* Confirm that the cluster group **{{ session_namespace }}-cg** has been added to **aws-s3-store** Backup Location 
+
+```execute-1
+tmc dataprotection provider backuplocation get aws-s3-store -o json | jq  '.spec.assignedGroups[].clustergroup | select(.name=="{{ session_namespace }}-cg")'
 ```
 
 * Attach your Cluster to {{ session_namespace }}-cg Cluster Group
@@ -70,13 +81,21 @@ On Tanzu Mission Control console, wait until the attachment is complete, and the
 ```execute-1
 tmc cluster validate -k .kube/config
 ```
+
 ```execute-all
 clear
 ```
+
 * Create your session's **Workspace: {{ session_namespace }}-ws**
 
 ```execute-1
 tmc workspace create -n {{ session_namespace }}-ws
+```
+
+* Confirm that the cluster group **{{ session_namespace }}-cg** has been created    
+
+```execute-1
+tmc workspace get {{ session_namespace }}-ws 
 ```
 
 * Create **{{ session_namespace }}** namespace and add it to the workspace **{{ session_namespace }}-ws**:
