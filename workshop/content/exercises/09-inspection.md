@@ -1,5 +1,3 @@
-### **Cluster Inspection**
-
 Using Tanzu Mission Control, a platform or infrastructure operator 
 can run preconfigured cluster inspections using Sonobuoy to make sure 
 that their Kubernetes clusters conform to a standard.
