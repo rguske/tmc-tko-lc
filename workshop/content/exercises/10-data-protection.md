@@ -123,7 +123,7 @@ tmc cluster dataprotection restore create -n petclinic-app-restore --include-nam
 tmc cluster dataprotection restore list --name petclinic-app-restore --cluster-name {{ session_namespace }}-cluster
 ```
 
-3. Confirm that the newly created owner is in the list 
+* Confirm that the newly created owner is in the list 
 
 ```dashboard:delete-dashboard
 name: Petclinic APP
@@ -139,6 +139,15 @@ FIND OWNERS -> Find Owner
 ```dashboard:delete-dashboard
 name: Petclinic APP
 ```
+* Delete the created backup/restore resources  
+
+```execute-1
+tmc cluster dataprotection backup delete petclinic-app-backup --cluster-name {{ session_namespace }}-cluster
+```
+```execute-1
+tmc cluster dataprotection restore delete petclinic-app-restore --cluster-name {{ session_namespace }}-cluster
+```
+
 ```execute-all
 clear
 ```
