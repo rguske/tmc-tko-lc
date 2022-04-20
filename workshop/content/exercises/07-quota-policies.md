@@ -118,4 +118,9 @@ kubectl delete -f kurd.yaml --kubeconfig=.kube/config -n default
 tmc cluster namespace-quota-policy delete small-qp-cli --cluster-name {{ session_namespace }}-cluster 
 ```
 
+```execute-all
+clear
+```
+
 You can also opt to create a custom policy if you don't want to use any of the pre-defined ones or you wish to implement more detailed policies on objects such as: CPU, memory, storage, or even limits on most Kubernetes objects within a namespace.
+

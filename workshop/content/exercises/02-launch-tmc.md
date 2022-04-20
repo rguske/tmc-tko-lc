@@ -109,3 +109,6 @@ tmc cluster namespace create -n {{ session_namespace }} -k {{ session_namespace 
 ```execute-1
 kubectl get ns {{ session_namespace }} --kubeconfig=.kube/config
 ```
+```execute-all
+clear
+```

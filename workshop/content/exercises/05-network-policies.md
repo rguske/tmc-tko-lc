@@ -107,3 +107,7 @@ kubectl --kubeconfig=.kube/config delete -f network-policy-deployment/ -n {{ ses
 ```execute-1
 tmc workspace network-policy delete custom-ingress --workspace-name {{ session_namespace }}-ws
 ```
+
+```execute-all
+clear
+```

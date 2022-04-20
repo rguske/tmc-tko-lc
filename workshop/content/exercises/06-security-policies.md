@@ -125,3 +125,6 @@ after: 2
     ```execute-1
     tmc workspace security-policy delete strict-security-policy-ui --cluster-name {{ session_namespace }}-cluster
     ```
+```execute-all
+clear
+```    

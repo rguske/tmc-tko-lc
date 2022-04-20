@@ -275,4 +275,8 @@ kubectl get po -A --kubeconfig=kubeconfig.yaml
 
     ```execute-1
     tmc workspace iam remove-binding {{ session_namespace }}-ws -r namespace.edit -u {{ session_namespace }}-user 
-    ```     
+    ```
+
+```execute-all
+clear
+```    

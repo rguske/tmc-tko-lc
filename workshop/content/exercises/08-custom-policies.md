@@ -54,3 +54,6 @@ kubectl delete -f deployment-with-tags.yaml --kubeconfig=.kube/config -n default
 ```execute-1
 tmc cluster custom-policy delete {{ session_namespace }}-rl-ui --cluster-name {{ session_namespace }}-cluster 
 ```
+```execute-all
+clear
+```

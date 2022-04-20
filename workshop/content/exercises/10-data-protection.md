@@ -131,3 +131,6 @@ FIND OWNERS -> Find Owner
 ```dashboard:delete-dashboard
 name: Petclinic APP
 ```
+```execute-all
+clear
+```
