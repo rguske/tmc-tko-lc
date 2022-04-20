@@ -43,11 +43,24 @@ tmc login -n {{ session_namespace }} --no-configure
 tmc system context configure -l "log" -m attached -p attached
 ```
 
-**Attach your Cluster to under tko-day1-ops-cg Cluster Group**
+**Create and prepare your TMC resources**
 
+* Create your session's **Cluster Group: {{ session_namespace }}-cg**
 
 ```execute-1
-tmc cluster attach -g tko-day1-ops-cg -n {{ session_namespace }}-cluster -k .kube/config
+tmc clustergroup create -n {{ session_namespace }}-cg
+```
+
+* Add your Cluster Group to the Backup Location **aws-s3-store**
+
+```execute-1
+tmc dataprotection provider backuplocation update aws-s3-store --assigned-cluster-groups $(tmc dataprotection provider backuplocation get aws-s3-store -o json | jq -r '[.spec.assignedGroups[].clustergroup.name] + ["{{ session_namespace }}-cg"] | @csv')
+```
+
+* Attach your Cluster to {{ session_namespace }}-cg Cluster Group
+
+```execute-1
+tmc cluster attach -g {{ session_namespace }}-cg -n {{ session_namespace }}-cluster -k .kube/config
 ```
 
 On Tanzu Mission Control console, wait until the attachment is complete, and then the cluster **{{ session_namespace }}-cluster** state changes to **Healthy**
@@ -59,4 +72,21 @@ tmc cluster validate -k .kube/config
 ```
 ```execute-all
 clear
+```
+* Create your session's **Workspace: {{ session_namespace }}-ws**
+
+```execute-1
+tmc workspace create -n {{ session_namespace }}-ws
+```
+
+* Create **{{ session_namespace }}** namespace and add it to the workspace **{{ session_namespace }}-ws**:
+
+```execute-1
+tmc cluster namespace create -n {{ session_namespace }} -k {{ session_namespace }}-ws -c {{ session_namespace }}-cluster
+```
+
+* Confirm that the Namespace has been created
+
+```execute-1
+kubectl get ns {{ session_namespace }} --kubeconfig=.kube/config
 ```

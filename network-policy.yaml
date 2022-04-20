@@ -1,5 +1,5 @@
 fullName:
-  name: test
+  name: custom-ingress
   workspaceName: tko-day1-ops-ws
 spec:
   input:
