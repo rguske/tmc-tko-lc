@@ -65,7 +65,11 @@ Let's validate that our image *`Require Digest`* registry policy is working by t
     ```execute-1
     kubectl describe opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config wsp.{{ session_namespace }}.{{ session_namespace }}-di-policy.vmware-system-tmc-allowed-images-v1
     ```
+* Wait until all pods in **gatekeeper-system** Namespace are in **Ready** Status
 
+   ```execute-1
+   kubectl get pods -n gatekeeper-system
+   ```
 * Create a deployment with **nginx** image:
 
 ```execute-1
