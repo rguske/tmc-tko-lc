@@ -67,9 +67,9 @@ Let's validate that our image *`Require Digest`* registry policy is working by t
     ```
 * Wait until all pods in **gatekeeper-system** Namespace are in **Ready** Status
 
-   ```execute-1
-   kubectl get pods -n gatekeeper-system
-   ```
+    ```execute-1
+    kubectl get pods -n gatekeeper-system
+    ```
 * Create a deployment with **nginx** image:
 
 ```execute-1
@@ -204,7 +204,13 @@ text: "{{ session_namespace }}-ws"
     ```execute-1
     kubectl describe opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config wsp.{{ session_namespace }}.busybox-ip-cli.vmware-system-tmc-allowed-images-v1
     ```
-* Repeat the previous command until the policy **Status** changes to **True**    
+* Repeat the previous command until the policy **Status** changes to **True**
+
+* Wait until all pods in **gatekeeper-system** Namespace are in **1/1 Ready** Status
+
+    ```execute-2
+    kubectl get pods -n gatekeeper-system
+    ```
 </p>
 </details>
 <p>
@@ -321,6 +327,12 @@ text: "{{ session_namespace }}-ws"
 
 * Repeat the previous command until the policy **Status** changes to **True**  
 
+* Wait until all pods in **gatekeeper-system** Namespace are in **1/1 Ready** Status
+
+    ```execute-2
+    kubectl get pods -n gatekeeper-system
+    ```
+
 * Create a deployment with **nginx** image from **docker hub**:
 
     ```execute-1
@@ -353,8 +365,8 @@ text: "{{ session_namespace }}-ws"
     ```
 </p>
 </details>
-
-
+<p>
+</p>
 ```execute-all
 clear
 ```

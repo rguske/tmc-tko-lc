@@ -2,7 +2,6 @@ fullName:
   clusterName: tko-tmc-cluster
   managementClusterName: attached
   name: small-qp-cli
-  orgId: 85b7364a-4594-45a4-b265-360d5b034a87
   provisionerName: attached
 spec:
   recipe: small

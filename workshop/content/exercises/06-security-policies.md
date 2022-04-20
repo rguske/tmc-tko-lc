@@ -61,6 +61,12 @@ text: "{{ session_namespace }}-cluster"
     kubectl get opapolicies.intents.tmc.cloud.vmware.com --kubeconfig=.kube/config
     ```
     You should get both `strict-security-policy-cli` and `strict-security-policy-ui` listed
+    
+* Wait until all pods in **gatekeeper-system** Namespace are in **1/1 Ready** Status
+
+    ```execute-2
+    kubectl get pods -n gatekeeper-system
+    ```    
 </p>
 </details>
 <p>
