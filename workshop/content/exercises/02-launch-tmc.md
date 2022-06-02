@@ -56,16 +56,16 @@ tmc clustergroup create -n {{ session_namespace }}-cg
 tmc clustergroup get {{ session_namespace }}-cg 
 ```
    
-* Add your Cluster Group to the **$ENV_DP_LOCATION** Backup Location 
+* Add your Cluster Group to the **{{ ENV_DP_LOCATION }}** Backup Location 
 
 ```execute-1
-tmc dataprotection provider backuplocation update $ENV_DP_LOCATION --assigned-cluster-groups $(tmc dataprotection provider backuplocation get $ENV_DP_LOCATION -o json | jq -r '[.spec.assignedGroups[].clustergroup.name] + ["{{ session_namespace }}-cg"] | @csv')
+tmc dataprotection provider backuplocation update {{ ENV_DP_LOCATION }} --assigned-cluster-groups $(tmc dataprotection provider backuplocation get {{ ENV_DP_LOCATION }} -o json | jq -r '[.spec.assignedGroups[].clustergroup.name] + ["{{ session_namespace }}-cg"] | @csv')
 ```
 
-* Confirm that the cluster group **{{ session_namespace }}-cg** has been added to **$ENV_DP_LOCATION** Backup Location 
+* Confirm that the cluster group **{{ session_namespace }}-cg** has been added to **{{ ENV_DP_LOCATION }}** Backup Location 
 
 ```execute-1
-tmc dataprotection provider backuplocation get $ENV_DP_LOCATION -o json | jq  '.spec.assignedGroups[].clustergroup | select(.name=="{{ session_namespace }}-cg")'
+tmc dataprotection provider backuplocation get {{ ENV_DP_LOCATION }} -o json | jq  '.spec.assignedGroups[].clustergroup | select(.name=="{{ session_namespace }}-cg")'
 ```
 
 * Attach your Cluster to {{ session_namespace }}-cg Cluster Group
