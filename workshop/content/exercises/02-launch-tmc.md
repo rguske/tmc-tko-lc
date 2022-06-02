@@ -17,12 +17,12 @@ url: https://console.cloud.vmware.com
 ![](images/vmw-cloud-console-1.png)
 
 
-2. If you belong to multiple organizations, make sure you have selected **{{ vmware_cloud_org_name }}**. To change organizations, click your name in the title bar.
+2. If you belong to multiple organizations, make sure you have selected ** $VMWARE_CLOUD_ORG_NAME **. To change organizations, click your name in the title bar.
 
 3. Click the Tanzu Mission Control tile to open the Tanzu Mission Control console. After you have logged in, you can return directly to the Tanzu Mission Control console using the following URL.
 
 ```dashboard:open-url
-url: {{ tmc_url }}
+url: $TMC_URL
 ```
 
 **Authenticate to TMC CLI**
