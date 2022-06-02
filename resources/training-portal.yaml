@@ -17,4 +17,8 @@ spec:
       capacity: 25
       expires: 300m
       orphaned: 45m
-      #reserved: 8
+      reserved: 1
+    - name: tap-workshop
+      capacity: 25
+      expires: 300m
+      orphaned: 45m
