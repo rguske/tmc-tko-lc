@@ -20,6 +20,8 @@ spec:
         value: "tanzu-emea"
       - name: TMC_URL
         value: "https://tanzuemea.tmc.cloud.vmware.com/"
+      - name: DP_LOCATION
+        value: "aws-s3-store"
     resources:
       storage: 5Gi
       memory: 2Gi
