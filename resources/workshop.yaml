@@ -15,6 +15,11 @@ spec:
     files: github.com/Tanzu-Partner-SE/tmc-tko-lc?ref=main
     image: harbor.mytanzusandbox.com/learningcenter/tko-day1:0.0.5
   session:
+    env:
+      - name: VMWARE_CLOUD_ORG_NAME
+        value: "tanzu-emea"
+      - name: TMC_URL
+        value: "https://tanzuemea.tmc.cloud.vmware.com/"
     resources:
       storage: 5Gi
       memory: 2Gi
@@ -34,7 +39,6 @@ spec:
         enabled: true
         memory: 3Gi
         storage: 20Gi
-
     objects:
       - apiVersion: v1
         kind: LimitRange

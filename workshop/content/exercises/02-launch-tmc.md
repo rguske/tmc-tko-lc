@@ -17,12 +17,12 @@ url: https://console.cloud.vmware.com
 ![](images/vmw-cloud-console-1.png)
 
 
-2. If you belong to multiple organizations, make sure you have selected **Partner - Tanzu SE Americas**. To change organizations, click your name in the title bar.
+2. If you belong to multiple organizations, make sure you have selected **{{ vmware_cloud_org_name }}**. To change organizations, click your name in the title bar.
 
 3. Click the Tanzu Mission Control tile to open the Tanzu Mission Control console. After you have logged in, you can return directly to the Tanzu Mission Control console using the following URL.
 
 ```dashboard:open-url
-url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
+url: {{ tmc_url }}
 ```
 
 **Authenticate to TMC CLI**
@@ -30,7 +30,7 @@ url: https://partnertanzuseamericas.tmc.cloud.vmware.com/
 If you don't have an API token to access TMC, see [How Do I Generate API Tokens](https://docs.vmware.com/en/VMware-Cloud-services/services/Using-VMware-Cloud-Services/GUID-E2A3B1C1-E9AD-4B00-A6B6-88D31FCDDF7C.html) documentation.   
 
 * Provide your API Token and press enter
-* For the login context name, leave to default
+* For the login context name, leave it to default
 
 
 ```execute-1
